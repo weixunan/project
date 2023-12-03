@@ -1,0 +1,58 @@
+<navigation-bar title="库存查询"></navigation-bar>
+<view class="flex-col page">
+  <view class="flex-col flex-1 group">
+    <view class="flex-row items-center section_2">
+      <view class="flex-col justify-start items-end flex-1 image-wrapper">
+        <image
+          class="image_2"
+          src="https://ide.code.fun/api/image?token=656c179afcfbac0011366f45&name=cfe3e77fd4e49ad9bb829639bac31516.png"
+        />
+      </view>
+      <image
+        class="shrink-0 image_3 ml-17"
+        src="https://ide.code.fun/api/image?token=656c179afcfbac0011366f45&name=60ae9886b433d027f3228bdcdad4a0c0.png"
+      />
+    </view>
+    <view class="flex-row">
+      <view class="flex-col shrink-0 section_3">
+        <view class="flex-col justify-start items-center text-wrapper_1"><text class="font">全部种类</text></view>
+        <view class="flex-col">
+          <view class="flex-col justify-start items-center text-wrapper"><text class="font">饼干</text></view>
+          <view class="flex-col justify-start items-center text-wrapper_3"><text class="font text_7">饮料</text></view>
+        </view>
+      </view>
+      <view class="flex-col flex-1 self-start section_4 ml-7">
+        <view class="flex-row items-center self-stretch group_2">
+          <image
+            class="shrink-0 image_5"
+            src="https://ide.code.fun/api/image?token=656c179afcfbac0011366f45&name=c00439d1618a540340b3efc02ea3ae65.png"
+          />
+          <view class="flex-col flex-1 group_4">
+            <view class="flex-row items-center self-stretch">
+              <image
+                class="shrink-0 image_6"
+                src="https://ide.code.fun/api/image?token=656c179afcfbac0011366f45&name=3b08168bb24a8ab4c8a397d0c960783f.png"
+              />
+              <text class="ml-12 font_2 text_2">123456</text>
+            </view>
+            <text class="self-start font_3 text_3 mt-17">奥利奥</text>
+            <text class="self-start font_3 text_4 mt-17">单价</text>
+          </view>
+          <view class="flex-col items-center shrink-0 group_3">
+            <image
+              class="image_4"
+              src="https://ide.code.fun/api/image?token=656c179afcfbac0011366f45&name=6b124c94fe660b6e601be7c60ebba0ee.png"
+            />
+            <text class="font_2 text_5 mt-47">¥ 8</text>
+          </view>
+        </view>
+        <view class="self-end section_5"></view>
+        <view class="flex-row justify-between self-stretch group_5">
+          <text class="font_3">库存量</text>
+          <text class="font_3 text_6">1000（包）</text>
+        </view>
+        <text class="self-start font_3 text_8">2023/12/3 18:19</text>
+      </view>
+    </view>
+  </view>
+</view>

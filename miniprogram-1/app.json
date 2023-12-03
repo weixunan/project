@@ -1,7 +1,11 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/login/index",
+    "pages/logs/logs",
+    "pages/InventoryInquiry",
+    "pages/InventoryInquiry/index",
+    "pages/Output/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
