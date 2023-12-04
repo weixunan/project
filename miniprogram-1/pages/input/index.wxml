@@ -1,4 +1,4 @@
-<navigation-bar title="出库操作"></navigation-bar>
+<navigation-bar title="入库操作"></navigation-bar>
 <view class="flex-col page">
   <view class="flex-col flex-1 group">
     <view class="flex-col self-stretch section_2">
@@ -11,43 +11,52 @@
       </view>
       <view class="flex-row items-center group_3">
         <text class="font text_3">货物编号：</text>
-        <input type="text" class="dataInput"/>
+        <!-- <view class="section_3 input ml-7"></view> -->
+				<input type="text" class="dataInput"/>
       </view>
       <view class="flex-row items-center group_4">
         <text class="font">货物名称：</text>
-        <input type="text" class="dataInput"/>
+        <!-- <view class="section_3 input ml-7"></view> -->
+				<input type="text" class="dataInput"/>
       </view>
       <view class="flex-col group_5">
         <view class="flex-row items-center input_2">
           <text class="font text_4">货物类别：</text>
-          <input type="text" class="dataInput"/>
+          <!-- <view class="flex-1 input view ml-7"></view> -->
+					<input type="text" class="dataInput"/>
         </view>
         <view class="flex-col justify-start input_3">
           <view class="flex-row items-center group_6">
             <text class="font text_5">出货单价（元）：</text>
-            <input type="text" class="dataInput"/>
+            <!-- <view class="flex-1 input view_2"></view> -->
+						<input type="text" class="dataInput"/>
           </view>
         </view>
         <view class="flex-row items-center input_4">
           <text class="font text_6">计量单位：</text>
-          <input type="text" class="dataInput"/>
+          <!-- <view class="flex-1 input view_3 ml-7"></view> -->
+					<input type="text" class="dataInput"/>
         </view>
       </view>
       <view class="flex-row items-center group_7">
         <text class="font text_7">出库数量：</text>
-        <input type="text" class="dataInput"/>
+        <!-- <view class="ml-6 flex-1 input view_4"></view> -->
+				<input type="text" class="dataInput"/>
       </view>
       <view class="flex-row items-center input_5">
         <text class="font text_8">客户：</text>
-        <input type="text" class="dataInput"/>
+        <!-- <view class="flex-1 input view_5 ml-35"></view> -->
+				<input type="text" class="dataInput"/>
       </view>
       <view class="flex-row items-center group_7">
         <text class="font text_9">日期：</text>
-        <input type="text" class="dataInput"/>
+        <!-- <view class="ml-34 flex-1 input view_6"></view> -->
+				<input type="text" class="dataInput"/>
       </view>
       <view class="flex-row items-center input_5">
         <text class="font text_10">操作人：</text>
-        <input type="text" class="dataInput"/>
+        <!-- <view class="flex-1 input view_5 ml-21"></view> -->
+				<input type="text" class="dataInput"/>
       </view>
       <view class="flex-col items-center section_4">
         <image

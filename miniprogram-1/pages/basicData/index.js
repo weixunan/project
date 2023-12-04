@@ -1,4 +1,4 @@
-// pages/output/index.js
+// pages/basicData/index.js
 Page({
 
   /**

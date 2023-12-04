@@ -4,9 +4,11 @@
     "pages/login/index",
     "pages/logs/logs",
     "pages/InventoryInquiry/index",
-    "pages/Output/index",
     "pages/home/index",
-    "pages/personal/index"
+    "pages/personal/index",
+    "pages/basicData/index",
+    "pages/input/index",
+    "pages/output/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

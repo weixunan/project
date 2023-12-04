@@ -62,5 +62,11 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  goTo:function(e){
+    var goUrl='/pages/'+e.currentTarget.dataset.name+'/index';
+    wx.navigateTo({
+      url: goUrl,
+    })
   }
 })

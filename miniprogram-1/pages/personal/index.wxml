@@ -20,19 +20,27 @@
     <text class="self-start font_2 text_4 text_5">员工记录</text>
     <view class="flex-row equal-division group_3 mt-9">
       <view class="flex-col group_4 equal-division-item">
-        <view class="section_4"></view>
+        <view class="section_4">
+          <image class="icon" src="../assets/out.png" />
+        </view>
         <text class="mt-10 font_2">出库记录</text>
       </view>
       <view class="flex-col group_4 equal-division-item">
-        <view class="section_5"></view>
+        <view class="section_5">
+          <image class="icon" src="../assets/in.png" />
+        </view>
         <text class="mt-10 font_2">入库记录</text>
       </view>
       <view class="flex-col group_4 equal-division-item">
-        <view class="section_6"></view>
+        <view class="section_6">
+          <image class="icon" src="../assets/exchange.png" />
+        </view>
         <text class="mt-10 font_2">移库记录</text>
       </view>
       <view class="flex-col group_4 equal-division-item">
-        <view class="section_7"></view>
+        <view class="section_7">
+          <image class="icon" src="../assets/notice.png" />
+        </view>
         <text class="mt-10 font_2 text_6">团队通知</text>
       </view>
     </view>
@@ -41,19 +49,27 @@
     <text class="self-start font_2 text_4 text_7">其他</text>
     <view class="flex-row equal-division group_5 mt-9">
       <view class="flex-col group_6 equal-division-item_2">
-        <view class="self-center section_8"></view>
+        <view class="self-center section_8">
+          <image class="icon" src="../assets/question.png" />
+        </view>
         <text class="mt-10 self-center font_2 text_8">常见问题</text>
       </view>
       <view class="flex-col group_6 equal-division-item_2">
-        <view class="section_9"></view>
+        <view class="section_9">
+          <image class="icon" src="../assets/info.png" />
+        </view>
         <text class="mt-10 font_2 text_9">关于我们</text>
       </view>
       <view class="flex-col group_6 equal-division-item_2">
-        <view class="section_10"></view>
-        <text class="mt-10 font_2 text_10">联系客户</text>
+        <view class="section_10">
+          <image class="icon" src="../assets/service.png" />
+        </view>
+        <text class="mt-10 font_2 text_10">联系客服</text>
       </view>
       <view class="flex-col group_6 equal-division-item_2">
-        <view class="section_4"></view>
+        <view class="section_4">
+          <image class="icon" src="../assets/share.png" />
+        </view>
         <text class="mt-10 font_2 text_11">推荐分享</text>
       </view>
     </view>

@@ -6,28 +6,28 @@
       src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=5ea8417632f5aaf8af1397d2e43cd079.png"
     />
     <view class="grid">
-      <view class="flex-col items-center relative grid-item">
-        <image
+      <view class="flex-col items-center relative grid-item" bindtap="goTo" data-name="InventoryInquiry">
+        <image 
           class="image_8"
           src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=9d85aebb2f951a8d0848ce001fa16b3b.png"
         />
         <text class="mt-16 font">库存查询</text>
       </view>
-      <view class="flex-col items-center relative grid-item">
+      <view class="flex-col items-center relative grid-item" bindtap="goTo" data-name="basicData">
         <image
           class="image_9"
           src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=da544547011edda0a47d264c7d10ff8d.png"
         />
         <text class="mt-16 font text_3">仓库数据</text>
       </view>
-      <view class="flex-col items-center relative grid-item">
+      <view class="flex-col items-center relative grid-item" bindtap="goTo" data-name="output">
         <image
           class="image_9"
           src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=cc52aa83937d089bab2bf245d7637b60.png"
         />
         <text class="mt-16 font">出库操作</text>
       </view>
-      <view class="flex-col items-center relative grid-item">
+      <view class="flex-col items-center relative grid-item" bindtap="goTo" data-name="input">
         <image
           class="image_9"
           src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=9d79189f9601f7a07e402e52601b4e85.png"

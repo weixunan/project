@@ -81,6 +81,12 @@
   background-color: #81b337a6;
   border-radius: 50%;
   height: 96.15rpx;
+  text-align: center;
+}
+.icon{
+    width: 28px;
+    height: 28px;
+    margin-top: 10px;
 }
 .font_2 {
   font-size: 26.92rpx;
@@ -105,6 +111,7 @@
   background-color: #347cafa6;
   border-radius: 50%;
   height: 96.15rpx;
+  text-align: center;
 }
 .section_6 {
   margin-left: 3.85rpx;
@@ -112,6 +119,7 @@
   background-color: #ffbf6ba6;
   border-radius: 50%;
   height: 96.15rpx;
+  text-align: center;
 }
 .section_7 {
   margin-left: 3.85rpx;
@@ -119,6 +127,7 @@
   background-color: #bd3124a6;
   border-radius: 50%;
   height: 96.15rpx;
+  text-align: center;
 }
 .text_6 {
   line-height: 24.83rpx;
@@ -143,6 +152,7 @@
   border-radius: 50%;
   width: 96.15rpx;
   height: 96.15rpx;
+  text-align: center;
 }
 .text_8 {
   line-height: 24.79rpx;
@@ -153,6 +163,7 @@
   background-color: #9b7d31a6;
   border-radius: 50%;
   height: 96.15rpx;
+  text-align: center;
 }
 .text_9 {
   line-height: 24.85rpx;
@@ -162,6 +173,7 @@
   background-color: #591bb7a6;
   border-radius: 50%;
   height: 96.15rpx;
+  text-align: center;
 }
 .text_10 {
   line-height: 25.15rpx;
