@@ -1,4 +1,4 @@
-// pages/InventoryInquiry.js
+// pages/home/index.js
 Page({
 
   /**

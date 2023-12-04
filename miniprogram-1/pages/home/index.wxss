@@ -1,0 +1,115 @@
+/* pages/home/index.wxss */.mt-11 {
+  margin-top: 21.15rpx;
+}
+.ml-45 {
+  margin-left: 86.54rpx;
+}
+.mt-192 {
+  margin-top: 369.23rpx;
+}
+.page {
+  background-color: #ffffff;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+.font {
+  font-size: 26.92rpx;
+  font-family: SourceHanSansCN;
+  color: #ffffff;
+}
+.group_2 {
+  padding-top: 46.15rpx;
+  overflow-y: auto;
+}
+.group_3 {
+  padding: 0 34.62rpx;
+}
+.image-wrapper_2 {
+  padding: 192.31rpx 0 11.54rpx;
+  border-radius: 48.08rpx;
+  background-image: url('https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=40589be17caf2e62ed32fc0540d80042.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.image_7 {
+  width: 84.62rpx;
+  height: 7.69rpx;
+}
+.section_4 {
+  margin-top: 100rpx;
+  background-color: #ffffff;
+  border-radius: 48.08rpx;
+  backdrop-filter: blur(0.96rpx);
+  height: 353.85rpx;
+  border-left: solid 1.92rpx #e5e5e5;
+  border-right: solid 1.92rpx #e5e5e5;
+  border-top: solid 1.92rpx #e5e5e5;
+  border-bottom: solid 1.92rpx #e5e5e5;
+}
+.grid {
+  height: 353.85rpx;
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  row-gap: 0;
+  column-gap: 0;
+}
+.grid-item {
+  padding: 26.92rpx 3.85rpx;
+}
+.image_8 {
+  border-radius: 50%;
+  width: 80rpx;
+  height: 80rpx;
+}
+.font_2 {
+  font-size: 19.23rpx;
+  font-family: SourceHanSansCN;
+  line-height: 17.79rpx;
+  color: #000000;
+}
+.section_5 {
+  margin-top: 73.08rpx;
+  padding: 34.62rpx 65.38rpx 34.62rpx 76.92rpx;
+  background-color: #ffffff;
+  border-radius: 48.08rpx;
+  border-left: solid 1.92rpx #e5e5e5;
+  border-right: solid 1.92rpx #e5e5e5;
+  border-top: solid 1.92rpx #e5e5e5;
+  border-bottom: solid 1.92rpx #e5e5e5;
+}
+.image_9 {
+  border-radius: 50%;
+  width: 86.54rpx;
+  height: 86.54rpx;
+}
+.text_3 {
+  margin-top: 42.31rpx;
+  line-height: 17.83rpx;
+}
+.text-wrapper {
+  margin-top: 23.08rpx;
+  padding: 19.23rpx 0;
+  background-color: #c40808;
+  border-radius: 50%;
+  width: 57.69rpx;
+  height: 57.69rpx;
+}
+.text_4 {
+  font-size: 25rpx;
+  line-height: 18.33rpx;
+}
+.section_6 {
+  padding: 30.77rpx 92.31rpx;
+  background-color: #ffffff;
+  border-left: solid 1.92rpx #e5e5e5;
+  border-right: solid 1.92rpx #e5e5e5;
+  border-top: solid 1.92rpx #e5e5e5;
+  border-bottom: solid 1.92rpx #e5e5e5;
+}
+.image_10 {
+  width: 46.15rpx;
+  height: 46.15rpx;
+}

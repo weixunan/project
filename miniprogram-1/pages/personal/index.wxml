@@ -1,0 +1,61 @@
+<view class="flex-col page">
+  <view class="flex-col section">
+    <view class="flex-row items-center">
+      <view class="section_2"></view>
+      <view class="flex-col items-start ml-29">
+        <text class="font text">员工A</text>
+        <text class="font_2 text_2 mt-15">员工编号：1023</text>
+      </view>
+    </view>
+    <view class="mt-30 flex-row justify-between group">
+      <text class="font_3">5</text>
+      <text class="font_3 text_3">0</text>
+    </view>
+    <view class="mt-30 flex-row justify-between group_2">
+      <text class="font">今日入库</text>
+      <text class="font">今日出库</text>
+    </view>
+  </view>
+  <view class="flex-col section_3 view">
+    <text class="self-start font_2 text_4 text_5">员工记录</text>
+    <view class="flex-row equal-division group_3 mt-9">
+      <view class="flex-col group_4 equal-division-item">
+        <view class="section_4"></view>
+        <text class="mt-10 font_2">出库记录</text>
+      </view>
+      <view class="flex-col group_4 equal-division-item">
+        <view class="section_5"></view>
+        <text class="mt-10 font_2">入库记录</text>
+      </view>
+      <view class="flex-col group_4 equal-division-item">
+        <view class="section_6"></view>
+        <text class="mt-10 font_2">移库记录</text>
+      </view>
+      <view class="flex-col group_4 equal-division-item">
+        <view class="section_7"></view>
+        <text class="mt-10 font_2 text_6">团队通知</text>
+      </view>
+    </view>
+  </view>
+  <view class="flex-col section_3 view_2">
+    <text class="self-start font_2 text_4 text_7">其他</text>
+    <view class="flex-row equal-division group_5 mt-9">
+      <view class="flex-col group_6 equal-division-item_2">
+        <view class="self-center section_8"></view>
+        <text class="mt-10 self-center font_2 text_8">常见问题</text>
+      </view>
+      <view class="flex-col group_6 equal-division-item_2">
+        <view class="section_9"></view>
+        <text class="mt-10 font_2 text_9">关于我们</text>
+      </view>
+      <view class="flex-col group_6 equal-division-item_2">
+        <view class="section_10"></view>
+        <text class="mt-10 font_2 text_10">联系客户</text>
+      </view>
+      <view class="flex-col group_6 equal-division-item_2">
+        <view class="section_4"></view>
+        <text class="mt-10 font_2 text_11">推荐分享</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,12 +1,11 @@
-// pages/Output/index.js
+// pages/personal/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    username:'123',
-    password:'123',
+
   },
 
   /**
@@ -63,29 +62,5 @@ Page({
    */
   onShareAppMessage() {
 
-  },
-  // 得到输入框中的用户名和密码
-  getUsername: function (e) {
-    var value=e.detail.value;
-    this.setData({
-      username:value,
-    })
-    wx.setStorageSync('username', value);
-  },
-  getPassword: function(e){
-    var value=e.detail.value;
-    this.setData({
-      password:value,
-    })
-    wx.setStorageSync('password', value);
-  },
-  //需要在这个函数中与后端交互，验证数据库中是否有这个用户，
-  //得到用户信息，设置一个全局变量，标记已经登录
-  doLogin: function(e) {
-
-    // console.log(this.data.username,this.data.password);
-    wx.redirectTo({
-      url: '/pages/home/index',
-    })
   }
 })

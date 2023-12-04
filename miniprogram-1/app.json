@@ -3,9 +3,10 @@
     "pages/index/index",
     "pages/login/index",
     "pages/logs/logs",
-    "pages/InventoryInquiry",
     "pages/InventoryInquiry/index",
-    "pages/Output/index"
+    "pages/Output/index",
+    "pages/home/index",
+    "pages/personal/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -22,5 +23,22 @@
   },
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "selectedColor": "#31869B",
+    "list": [
+      {
+        "current": 0,
+        "pagePath": "pages/home/index",
+        "iconPath": "pages/assets/home.png",
+        "selectedIconPath": "pages/assets/homeSelected.png"
+      },
+      {
+        "current": 1,
+        "pagePath": "pages/personal/index",
+        "iconPath": "pages/assets/personal.png",
+        "selectedIconPath": "pages/assets/personalSelected.png"
+      }
+    ]
+  }
 }
