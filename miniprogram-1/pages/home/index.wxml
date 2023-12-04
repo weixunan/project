@@ -1,95 +1,84 @@
 <navigation-bar title="首页"></navigation-bar>
 <view class="flex-col page">
   <view class="flex-col flex-1 group_2">
-    <view class="flex-col group_3">
-      <view class="flex-col justify-start items-center image-wrapper_2">
+    <image
+      class="image_7"
+      src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=5ea8417632f5aaf8af1397d2e43cd079.png"
+    />
+    <view class="grid">
+      <view class="flex-col items-center relative grid-item">
         <image
-          class="image_7"
-          src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=4cf2a8c54f1b9adc530f0cdc5fec27f1.png"
+          class="image_8"
+          src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=9d85aebb2f951a8d0848ce001fa16b3b.png"
         />
+        <text class="mt-16 font">库存查询</text>
       </view>
-      <view class="flex-col justify-start section_4">
-        <view class="grid">
-          <view class="flex-col items-center relative grid-item">
-            <image
-              class="image_8"
-              src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=a155358c6e99017a433f50e30e7f5cd4.png"
-            />
-            <text class="mt-10 font_2">库存查询</text>
-          </view>
-          <view class="flex-col items-center relative grid-item">
-            <image
-              class="image_8"
-              src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=5643d30f00e19d6640408c40a7cb8868.png"
-            />
-            <text class="mt-10 font_2">仓库数据</text>
-          </view>
-          <view class="flex-col items-center relative grid-item">
-            <image
-              class="image_8"
-              src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=74438a94b923be0f099e19c4eaed547b.png"
-            />
-            <text class="mt-10 font_2">出库操作</text>
-          </view>
-          <view class="flex-col items-center relative grid-item">
-            <image
-              class="image_8"
-              src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=759fa66e9865dee06d2b3b6d7600c48c.png"
-            />
-            <text class="font_2 mt-11">入库操作</text>
-          </view>
-          <view class="flex-col items-center relative grid-item">
-            <image
-              class="image_8"
-              src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=0af9718657051f2b22e767c2ba53dd1a.png"
-            />
-            <text class="mt-10 font_2">操作记录</text>
-          </view>
-          <view class="flex-col items-center relative grid-item">
-            <image
-              class="image_8"
-              src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=6769d30db329f6a1937a8c03b42e8f8d.png"
-            />
-            <text class="mt-10 font_2">用户管理</text>
-          </view>
-          <view class="flex-col items-center relative grid-item">
-            <image
-              class="image_8"
-              src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=8b18bb71a82ee9d3a2376380a662a57a.png"
-            />
-            <text class="mt-10 font_2">报表生成</text>
-          </view>
-          <view class="flex-col items-center relative grid-item">
-            <image
-              class="image_8"
-              src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=b1a7267349b8e0adc5e0254b28493270.png"
-            />
-            <text class="font_2 mt-11">基准设置</text>
-          </view>
-        </view>
+      <view class="flex-col items-center relative grid-item">
+        <image
+          class="image_9"
+          src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=da544547011edda0a47d264c7d10ff8d.png"
+        />
+        <text class="mt-16 font text_3">仓库数据</text>
       </view>
-      <view class="flex-row justify-between section_5">
-        <view class="flex-row self-center">
-          <image
-            class="shrink-0 image_9"
-            src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=bfad6f703132916c9c91124f100e1b5d.png"
-          />
-          <text class="self-start font_2 text_3 ml-45">库存预警</text>
-        </view>
-        <view class="flex-col justify-start items-center self-start text-wrapper">
-          <text class="font text_4">1</text>
-        </view>
+      <view class="flex-col items-center relative grid-item">
+        <image
+          class="image_9"
+          src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=cc52aa83937d089bab2bf245d7637b60.png"
+        />
+        <text class="mt-16 font">出库操作</text>
+      </view>
+      <view class="flex-col items-center relative grid-item">
+        <image
+          class="image_9"
+          src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=9d79189f9601f7a07e402e52601b4e85.png"
+        />
+        <text class="font mt-17">入库操作</text>
+      </view>
+      <view class="flex-col items-center relative grid-item">
+        <image
+          class="image_9"
+          src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=bc39016e3185b2c26d30b313fa7529ea.png"
+        />
+        <text class="font text_4 mt-15">操作记录</text>
+      </view>
+      <view class="flex-col items-center relative grid-item">
+        <image
+          class="image_9"
+          src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=8182266892571810c2201e51df85b99a.png"
+        />
+        <text class="font text_5 mt-15">用户管理</text>
+      </view>
+      <view class="flex-col items-center relative grid-item">
+        <image
+          class="image_9"
+          src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=0b8aa4af96a2536b3cdaad631ea50f0b.png"
+        />
+        <text class="font text_6 mt-15">报表生成</text>
+      </view>
+      <view class="flex-col items-center relative grid-item">
+        <image
+          class="image_9"
+          src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=6ff207614d6dc08af003e88c3535cdef.png"
+        />
+        <text class="mt-16 font text_7">基准设置</text>
       </view>
     </view>
-    <view class="flex-row justify-between section_6 mt-192">
-      <image
-        class="image_10"
-        src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=51eba6ac8e74dad01d779866ee8a172d.png"
-      />
-      <image
-        class="image_10"
-        src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=47bb361083d0761e2ea541b040ab3aa5.png"
-      />
+    <view class="flex-row justify-between items-start section_4">
+      <view class="flex-row items-center group_3">
+        <view class="flex-col justify-start items-center shrink-0 image-wrapper_2">
+          <image
+            class="image_10"
+            src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=c531320fa8580d0bfc44a3ae5b714531.png"
+          />
+        </view>
+        <text class="ml-18 font text_9">库存预警</text>
+      </view>
+      <view class="flex-col">
+        <text class="self-start font_2 text_8">1</text>
+        <view class="mt-8 flex-col justify-start items-center self-stretch text-wrapper">
+          <text class="font_2 text_10">1</text>
+        </view>
+      </view>
     </view>
   </view>
 </view>
