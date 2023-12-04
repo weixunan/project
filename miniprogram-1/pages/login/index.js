@@ -83,9 +83,9 @@ Page({
   //得到用户信息，设置一个全局变量，标记已经登录
   doLogin: function(e) {
 
-    // console.log(this.data.username,this.data.password);
-    wx.redirectTo({
-      url: '/pages/home/index',
+    console.log(this.data.username,this.data.password);
+    wx.switchTab({
+      url: '/pages/home/index'
     })
   }
 })
