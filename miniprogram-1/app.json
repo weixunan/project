@@ -8,7 +8,12 @@
     "pages/personal/index",
     "pages/basicData/index",
     "pages/input/index",
-    "pages/output/index"
+    "pages/output/index",
+    "pages/operRecords/index",
+    "pages/userManage/index",
+    "pages/userDetails/index",
+    "pages/warning/index",
+    "pages/report/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

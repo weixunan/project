@@ -1,0 +1,61 @@
+<navigation-bar title="操作记录"></navigation-bar>
+<view class="flex-col page">
+  <view class="flex-col flex-1 group">
+    <view class="flex-row items-center self-stretch section_2">
+      <view class="flex-col justify-start items-end flex-1 image-wrapper">
+        <image
+          class="image_2"
+          src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=cfe3e77fd4e49ad9bb829639bac31516.png"
+        />
+      </view>
+      <image
+        class="shrink-0 image_3 ml-17"
+        src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=60ae9886b433d027f3228bdcdad4a0c0.png"
+      />
+    </view>
+    <view class="flex-row self-stretch">
+      <view class="flex-col justify-start items-center text-wrapper"><text class="font">入库记录</text></view>
+      <view class="flex-col justify-start items-center text-wrapper"><text class="font">入库记录</text></view>
+      <view class="flex-col justify-start items-center text-wrapper"><text class="font">入库记录</text></view>
+    </view>
+    <view class="flex-row justify-evenly items-center self-stretch group_2">
+      <view class="flex-col justify-start items-start text-wrapper_2">
+        <text class="font_2 text_2">开始日期：2023-11-01</text>
+      </view>
+      <image
+        class="image_4"
+        src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=76bdc1a38d179a3258689a50839428b8.png"
+      />
+      <view class="flex-col justify-start items-start text-wrapper_2">
+        <text class="font_2 text_2">结束日期：2023-11-01</text>
+      </view>
+    </view>
+    <view class="flex-col self-stretch section_3">
+      <view class="flex-row justify-between items-center">
+        <view class="flex-col items-start">
+          <text class="font_3 text_3">操作编号：12342131</text>
+          <text class="mt-16 font_3 text_5">货物名称：奥利奥</text>
+        </view>
+        <text class="text_4">500（包）</text>
+      </view>
+      <view class="flex-row justify-between group_3">
+        <view class="flex-col items-start">
+          <text class="font_3 text_6">货物编号：1423211231</text>
+          <text class="font_3 text_8 mt-13">员工编号：11001</text>
+        </view>
+        <view class="flex-row items-center self-start group_4">
+          <image
+            class="shrink-0 image_5"
+            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=7f2389b90f16d9d2d21e70e16543cfb3.png"
+          />
+          <text class="font_2 text_7 ml-9">已完成</text>
+        </view>
+      </view>
+      <view class="flex-col group_5">
+        <text class="self-start font_3 text_10">2023/11/10 18:30:02</text>
+        <text class="self-end font_2 text_9">查看详情</text>
+      </view>
+    </view>
+    <text class="self-center font_3 text_11">没有更多了</text>
+  </view>
+</view>

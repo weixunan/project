@@ -1,0 +1,78 @@
+.mt-11 {
+  margin-top: 21.15rpx;
+}
+.mt-27 {
+  margin-top: 51.92rpx;
+}
+.mt-19 {
+  margin-top: 36.54rpx;
+}
+.page {
+  background-color: #ffffff;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+.group {
+  padding: 38.46rpx 0 886.54rpx;
+  overflow-y: auto;
+}
+.section_2 {
+  margin: 0 19.23rpx;
+  padding: 26.92rpx 30.77rpx 34.62rpx 38.46rpx;
+  background-color: #ffffff;
+  border-radius: 38.46rpx;
+  border-left: solid 1.92rpx #0000001a;
+  border-right: solid 1.92rpx #0000001a;
+  border-top: solid 1.92rpx #0000001a;
+  border-bottom: solid 1.92rpx #0000001a;
+}
+.font {
+  font-size: 30.77rpx;
+  font-family: Inter;
+  line-height: 28.65rpx;
+  color: #000000;
+}
+.text_2 {
+  line-height: 28.52rpx;
+}
+.text_3 {
+  line-height: 28.42rpx;
+}
+.button {
+  padding: 15.38rpx 0;
+  background-color: #ffffff;
+  border-radius: 38.46rpx;
+  width: 130.77rpx;
+  border-left: solid 1.92rpx #00000033;
+  border-right: solid 1.92rpx #00000033;
+  border-top: solid 1.92rpx #00000033;
+  border-bottom: solid 1.92rpx #00000033;
+}
+.font_2 {
+  font-size: 26.92rpx;
+  font-family: Inter;
+  line-height: 24.88rpx;
+  color: #4095e5;
+}
+.text_4 {
+  line-height: 27.04rpx;
+}
+.text_5 {
+  line-height: 28.46rpx;
+}
+.button_2 {
+  padding: 15.38rpx 0;
+  background-color: #ffffff;
+  border-radius: 38.46rpx;
+  width: 130.77rpx;
+  height: 57.69rpx;
+  border-left: solid 1.92rpx #00000033;
+  border-right: solid 1.92rpx #00000033;
+  border-top: solid 1.92rpx #00000033;
+  border-bottom: solid 1.92rpx #00000033;
+}
+.text_6 {
+  line-height: 29.02rpx;
+}

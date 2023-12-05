@@ -1,75 +1,75 @@
 <navigation-bar title="仓库数据"></navigation-bar>
 <view class="flex-col page">
-  <view class="flex-col">
-    <view class="mt-40 flex-col section_5">
-      <view class="flex-row justify-between group_2">
-        <view class="flex-col justify-start items-center text-wrapper"><text class="font text_3">200</text></view>
-        <view class="flex-col justify-start items-center text-wrapper"><text class="font text_4">300</text></view>
-        <view class="flex-col justify-start"><text class="font text_5">1500</text></view>
-        <view class="flex-col justify-start items-center text-wrapper view"><text class="font text_6">1</text></view>
+  <view class="flex-col flex-1 group">
+    <view class="flex-row header section_2">
+      <view class="flex-col items-center equal-division-item">
+        <text class="font text_2">200</text>
+        <text class="mt-16 font_2">今日出库</text>
       </view>
-      <view class="mt-16 flex-row justify-between items-center">
-        <text class="font_2">今日出库</text>
-        <text class="font_2">今日入库</text>
-        <text class="font_2 text_7">总库存数</text>
-        <text class="font_2 text_8">库存预警</text>
+      <view class="flex-col group_2 equal-division-item items-center">
+        <text class="font text_3">300</text>
+        <text class="mt-16 font_2">今日入库</text>
+      </view>
+      <view class="flex-col items-center group_3 equal-division-item">
+        <text class="font text_4">500</text>
+        <text class="mt-16 font_2 text_6">总库存数</text>
+      </view>
+      <view class="flex-col items-center group_4 equal-division-item">
+        <text class="font text_5">1</text>
+        <text class="mt-16 font_2 text_7">库存预警</text>
       </view>
     </view>
-  </view>
-  <view class="flex-row equal-division section_6">
-    <view class="flex-row justify-end items-center group_3 group_1">
-      <picker class="flex-row items-center view_2 section_7">
-        <text class="font_4 text_11">2022年10月9日</text>
-        <image
-          class="ml-4 shrink-0 image_7"
-          src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=45b0e15fa47b4f38f01ca10d609f5e62.png"
-        />
-      </picker>
-      <text class="font_3 text_9">时间：</text>
+    <view class="flex-row items-center section_3 mt-29">
+      <text class="font_3 text_8">时间：</text>
+      <view class="flex-col justify-start items-center shrink-0 text-wrapper">
+        <text class="font_4 text_9">2022年10月9日</text>
+      </view>
+      <text class="font_3 text_10">到</text>
+      <view class="flex-col justify-start shrink-0 text-wrapper_2">
+        <text class="font_4 text_11">2023年10月9日</text>
+      </view>
     </view>
-    <view class="ml-2 flex-row group_3 group_4">
-      <text class="self-start font_3 text_10">到</text>
-      <picker class="ml-8 flex-row items-center view_3 section_7">
-        <text class="font_4 text_11">2023年11月10日</text>
-        <image
-          class="ml-2 shrink-0 image_7"
-          src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=45b0e15fa47b4f38f01ca10d609f5e62.png"
-        />
-      </picker>
-    </view>
-  </view>
-  <view class="flex-col section_8">
-    <view class="flex-row">
-      <image
-        class="image_8"
-        src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=4dea89953783b552d2573284fed5557a.png"
-      />
-      <text class="ml-52 self-center font_3 text_12">入库货物数量</text>
-      <text class="ml-52 self-start font_5 text_13">100</text>
-    </view>
-    <view class="mt-28 flex-row items-center">
-      <image
-        class="shrink-0 image_8"
-        src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=c6ffc6371a2740dae908d2941015cb48.png"
-      />
-      <text class="ml-50 font_3 text_14">入库采购金额</text>
-      <text class="ml-50 font_5">8654</text>
-    </view>
-    <view class="mt-28 flex-row">
-      <image
-        class="image_8"
-        src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=196170691af53fb85f6863b57426e75b.png"
-      />
-      <text class="self-center font_3 text_15 ml-51">出库货物数量</text>
-      <text class="self-start font_5 text_16 ml-51">300</text>
-    </view>
-    <view class="mt-28 flex-row">
-      <image
-        class="shrink-0 image_8"
-        src="https://ide.code.fun/api/image?token=656cabd028456c0011677dd8&name=1d68a9123e47b29d59282c3e37fcfe46.png"
-      />
-      <text class="self-center font_3 text_18">出库销售金额</text>
-      <text class="self-center font_5 text_17">19584</text>
+    <view class="flex-col section_4 mt-29">
+      <view class="flex-row justify-between items-center">
+        <view class="flex-row items-center">
+          <image
+            class="shrink-0 image_2"
+            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=5d049f138fd047ecdf5fd7ca9a9df8c2.png"
+          />
+          <text class="font_3 text_12 ml-35">入库货物数量</text>
+        </view>
+        <text class="font_5 text_13">100</text>
+      </view>
+      <view class="flex-row justify-between items-center mt-21">
+        <view class="flex-row items-center">
+          <image
+            class="shrink-0 image_2"
+            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=e45c9d52b3d3f39f96ee78816031d9d4.png"
+          />
+          <text class="font_3 text_14 ml-35">入库采购金额</text>
+        </view>
+        <text class="font_5 text_15">8654</text>
+      </view>
+      <view class="flex-row justify-between items-center mt-21">
+        <view class="flex-row items-center">
+          <image
+            class="shrink-0 image_2"
+            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=005037e17d7db3af7658b9e53b09e0cc.png"
+          />
+          <text class="ml-36 font_3 text_16">出库货物数量</text>
+        </view>
+        <text class="font_5 text_17">300</text>
+      </view>
+      <view class="flex-row justify-between items-center mt-21">
+        <view class="flex-row items-center">
+          <image
+            class="shrink-0 image_2"
+            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=6148d2121a908acfae8a267a72462a27.png"
+          />
+          <text class="ml-36 font_3 text_18">出库销售金额</text>
+        </view>
+        <text class="font_5 text_19">9023</text>
+      </view>
     </view>
   </view>
 </view>

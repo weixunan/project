@@ -1,0 +1,41 @@
+<navigation-bar title="用户管理"></navigation-bar>
+<view class="flex-col page">
+  <view class="flex-col flex-1 group">
+    <view class="flex-col self-stretch">
+      <view class="flex-row section_2">
+        <view class="flex-col justify-start items-start flex-1 image-wrapper">
+          <image
+            class="image_2 image_3"
+            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=cfe3e77fd4e49ad9bb829639bac31516.png"
+          />
+        </view>
+        <view class="flex-row items-center button section_3 ml-15">
+          <image
+            class="shrink-0 image_2"
+            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=c733eecc55769566b44b0a6132d0cd27.png"
+          />
+          <text class="font text_2 ml-9">添加</text>
+        </view>
+      </view>
+      <view class="flex-col section_4 mt-15">
+        <text class="self-start text_3">管理员A</text>
+        <view class="flex-row justify-between self-stretch group_2 mt-11">
+          <text class="self-start font_2 text_4">员工编号：10021</text>
+          <view class="flex-col justify-start items-center button_2">
+            <text class="font_2 text_5">高级管理员</text>
+          </view>
+        </view>
+        <view class="flex-row justify-between items-center self-stretch group_3 mt-11">
+          <image
+            class="image_4"
+            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=6b124c94fe660b6e601be7c60ebba0ee.png"
+          />
+          <view class="flex-col justify-start items-center button_3 text-wrapper">
+            <text class="font_2 text_6">详情</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <text class="mt-20 self-center font_2 text_7">没有更多了</text>
+  </view>
+</view>

@@ -1,0 +1,126 @@
+.mt-31 {
+  margin-top: 59.62rpx;
+}
+.ml-9 {
+  margin-left: 17.31rpx;
+}
+.page {
+  background-color: #ffffff;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+.group {
+  padding: 30.77rpx 0 226.92rpx;
+  overflow-y: auto;
+}
+.text-wrapper {
+  padding: 15.38rpx 0;
+  background-color: #ffffff;
+  border-radius: 25rpx;
+  width: 353.85rpx;
+  height: 57.69rpx;
+  border-left: solid 1.92rpx #0000001a;
+  border-right: solid 1.92rpx #0000001a;
+  border-top: solid 1.92rpx #0000001a;
+  border-bottom: solid 1.92rpx #0000001a;
+}
+.font {
+  font-size: 26.92rpx;
+  font-family: Inter;
+  line-height: 24.9rpx;
+  color: #4095e5;
+}
+.text_2 {
+  margin-left: 19.23rpx;
+}
+.image_2 {
+  width: 38.46rpx;
+  height: 28.85rpx;
+}
+.group_2 {
+  padding: 0 23.08rpx;
+}
+.equal-division {
+  align-self: stretch;
+  margin: 0 23.08rpx;
+}
+.equal-division-item {
+  padding: 42.31rpx 26.92rpx;
+  border-radius: 30.77rpx;
+  background-image: url('https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=eabb9d3dd61e345f4f39f0840a495bb0.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 128.85rpx;
+}
+.image_3 {
+  width: 46.15rpx;
+  height: 46.15rpx;
+}
+.font_2 {
+  font-size: 26.92rpx;
+  font-family: Inter;
+  line-height: 24.9rpx;
+  color: #000000;
+}
+.text_4 {
+  line-height: 24.98rpx;
+}
+.text_3 {
+  line-height: 24.88rpx;
+}
+.group_3 {
+  padding: 0 3.85rpx;
+}
+.equal-division-item_2 {
+  padding: 38.46rpx 23.08rpx;
+  background-color: #ffffff;
+  border-radius: 30.77rpx;
+  height: 128.85rpx;
+  border-left: solid 1.92rpx #0000001a;
+  border-right: solid 1.92rpx #0000001a;
+  border-top: solid 1.92rpx #0000001a;
+  border-bottom: solid 1.92rpx #0000001a;
+}
+.text_5 {
+  line-height: 25.06rpx;
+}
+.text_6 {
+  line-height: 24.98rpx;
+}
+.text_7 {
+  line-height: 25.06rpx;
+}
+.text_8 {
+  line-height: 24.98rpx;
+}
+.text_9 {
+  line-height: 25.04rpx;
+}
+.text_10 {
+  line-height: 25.06rpx;
+}
+.text_11 {
+  line-height: 24.77rpx;
+}
+.section_2 {
+  margin-left: 26.92rpx;
+  padding: 50rpx 23.08rpx;
+  background-color: #ffffff;
+  border-radius: 30.77rpx;
+  width: 257.69rpx;
+  border-left: solid 1.92rpx #0000001a;
+  border-right: solid 1.92rpx #0000001a;
+  border-top: solid 1.92rpx #0000001a;
+  border-bottom: solid 1.92rpx #0000001a;
+}
+.pos_2 {
+  position: absolute;
+  left: 26.85rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.text_12 {
+  line-height: 24.88rpx;
+}

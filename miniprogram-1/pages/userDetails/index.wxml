@@ -1,0 +1,36 @@
+<navigation-bar title="用户详情"></navigation-bar>
+<view class="flex-col page">
+  <view class="flex-col justify-start flex-1 group">
+    <view class="flex-col section_2">
+      <view class="flex-col self-stretch">
+        <view class="flex-row justify-between items-center">
+          <view class="flex-col items-start">
+            <text class="font text_2">姓名：员工A</text>
+            <text class="font text_3 mt-27">性别：男</text>
+          </view>
+          <view class="flex-col">
+            <view class="flex-col justify-start items-center button"><text class="font_2">修改</text></view>
+            <view class="flex-col justify-start items-center button mt-11"><text class="font_2">修改</text></view>
+          </view>
+        </view>
+        <view class="mt-12 flex-row justify-between items-center">
+          <view class="flex-col items-start">
+            <text class="font text_4">工号：12302</text>
+            <text class="font text_5 mt-27">权限：普通员工</text>
+            <text class="font mt-27">用户密码：123123</text>
+          </view>
+          <view class="flex-col">
+            <view class="flex-col justify-start items-center button"><text class="font_2">修改</text></view>
+            <view class="flex-col justify-start items-center button mt-11"><text class="font_2">修改</text></view>
+            <view class="flex-col justify-start items-center button mt-11"><text class="font_2">修改</text></view>
+          </view>
+        </view>
+        <view class="mt-12 flex-row justify-between items-center">
+          <text class="font">用户状态：正常</text>
+          <view class="flex-col justify-start items-center button_2"><text class="font_2">修改</text></view>
+        </view>
+      </view>
+      <text class="self-start font text_6 mt-19">加入时间：2023/11/10</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,103 @@
+<navigation-bar title="报表生成"></navigation-bar>
+<view class="flex-col page">
+  <view class="flex-col flex-1 group">
+    <view class="flex-row justify-evenly items-center">
+      <view class="flex-col justify-start items-start text-wrapper">
+        <text class="font text_2">开始日期：2023-11-01</text>
+      </view>
+      <image
+        class="image_2"
+        src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=76bdc1a38d179a3258689a50839428b8.png"
+      />
+      <view class="flex-col justify-start items-start text-wrapper">
+        <text class="font text_2">结束日期：2023-11-01</text>
+      </view>
+    </view>
+    <view class="flex-col group_2 mt-31">
+      <text class="self-start font_2 text_3">货物</text>
+      <view class="mt-24 flex-col self-stretch">
+        <view class="flex-row justify-between equal-division">
+          <view class="flex-row items-center equal-division-item">
+            <image
+              class="shrink-0 image_3"
+              src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=acdb79d11a598e6c0dc0c7d57b9af997.png"
+            />
+            <text class="ml-8 font_2 text_4">货库库存表</text>
+          </view>
+          <view class="flex-row items-center equal-division-item">
+            <image
+              class="shrink-0 image_3"
+              src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=acdb79d11a598e6c0dc0c7d57b9af997.png"
+            />
+            <text class="font_2 text_4 ml-9">出入库统计</text>
+          </view>
+        </view>
+        <text class="mt-18 self-start font_2">入库</text>
+      </view>
+      <view class="mt-24 flex-col self-stretch group_3">
+        <view class="flex-row justify-between equal-division">
+          <view class="flex-row items-center equal-division-item_2">
+            <image
+              class="shrink-0 image_3"
+              src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=acdb79d11a598e6c0dc0c7d57b9af997.png"
+            />
+            <text class="ml-8 font_2 text_5">入库明细表</text>
+          </view>
+          <view class="flex-row items-center equal-division-item_2">
+            <image
+              class="image_3"
+              src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=acdb79d11a598e6c0dc0c7d57b9af997.png"
+            />
+            <text class="ml-8 font_2 text_6">入库统计</text>
+          </view>
+        </view>
+        <text class="mt-18 self-start font_2">出库</text>
+      </view>
+      <view class="mt-24 flex-col self-stretch">
+        <view class="flex-row justify-between equal-division">
+          <view class="flex-row items-center equal-division-item_2">
+            <image
+              class="shrink-0 image_3"
+              src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=acdb79d11a598e6c0dc0c7d57b9af997.png"
+            />
+            <text class="font_2 text_7 ml-9">出库明细表</text>
+          </view>
+          <view class="flex-row items-center equal-division-item_2">
+            <image
+              class="image_3"
+              src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=acdb79d11a598e6c0dc0c7d57b9af997.png"
+            />
+            <text class="font_2 text_8 ml-9">出库统计</text>
+          </view>
+        </view>
+        <text class="mt-18 self-start font_2 text_9">盘点</text>
+      </view>
+      <view class="mt-24 flex-col self-stretch">
+        <view class="flex-row justify-between equal-division">
+          <view class="flex-row items-center equal-division-item_2">
+            <image
+              class="shrink-0 image_3"
+              src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=acdb79d11a598e6c0dc0c7d57b9af997.png"
+            />
+            <text class="ml-8 font_2">库存分析表</text>
+          </view>
+          <view class="flex-row items-center equal-division-item_2">
+            <image
+              class="image_3"
+              src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=acdb79d11a598e6c0dc0c7d57b9af997.png"
+            />
+            <text class="ml-8 font_2 text_10">进货建议</text>
+          </view>
+        </view>
+        <text class="mt-18 self-start font_2 text_11">财务</text>
+      </view>
+      <view class="mt-24 flex-row justify-center items-center self-start relative section_2">
+        <image
+          class="image_3 pos_2"
+          src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=acdb79d11a598e6c0dc0c7d57b9af997.png"
+        />
+        <text class="font_2 text_12">利润表</text>
+      </view>
+    </view>
+  </view>
+</view>

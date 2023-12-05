@@ -1,0 +1,111 @@
+.ml-17 {
+  margin-left: 32.69rpx;
+}
+.mt-9 {
+  margin-top: 17.31rpx;
+}
+.mt-21 {
+  margin-top: 40.38rpx;
+}
+.page {
+  background-color: #ffffff;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+.font {
+  font-size: 34.62rpx;
+  font-family: Inter;
+  line-height: 32.06rpx;
+}
+.group {
+  padding-bottom: 846.15rpx;
+  overflow-y: auto;
+}
+.section_2 {
+  padding: 15.38rpx 23.08rpx 26.92rpx;
+  background-color: #ffffff;
+  border-left: solid 1.92rpx #0000001a;
+  border-right: solid 1.92rpx #0000001a;
+  border-top: solid 1.92rpx #0000001a;
+  border-bottom: solid 1.92rpx #0000001a;
+}
+.image-wrapper {
+  padding: 15.38rpx 0;
+  background-color: #ffffff;
+  border-radius: 38.46rpx;
+  height: 69.23rpx;
+  border-left: solid 1.92rpx #0000001a;
+  border-right: solid 1.92rpx #0000001a;
+  border-top: solid 1.92rpx #0000001a;
+  border-bottom: solid 1.92rpx #0000001a;
+}
+.image_2 {
+  margin-right: 23.08rpx;
+  width: 34.62rpx;
+  height: 34.62rpx;
+}
+.image_3 {
+  margin-right: 15.38rpx;
+  width: 34.62rpx;
+  height: 30.77rpx;
+}
+.section_3 {
+  margin: 0 11.54rpx;
+  padding-bottom: 38.46rpx;
+  background-color: #bd31243b;
+	border-radius: 53.85rpx;
+	margin-top: 10px;
+}
+.group_2 {
+  padding: 38.46rpx 50rpx 34.62rpx;
+  border-bottom: solid 1.92rpx #0000004d;
+}
+.text_2 {
+  color: #000000;
+  line-height: 32.02rpx;
+}
+.font_3 {
+  font-size: 26.92rpx;
+  font-family: Inter;
+  line-height: 24.92rpx;
+  color: #000000;
+}
+.text_4 {
+  margin-left: 50rpx;
+}
+.group_3 {
+  padding: 0 50rpx;
+}
+.group_4 {
+  margin-bottom: 7.69rpx;
+}
+.text_5 {
+  line-height: 24.96rpx;
+}
+.image_4 {
+  margin-right: 7.69rpx;
+  width: 84.62rpx;
+  height: 84.62rpx;
+}
+.text_6 {
+  margin-left: 50rpx;
+  line-height: 25.04rpx;
+}
+.font_2 {
+  font-size: 26.92rpx;
+  font-family: Inter;
+  line-height: 24.92rpx;
+  color: #00000066;
+}
+.text_7 {
+  margin-left: 50rpx;
+  line-height: 23.44rpx;
+}
+.text_3 {
+  line-height: 20.5rpx;
+}
+.text_8 {
+  line-height: 24.88rpx;
+}
