@@ -55,7 +55,7 @@
         />
         <text class="font text_6 mt-15">报表生成</text>
       </view>
-      <view class="flex-col items-center relative grid-item" bindtap="goTo" data-name="">
+      <view class="flex-col items-center relative grid-item" bindtap="goTo" data-name="setBaseline">
         <image
           class="image_9"
           src="../assets/setbasic.png"

@@ -3,10 +3,17 @@
   <view class="flex-col flex-1 group">
     <view class="flex-row items-center self-stretch section_2">
       <view class="flex-col justify-start items-end flex-1 image-wrapper">
-        <image
+        <view class="search-container">
+          <input type="text"/>
+          <image
           class="image_2"
           src="../assets/search.png"
-        />
+          />
+        </view>
+        <!-- <image
+          class="image_2"
+          src="../assets/search.png"
+        /> -->
       </view>
       <image
         class="shrink-0 image_3 ml-17"
@@ -20,14 +27,24 @@
     </view>
     <view class="flex-row justify-evenly items-center self-stretch group_2">
       <view class="flex-col justify-start items-start text-wrapper_2">
-        <text class="font_2 text_2">开始日期：2023-11-01</text>
+        <!-- <text class="font_2 text_2">开始日期：</text> -->
+        <picker mode="date" value="{{beginDate}}" start="2015-05-01" end="2025-09-01" bindchange="bindBeginDateChange">
+          <view class="picker font_2 text_2">
+            开始日期：{{beginDate}}
+          </view>
+        </picker>
       </view>
       <image
         class="image_4"
         src="../assets/jiantou.png"
       />
       <view class="flex-col justify-start items-start text-wrapper_2">
-        <text class="font_2 text_2">结束日期：2023-11-01</text>
+        <!-- <text class="font_2 text_2">结束日期：2023-11-01</text> -->
+        <picker mode="date" value="{{endDate}}" start="2015-05-01" end="2025-09-01" bindchange="bindEndDateChange">
+          <view class="picker font_2 text_2">
+            结束日期：{{endDate}}
+          </view>
+        </picker>
       </view>
     </view>
     <view class="flex-col self-stretch section_3">

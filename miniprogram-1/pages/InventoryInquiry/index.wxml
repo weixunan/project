@@ -3,10 +3,17 @@
   <view class="flex-col flex-1 group">
     <view class="flex-row items-center section_2">
       <view class="flex-col justify-start items-end flex-1 image-wrapper">
-        <image
+        <view class="search-container">
+          <input type="text"/>
+          <image
           class="image_2"
           src="../assets/search.png"
-        />
+          />
+        </view>
+        <!-- <image
+          class="image_2"
+          src="../assets/search.png"
+        /> -->
       </view>
       <image
         class="shrink-0 image_3 ml-17"

@@ -3,19 +3,19 @@
   <view class="flex-col flex-1 group">
     <view class="flex-row header section_2">
       <view class="flex-col items-center equal-division-item">
-        <text class="font text_2">200</text>
+        <text class="font text_2">{{dout}}</text>
         <text class="mt-16 font_2">今日出库</text>
       </view>
       <view class="flex-col group_2 equal-division-item items-center">
-        <text class="font text_3">300</text>
+        <text class="font text_3">{{din}}</text>
         <text class="mt-16 font_2">今日入库</text>
       </view>
       <view class="flex-col items-center group_3 equal-division-item">
-        <text class="font text_4">500</text>
+        <text class="font text_4">{{snum}}</text>
         <text class="mt-16 font_2 text_6">总库存数</text>
       </view>
       <view class="flex-col items-center group_4 equal-division-item">
-        <text class="font text_5">1</text>
+        <text class="font text_5">{{warn_num}}</text>
         <text class="mt-16 font_2 text_7">库存预警</text>
       </view>
     </view>

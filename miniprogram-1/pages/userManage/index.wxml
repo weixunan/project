@@ -4,10 +4,17 @@
     <view class="flex-col self-stretch">
       <view class="flex-row section_2">
         <view class="flex-col justify-start items-start flex-1 image-wrapper">
+          <view class="search-container">
+          <input type="text"/>
           <image
+          class="image_3"
+          src="../assets/search.png"
+          />
+        </view>
+          <!-- <image
             class="image_2 image_3"
             src="../assets/search.png"
-          />
+          /> -->
         </view>
         <view class="flex-row items-center button section_3 ml-15">
           <image

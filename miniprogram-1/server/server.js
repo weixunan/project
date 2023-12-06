@@ -205,7 +205,45 @@ app.post('/search', (req, res)=>{
 
 });
 */
+//处理获取当日库存状况的请求
+app.post('/basicData', (req, res)=>{
+  //console.log(2);
+  //数据库连接
+  var connection=mysql.createConnection({
+    host:IPAddress,
+    port: 3306,	
+    user:dbUsername,
+    password:dbPassword,
+    database:dbName
+  });
+  connection.connect();
 
+  //使用日期相关的函数，获取当日日期，格式为YYYY-MM-DD，结果放在变量formattedDate里
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  
+  const formattedDate = `${year}-${month}-${day}`;
+  console.log(formattedDate);
+
+  //编辑数据库命令，在数据表中找出日期和当日相同的条目
+  var sql = "select * from day_info where date = ?";
+  //发送给数据库执行命令，错误信息存储在error中，可以通过console.log输出，得到的结果存储在result中
+  connection.query(sql, formattedDate, (error, results) =>{ 
+    // error为false说明SQL语句执行成功
+    if (!error) {
+      // 插入成功，返回成功响应，返回数据success为true，和result
+      console.log("success->成功获取");
+      //打包成json对象返回
+      return res.json({success: true, day_info: results});
+    } else {
+      // 插入失败，打印错误提示，并返回success为false
+      console.log("error->获取失败" + error);
+      return res.json({success: false,});
+    }
+  });
+});
 // 监听端口，会输出监听到的信息，console.log 在这输出
 app.listen(3003,()=>{
   console.log('server running at http://'+IPAddress+':3003')

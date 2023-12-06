@@ -38,16 +38,6 @@
   border-top: solid 1.92rpx #0000001a;
   border-bottom: solid 1.92rpx #0000001a;
 }
-.image_2 {
-  margin-right: 24.94rpx;
-  width: 34.62rpx;
-  height: 34.62rpx;
-}
-.image_3 {
-  margin-right: 16.98rpx;
-  width: 34.62rpx;
-  height: 30.77rpx;
-}
 .section_3 {
   padding-bottom: 1067.38rpx;
   background-color: #ffffff;
@@ -169,4 +159,26 @@
   margin-top: 38.46rpx;
   color: #00000066;
   line-height: 23.44rpx;
+}
+.search-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px;
+  box-sizing: border-box;
+}
+.search-container input{
+  display: inline-block;
+  /* vertical-align: middle; */
+  width: 270px;
+}
+.image_2 {
+  margin-right: 24.94rpx;
+  width: 34.62rpx;
+  height: 34.62rpx;
+}
+.image_3 {
+  margin-right: 16.98rpx;
+  width: 34.62rpx;
+  height: 30.77rpx;
 }

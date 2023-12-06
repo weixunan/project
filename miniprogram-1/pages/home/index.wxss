@@ -16,7 +16,8 @@
   overflow-y: auto;
 }
 .image_7 {
-  margin-right: 15.38rpx;
+  /* margin-right: 15.38rpx; */
+  margin-left: 4px;
   border-radius: 48.08rpx;
   width: 673.08rpx;
   height: 276.92rpx;

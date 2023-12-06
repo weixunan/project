@@ -99,3 +99,15 @@
   margin-right: 11.54rpx;
   line-height: 26.63rpx;
 }
+.search-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px;
+  box-sizing: border-box;
+}
+.search-container input{
+  display: inline-block;
+  /* vertical-align: middle; */
+  width: 270px;
+}
