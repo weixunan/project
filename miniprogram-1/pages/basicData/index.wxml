@@ -22,11 +22,21 @@
     <view class="flex-row items-center section_3 mt-29">
       <text class="font_3 text_8">时间：</text>
       <view class="flex-col justify-start items-center shrink-0 text-wrapper">
-        <text class="font_4 text_9">2022年10月9日</text>
+        <!-- <text class="font_4 text_9">2022年10月9日</text> -->
+        <picker mode="date" value="{{beginDate}}" start="2015-05-01" end="2025-09-01" bindchange="bindBeginDateChange">
+          <view class="picker font_4 text_11">
+              {{beginDate}}
+          </view>
+        </picker>
       </view>
       <text class="font_3 text_10">到</text>
       <view class="flex-col justify-start shrink-0 text-wrapper_2">
-        <text class="font_4 text_11">2023年10月9日</text>
+        <!-- <text class="font_4 text_11">2023年10月9日</text> -->
+        <picker mode="date" value="{{endDate}}" start="2015-05-01" end="2025-09-01" bindchange="bindEndDateChange">
+          <view class="picker font_4 text_11">
+              {{endDate}}
+          </view>
+        </picker>
       </view>
     </view>
     <view class="flex-col section_4 mt-29">
