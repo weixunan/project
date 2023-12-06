@@ -7,7 +7,7 @@
         <text class="text_2">订单号: {{ono}}</text>
         <image
           class="image_2 ml-9"
-          src="https://ide.code.fun/api/image?token=656d6dedfcfbac001136a0a7&name=3b08168bb24a8ab4c8a397d0c960783f.png"
+          src="../assets/copy.png"
         />
       </view>
       <view class="flex-row items-center group_3">

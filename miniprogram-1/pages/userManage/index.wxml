@@ -6,13 +6,13 @@
         <view class="flex-col justify-start items-start flex-1 image-wrapper">
           <image
             class="image_2 image_3"
-            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=cfe3e77fd4e49ad9bb829639bac31516.png"
+            src="../assets/search.png"
           />
         </view>
         <view class="flex-row items-center button section_3 ml-15">
           <image
             class="shrink-0 image_2"
-            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=c733eecc55769566b44b0a6132d0cd27.png"
+            src="../assets/adduser.png"
           />
           <text class="font text_2 ml-9">添加</text>
         </view>
@@ -28,7 +28,7 @@
         <view class="flex-row justify-between items-center self-stretch group_3 mt-11">
           <image
             class="image_4"
-            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=6b124c94fe660b6e601be7c60ebba0ee.png"
+            src="../assets/more.png"
           />
           <view class="flex-col justify-start items-center button_3 text-wrapper">
             <text class="font_2 text_6">详情</text>

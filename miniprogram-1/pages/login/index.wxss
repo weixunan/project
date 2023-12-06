@@ -22,9 +22,9 @@
   line-height: 35.73rpx;
 }
 .image {
-  opacity: 0.4;
-  width: 30.77rpx;
-  height: 30.77rpx;
+  opacity: 0.8;
+  width: 40rpx;
+  height: 40rpx;
 }
 .input {
   padding: 19.23rpx 19.23rpx 19.23rpx 19.23rpx;
@@ -34,9 +34,9 @@
   margin-top: 38.46rpx;
 }
 .image_2 {
-  opacity: 0.4;
-  width: 30.77rpx;
-  height: 40.38rpx;
+  opacity: 0.8;
+  width: 40rpx;
+  height: 40rpx;
 }
 .checkbox {
   align-self: stretch;

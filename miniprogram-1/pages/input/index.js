@@ -6,7 +6,7 @@ Page({
    */
   data: {
     ono: 1234567,
-    gpicture: 'https://ide.code.fun/api/image?token=656d6dedfcfbac001136a0a7&name=8e5c1454459812d46375c64fa520fde7.png',  // 图片路径
+    gpicture: '../assets/plus.png',  // 图片路径
 
   },
 

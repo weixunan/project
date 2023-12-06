@@ -44,7 +44,7 @@
         <view class="flex-row items-center">
           <image
             class="shrink-0 image_2"
-            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=5d049f138fd047ecdf5fd7ca9a9df8c2.png"
+            src="../assets/input_green.png"
           />
           <text class="font_3 text_12 ml-35">入库货物数量</text>
         </view>
@@ -54,7 +54,7 @@
         <view class="flex-row items-center">
           <image
             class="shrink-0 image_2"
-            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=e45c9d52b3d3f39f96ee78816031d9d4.png"
+            src="../assets/money.png"
           />
           <text class="font_3 text_14 ml-35">入库采购金额</text>
         </view>
@@ -64,7 +64,7 @@
         <view class="flex-row items-center">
           <image
             class="shrink-0 image_2"
-            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=005037e17d7db3af7658b9e53b09e0cc.png"
+            src="../assets/output_blue.png"
           />
           <text class="ml-36 font_3 text_16">出库货物数量</text>
         </view>
@@ -74,7 +74,7 @@
         <view class="flex-row items-center">
           <image
             class="shrink-0 image_2"
-            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=6148d2121a908acfae8a267a72462a27.png"
+            src="../assets/money_purple.png"
           />
           <text class="ml-36 font_3 text_18">出库销售金额</text>
         </view>

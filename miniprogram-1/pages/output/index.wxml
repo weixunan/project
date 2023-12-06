@@ -6,7 +6,7 @@
         <text class="text_2">订单号: 12023123123</text>
         <image
           class="image_2 ml-9"
-          src="https://ide.code.fun/api/image?token=656d6dedfcfbac001136a0a7&name=3b08168bb24a8ab4c8a397d0c960783f.png"
+          src="../assets/copy.png"
         />
       </view>
       <view class="flex-row items-center group_3">
@@ -52,7 +52,7 @@
       <view class="flex-col items-center section_4">
         <image
           class="image_3"
-          src="https://ide.code.fun/api/image?token=656d6dedfcfbac001136a0a7&name=8e5c1454459812d46375c64fa520fde7.png"
+          src="../assets/plus.png"
         />
         <text class="font text_11 mt-13">添加货物图片</text>
       </view>

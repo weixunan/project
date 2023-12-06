@@ -6,12 +6,12 @@
         <view class="flex-col justify-start items-end flex-1 image-wrapper">
           <image
             class="image_2"
-            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=cfe3e77fd4e49ad9bb829639bac31516.png"
+            src="../assets/search.png"
           />
         </view>
         <image
           class="shrink-0 image_3 ml-17"
-          src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=60ae9886b433d027f3228bdcdad4a0c0.png"
+          src="../assets/sort.png"
         />
       </view>
       <view class="flex-col section_3 mt-9">
@@ -27,7 +27,7 @@
           </view>
           <image
             class="image_4"
-            src="https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=adc29cf9261fd06366996ef4f9a0a9af.png"
+            src="../assets/warning.png"
           />
         </view>
         <text class="self-start font_3 text_6 mt-21">当前库存：500瓶</text>
