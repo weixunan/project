@@ -1,0 +1,40 @@
+<navigation-bar title="用户管理"></navigation-bar>
+<view class="flex-col page">
+  <view class="flex-col flex-1 group">
+    <view class="flex-row items-center section_2">
+      <view class="flex-col justify-start items-end flex-1 image-wrapper">
+        <image
+          class="image_2"
+          src="../assets/search.png"
+        />
+      </view>
+      <image
+        class="shrink-0 image_3 ml-17"
+        src="../assets/sort.png"
+      />
+    </view>
+    <view class="flex-row section_3 mt-13">
+      <image
+        class="shrink-0 self-center image_4"
+        src="../assets/nopicture.png"
+      />
+      <view class="flex-col flex-1 self-start group_2">
+        <view class="flex-row items-center">
+          <text class="font text_2">奥利奥</text>
+          <image
+            class="ml-10 image_5"
+            src="../assets/copy.png"
+          />
+          <text class="ml-10 text_3">1354232</text>
+        </view>
+        <view class="mt-26 flex-row">
+          <text class="font text_5">当前库存量</text>
+          <text class="ml-30 font text_6">1000（包）</text>
+        </view>
+      </view>
+      <view class="flex-col justify-start shrink-0 self-center text-wrapper">
+        <text class="font text_4">设置基准</text>
+      </view>
+    </view>
+  </view>
+</view>

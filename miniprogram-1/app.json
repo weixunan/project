@@ -13,7 +13,8 @@
     "pages/userManage/index",
     "pages/userDetails/index",
     "pages/warning/index",
-    "pages/report/index"
+    "pages/report/index",
+    "pages/setBaseline/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

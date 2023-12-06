@@ -1,0 +1,101 @@
+.ml-17 {
+  margin-left: 32.69rpx;
+}
+.mt-13 {
+  margin-top: 25rpx;
+}
+.page {
+  background-color: #ffffff;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+.group {
+  padding: 25rpx 0 1159.62rpx;
+  overflow-y: auto;
+}
+.section_2 {
+  padding: 15.38rpx 23.08rpx 26.92rpx;
+  background-color: #ffffff;
+  border-left: solid 1.92rpx #0000001a;
+  border-right: solid 1.92rpx #0000001a;
+  border-top: solid 1.92rpx #0000001a;
+  border-bottom: solid 1.92rpx #0000001a;
+}
+.image-wrapper {
+  padding: 15.38rpx 0;
+  background-color: #ffffff;
+  border-radius: 38.46rpx;
+  height: 69.23rpx;
+  border-left: solid 1.92rpx #0000001a;
+  border-right: solid 1.92rpx #0000001a;
+  border-top: solid 1.92rpx #0000001a;
+  border-bottom: solid 1.92rpx #0000001a;
+}
+.image_2 {
+  margin-right: 23.08rpx;
+  width: 34.62rpx;
+  height: 34.62rpx;
+}
+.image_3 {
+  margin-right: 15.38rpx;
+  width: 34.62rpx;
+  height: 30.77rpx;
+}
+.section_3 {
+  padding: 30.77rpx 11.54rpx 30.77rpx 57.69rpx;
+  background-color: #ffffff;
+  border-radius: 38.46rpx;
+  border-left: solid 1.92rpx #0000001a;
+  border-right: solid 1.92rpx #0000001a;
+  border-top: solid 1.92rpx #0000001a;
+  border-bottom: solid 1.92rpx #0000001a;
+}
+.image_4 {
+  width: 121.15rpx;
+  height: 121.15rpx;
+}
+.group_2 {
+  margin-left: 34.62rpx;
+  margin-top: 15.38rpx;
+}
+.image_5 {
+  width: 28.85rpx;
+  height: 28.85rpx;
+}
+.text_3 {
+  color: #000000;
+  font-size: 23.08rpx;
+  font-family: Inter;
+  line-height: 17.25rpx;
+  opacity: 0.6;
+}
+.font {
+  font-size: 28.85rpx;
+  font-family: Inter;
+  line-height: 27.44rpx;
+  color: #000000;
+}
+.text_5 {
+  line-height: 26.81rpx;
+}
+.text_2 {
+  font-size: 30.77rpx;
+  line-height: 28.37rpx;
+}
+.text_6 {
+  color: #ff0000;
+}
+.text-wrapper {
+  margin-left: 19.23rpx;
+  padding: 34.62rpx 0;
+  background-color: #82bff9;
+  border-radius: 34.62rpx;
+  height: 96.15rpx;
+}
+.text_4 {
+  margin-left: 15.38rpx;
+  margin-right: 11.54rpx;
+  line-height: 26.63rpx;
+}
