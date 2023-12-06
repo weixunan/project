@@ -26,7 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    
   },
 
   /**
@@ -63,6 +63,7 @@ Page({
   onShareAppMessage() {
 
   },
+  //主页的跳转函数，用于跳转到不同的页面
   goTo:function(e){
     var goUrl='/pages/'+e.currentTarget.dataset.name+'/index';
     wx.navigateTo({

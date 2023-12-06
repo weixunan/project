@@ -21,9 +21,9 @@
       />
     </view>
     <view class="flex-row self-stretch">
-      <view class="flex-col justify-start items-center text-wrapper"><text class="font">入库记录</text></view>
-      <view class="flex-col justify-start items-center text-wrapper"><text class="font">入库记录</text></view>
-      <view class="flex-col justify-start items-center text-wrapper"><text class="font">入库记录</text></view>
+      <view class="flex-col justify-start items-center text-wrapper" bindtap="inputRecords"><text class="font" style="color: {{inFontColor}}">入库记录</text></view>
+      <view class="flex-col justify-start items-center text-wrapper" bindtap="outputRecords"><text class="font" style="color: {{outFontColor}}">出库记录</text></view>
+      <view class="flex-col justify-start items-center text-wrapper" bindtap="changeRecords"><text class="font" style="color: {{chFontColor}}">移库记录</text></view>
     </view>
     <view class="flex-row justify-evenly items-center self-stretch group_2">
       <view class="flex-col justify-start items-start text-wrapper_2">

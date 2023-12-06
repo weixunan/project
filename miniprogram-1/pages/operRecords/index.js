@@ -6,7 +6,10 @@ Page({
    */
   data: {
     beginDate:'2023-12-06',
-    endDate:'2023-12-07'
+    endDate:'2023-12-07',
+    inFontColor:'#000000',
+    outFontColor:'#000000',
+    chFontColor:'#000000'
   },
 
   /**
@@ -64,6 +67,7 @@ Page({
   onShareAppMessage() {
 
   },
+  //点击时间选择框的事件函数
   bindBeginDateChange:function(e){
     this.setData({
       beginDate:e.detail.value
@@ -75,5 +79,33 @@ Page({
       endDate:e.detail.value
     })
     console.log(this.data.endDate);
+  },
+  //出库、入库、移库三个选项的事件
+  inputRecords:function(e){
+    this.resetFontColors();
+    this.setData({
+      inFontColor:'#4095e5'
+    });
+  },
+  outputRecords:function(e){
+    this.resetFontColors();
+    this.setData({
+      outFontColor:'#4095e5'
+    })
+  },
+  changeRecords:function(e){
+    this.resetFontColors();
+    this.setData({
+      chFontColor:'#4095e5'
+    })
+  },
+  //重置颜色 用于体现选项效果
+  resetFontColors:function(e){
+    this.setData({
+      inFontColor:'#000000',
+      outFontColor:'#000000',
+      chFontColor:'#000000'
+    })
   }
+
 })
