@@ -48,7 +48,7 @@
           />
           <text class="font_3 text_12 ml-35">入库货物数量</text>
         </view>
-        <text class="font_5 text_13">100</text>
+        <text class="font_5 text_13">{{total_din}}</text>
       </view>
       <view class="flex-row justify-between items-center mt-21">
         <view class="flex-row items-center">
@@ -58,7 +58,7 @@
           />
           <text class="font_3 text_14 ml-35">入库采购金额</text>
         </view>
-        <text class="font_5 text_15">8654</text>
+        <text class="font_5 text_15">{{total_cost}}</text>
       </view>
       <view class="flex-row justify-between items-center mt-21">
         <view class="flex-row items-center">
@@ -68,7 +68,7 @@
           />
           <text class="ml-36 font_3 text_16">出库货物数量</text>
         </view>
-        <text class="font_5 text_17">300</text>
+        <text class="font_5 text_17">{{total_dout}}</text>
       </view>
       <view class="flex-row justify-between items-center mt-21">
         <view class="flex-row items-center">
@@ -78,7 +78,7 @@
           />
           <text class="ml-36 font_3 text_18">出库销售金额</text>
         </view>
-        <text class="font_5 text_19">9023</text>
+        <text class="font_5 text_19">{{total_income}}</text>
       </view>
     </view>
   </view>

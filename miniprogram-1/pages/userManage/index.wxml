@@ -24,12 +24,14 @@
           <text class="font text_2 ml-9">添加</text>
         </view>
       </view>
-      <view class="flex-col section_4 mt-15">
-        <text class="self-start text_3">管理员A</text>
+      <view class="flex-col section_4 mt-15" wx:for="{{userMessages}}" wx:key="eno">
+        <text class="self-start text_3">{{item.ename}}</text>
         <view class="flex-row justify-between self-stretch group_2 mt-11">
-          <text class="self-start font_2 text_4">员工编号：10021</text>
+          <text class="self-start font_2 text_4">员工编号：{{item.eno}}</text>
           <view class="flex-col justify-start items-center button_2">
-            <text class="font_2 text_5">高级管理员</text>
+            <text class="font_2 text_5" wx:if="{{item.elevel==3}}">高级管理员</text>
+            <text class="font_2 text_5" wx:if="{{item.elevel==2}}">仓库管理员</text>
+            <text class="font_2 text_5" wx:if="{{item.elevel==1}}">普通员工</text>
           </view>
         </view>
         <view class="flex-row justify-between items-center self-stretch group_3 mt-11">

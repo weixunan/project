@@ -257,15 +257,15 @@ app.post('/input', (req, res)=>{
   });
 });
 
-// 出库操作代码还没写，总体框架和入库差不多
 // 处理出库请求，接收前端发来的出库货物信息，按顺序完成以下3个模块的操作，与3个数据表进行交互。
 // 【子模块1】根据货物编号更新goods_info表中对应货物出库后剩余的数量，根据货物是否存在分为两种情况：
-// 1. 编号为gno的货物存在，则通过update更新库存数量（可考虑一下数量是否足够出库）；
-// 2. 货物在仓库中不存在，出库失败。
-// 【子模块2】将订单信息保存到出入库订单表inout_info中（实现方式与入库操作一样）
+// 1. 编号为gno的货物存在，则通过update更新库存数量（可考虑一下数量是否足够出库）；（半成品）
+// 2. 货物在仓库中不存在，出库失败。(已完成)
+// 【子模块2】将订单信息保存到出入库订单表inout_info中（实现方式与入库操作一样）（已完成）
 // 【子模块3】更新仓库对应日期的每日数据，与每日数据汇总表day_info进行交互，分为两种情况：
-// 1. select查询到日期date已经有出库记录，只需update累加今日出库数量、出库销售金额、总库存数snum
-// 2. 日期date还没有出库记录，将出库信息insert到表中，并update总库存数snum
+// 1. select查询到日期date已经有出库记录，只需update累加今日出库数量、出库销售金额（已完成）
+// 2. 日期date还没有出库记录，将出库信息insert到表中（已完成）
+// 【未完成部分：子模块1中的update只考虑了货物是否存在，还没有考虑数量是否足够出库】
 app.post('/output', (req, res)=>{
   // 解析req中的数据
   const json = req.body.json;
@@ -284,7 +284,118 @@ app.post('/output', (req, res)=>{
   });
   connection.connect();
 
+  // 【子模块1 begin】
+  // select查看货物在goods_info中是否存在
+  var selectQuery = 'select * from goods_info where gno = ?';
+  var selectValues = [json['gno']];
+  connection.query(selectQuery, selectValues, (error, results) =>{
+    if (error) {
+      console.log("error->出库goods_info匹配gno时出错");
+      return res.json({success: false,});
+    }
+    // 1. 编号为gno的货物存在，执行update语句，更新其在goods_info的数量即可
+    if (results.length > 0) {
+      console.log("selectResults[0]->" + JSON.stringify(results[0]));
+      // 新的数量
+      var newgsnum = parseInt(results[0]['gsnum']) - parseInt(json['gnum']);
+      // 更新最近操作时间
+      var newdate = json['date'];
+      // 执行update语句
+      var updateQuery = 'update goods_info set gsnum = ?, date = ? where gno = ?';
+      var updateValues = [newgsnum, newdate, json['gno']];
+      console.log("updateValues->" + updateValues);
+      connection.query(updateQuery, updateValues, (error, results) =>{
+        if (error) {
+          console.log("error->更新goods_info时出错");
+          return res.json({success: false,});
+        } else {
+          // 返回成功响应，success为true
+          console.log("success->已更新goods_info");
+          // 【子模块2 begin】与出入库订单表inout_info的交互
+          // 将出库订单的信息insert到数据库的订单表inout_info中
+          var insertQuery2 = 'insert into inout_info (ono, gno, gnum, cname, date, eno, gpicture) values (?, ?, ?, ?, ?, ?, ?)';  
+          var insertValues2 = [ono, json['gno'], json['gnum'], json['cname'], json['date'], json['eno'], gpicture];  
+          console.log("insertValues2->" + insertValues2);
+          connection.query(insertQuery2, insertValues2, (error, results) =>{ 
+            console.log("insertResults2->" + JSON.stringify(results));
+            if (!error) {
+              // 插入成功，不返回，进行下一步操作
+              console.log("success->插入inout_info成功");
 
+              // 【子模块3 begin】与仓库每日数据汇总表day_info的交互
+              // 更新day_info数据表，分为两种情况：
+              // 1. select查询到日期date已经有出入库记录，只需update累加今日出库dout、出库金额、总库存数snum
+              // 2. 日期date还没有出入库记录，将出库信息insert到表中，并update累加总库存数snum
+              // select查询今日是否已有入库记录
+              var selectQuery = 'select * from day_info where date = ?';
+              var selectValues = [json['date']];
+              connection.query(selectQuery, selectValues, (error, results) =>{
+                if (error) {
+                  console.log("error->day_info匹配date时出错");
+                  return res.json({success: false,});
+                }
+                // 查询成功，则根据查询结果分为两种情况：
+                // 1. 日期date已有出入库的记录，执行update语句，更新其数量和金额即可
+                if (results.length > 0) {
+                  console.log("selectResults[0]->" + JSON.stringify(results[0]));
+                  // 新的今日出库数量
+                  var newdout = parseInt(results[0]['dout']) + parseInt(json['gnum']);
+                  // 新的今日出库金额 = 本次出库数量 * 出货单价 + 旧的出库金额
+                  var newincome = parseInt(json['gnum']) * parseInt(json['gpriceout']) + parseInt(results[0]['income']);
+                  // 新的总库存数
+                  var newsnum = parseInt(results[0]['snum']) - parseInt(json['gnum']);
+                  // 执行update语句
+                  var updateQuery = 'update day_info set dout = ?, income = ?, snum = ? where date = ?';
+                  var updateValues = [newdout, newincome, newsnum, json['date']];
+                  console.log("updateValues->" + updateValues);
+                  connection.query(updateQuery, updateValues, (error, results) =>{
+                    if (error) {
+                      console.log("error->更新day_info时出错");
+                      return res.json({success: false,});
+                    } else {
+                      // 返回成功响应，success为true
+                      console.log("success->已更新day_info");
+                      return res.json({success: true,});
+                    }
+                  });
+                } else {
+                // 2. day_info表中不存在日期date的出入库记录，执行insert语句
+                  // 新的今日出库金额 = 本次出库数量 * 出货单价
+                  var newincome = parseInt(json['gnum']) * parseInt(json['gpriceout']);
+                  var insertQuery = 'insert into day_info (date, dout, snum, income) values (?, ?, ?, ?)';  
+                  var insertValues = [json['date'], json['gnum'], json['gnum'], newincome];  
+                  console.log("insertValues->" + insertValues);
+                  connection.query(insertQuery, insertValues, (error, results) =>{ 
+                    console.log("insertResults->" + JSON.stringify(results));
+                    if (!error) {
+                      // 插入成功，返回成功响应，只返回一个数据success，值为true
+                      console.log("success->插入day_info成功");
+                      return res.json({success: true,});
+                    } else {
+                      // 插入失败，打印错误提示，并返回success为false
+                      console.log("error->插入day_info失败");
+                      return res.json({success: false,});
+                    }
+                  });
+                }    
+              });
+              // 【子模块3 end】
+            } else {
+              // 插入失败，打印错误提示，并返回success为false
+              console.log("error->插入inout_info失败");
+              return res.json({success: false,});
+            }
+          });
+          // 【子模块2 end】
+        }
+      });
+    } else {
+    // 2. goods_info表中不存在该货物，出库失败
+      console.log("error->goods_info中不存在该货物gno，出库失败");
+      return res.json({success: false,});
+    }    
+  });
+  // 【子模块1 end】
 });
 
 /*
@@ -329,45 +440,94 @@ app.post('/search', (req, res)=>{
 });
 */
 //处理获取当日库存状况的请求
-app.post('/basicData', (req, res)=>{
+app.post('/basicData', (req, res) => {
   //console.log(2);
   //数据库连接
-  var connection=mysql.createConnection({
-    host:IPAddress,
-    port: 3306,	
-    user:dbUsername,
-    password:dbPassword,
-    database:dbName
+  var connection = mysql.createConnection({
+    host: IPAddress,
+    port: 3306,
+    user: dbUsername,
+    password: dbPassword,
+    database: dbName
   });
   connection.connect();
 
-  //使用日期相关的函数，获取当日日期，格式为YYYY-MM-DD，结果放在变量formattedDate里
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  
-  const formattedDate = `${year}-${month}-${day}`;
-  console.log(formattedDate);
+  request = req.body.request;
 
-  //编辑数据库命令，在数据表中找出日期和当日相同的条目
-  var sql = "select * from day_info where date = ?";
-  //发送给数据库执行命令，错误信息存储在error中，可以通过console.log输出，得到的结果存储在result中
-  connection.query(sql, formattedDate, (error, results) =>{ 
-    // error为false说明SQL语句执行成功
-    if (!error) {
-      // 插入成功，返回成功响应，返回数据success为true，和result
-      console.log("success->成功获取");
-      //打包成json对象返回
-      return res.json({success: true, day_info: results});
-    } else {
-      // 插入失败，打印错误提示，并返回success为false
-      console.log("error->获取失败" + error);
-      return res.json({success: false,});
-    }
-  });
-  connection.end();
+  if (request == "getBasicMessage") {
+    //使用日期相关的函数，获取当日日期，格式为YYYY-MM-DD，结果放在变量formattedDate里
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    const formattedDate = `${year}-${month}-${day}`;
+    console.log(formattedDate);
+
+    //编辑数据库命令，在数据表中找出日期和当日相同的条目
+    var sql = "select * from day_info where date = ?";
+    //发送给数据库执行命令，错误信息存储在error中，可以通过console.log输出，得到的结果存储在result中
+    connection.query(sql, formattedDate, (error, results) => {
+      // error为false说明SQL语句执行成功
+      if (!error) {
+        // 插入成功，返回成功响应，返回数据success为true，和result
+        console.log("success->成功获取din、dout");
+
+        sql = "select sum(din)-sum(dout) as snum from day_info";
+        connection.query(sql, formattedDate, (error, result_snum) => {
+          if (!error) {
+            console.log("success->成功获取snum");
+            //打包成json对象返回
+            return res.json({
+              success: true,
+              day_info: results,
+              snum: result_snum,
+            });
+          } else {
+            // 插入失败，打印错误提示，并返回success为false
+            console.log("error->获取失败" + error);
+            return res.json({
+              success: false,
+            });
+          }
+        })
+      } else {
+        // 插入失败，打印错误提示，并返回success为false
+        console.log("error->获取失败" + error);
+        return res.json({
+          success: false,
+        });
+      }
+    });
+  } else if (request == "getBasicMessageByTime") {
+    beginDate = req.body.beginDate;
+    endDate = req.body.endDate;
+    var sql = "SELECT " +
+      "SUM(din) AS total_din, " +
+      "SUM(dout) AS total_dout, " +
+      "SUM(income) AS total_income, " +
+      "SUM(cost) AS total_cost " +
+      "FROM " +
+      "day_info " +
+      "WHERE " +
+      "date BETWEEN ? AND ?";
+    connection.query(sql, [beginDate, endDate], (error, results) => {
+      if (!error) {
+        console.log("success->成功获取");
+        return res.json({
+          success: true,
+          day_info: results
+        });
+      } else {
+        console.log("error->获取失败" + error);
+        return res.json({
+          success: false,
+        });
+      }
+    });
+  }
 });
+
 //取得预警信息
 app.get('/getWarningMessages',(req,res)=>{
   var connection=mysql.createConnection({
@@ -389,6 +549,28 @@ app.get('/getWarningMessages',(req,res)=>{
     
   })
   connection.end();
+});
+
+//员工管理页面:获取员工信息
+app.get('/getUserMessages',(req,res)=>{
+  var connection=mysql.createConnection({
+    host:IPAddress,
+    port: 3306,	
+    user:dbUsername,
+    password:dbPassword,
+    database:dbName
+  });
+  connection.connect();
+  connection.query('select * from user_info',(error,results)=>{
+    if(error){
+      console.error('Error fetching warning messages:', error);
+      res.status(500).json({error: 'Internal Server Error'});
+    }else{
+      res.json(results);
+    }
+  })
+  connection.end();
+  //关闭连接
 });
 // 监听端口，会输出监听到的信息，console.log 在这输出
 app.listen(3003,()=>{
