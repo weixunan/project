@@ -244,6 +244,29 @@ app.post('/basicData', (req, res)=>{
     }
   });
 });
+//取得预警信息
+app.get('/getWarningMessages',(req,res)=>{
+  var connection=mysql.createConnection({
+    host:IPAddress,
+    port: 3306,	
+    user:dbUsername,
+    password:dbPassword,
+    database:dbName
+  });
+  connection.connect();
+  connection.query('select * from warn_info',(error,results)=>{
+    if(error){
+      console.error('Error fetching warning messages2:', error);
+      res.status(500).json({error: 'Internal Server Error'});
+    }else{
+      res.json(results);
+    }
+    connection.end();
+    //关闭连接
+    
+  })
+
+});
 // 监听端口，会输出监听到的信息，console.log 在这输出
 app.listen(3003,()=>{
   console.log('server running at http://'+IPAddress+':3003')

@@ -4,33 +4,40 @@
     <view class="flex-col self-stretch">
       <view class="flex-row items-center section_2">
         <view class="flex-col justify-start items-end flex-1 image-wrapper">
-          <image
+          <!-- <image
             class="image_2"
             src="../assets/search.png"
+          /> -->
+          <view class="search-container">
+          <input type="text"/>
+          <image
+          class="image_2"
+          src="../assets/search.png"
           />
+        </view>
         </view>
         <image
           class="shrink-0 image_3 ml-17"
           src="../assets/sort.png"
         />
       </view>
-      <view class="flex-col section_3 mt-9">
+      <view class="flex-col section_3 mt-9" wx:for="{{warningMessages}}" wx:key="wno">
         <view class="flex-row justify-between items-center self-stretch group_2">
-          <text class="font text_2">库存过少</text>
-          <text class="font_2 text_3">id: 001</text>
+          <text class="font text_2">{{item.msg}}</text>
+          <text class="font_2 text_3">id: {{item.wno}}</text>
         </view>
-        <text class="self-start font_3 text_4 mt-21">货物名称：可口可乐</text>
+        <text class="self-start font_3 text_4 mt-21">货物名称：{{item.gname}}</text>
         <view class="flex-row justify-between items-end self-stretch group_3 mt-21">
           <view class="flex-col items-start group_4">
-            <text class="font_3 text_5">货物编号：13423123</text>
-            <text class="font_3 mt-21">最少库存：600瓶</text>
+            <text class="font_3 text_5">货物编号：{{item.gno}}</text>
+            <text class="font_3 mt-21">最大/最小库存：{{item.wnum}}</text>
           </view>
           <image
             class="image_4"
             src="../assets/warning.png"
           />
         </view>
-        <text class="self-start font_3 text_6 mt-21">当前库存：500瓶</text>
+        <text class="self-start font_3 text_6 mt-21">当前库存：{{item.curnum}}</text>
         <text class="self-start font_2 text_7 mt-21">2023/11/11 23:00</text>
       </view>
     </view>
