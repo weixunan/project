@@ -39,8 +39,9 @@
               <image
                 class="shrink-0 image_6"
                 src="../assets/copy.png"
+                bindtap="copyText"
               />
-              <text class="ml-12 font_2 text_2">123456</text>
+              <text class="ml-12 font_2 text_2">{{gno}}</text>
             </view>
             <text class="self-start font_3 text_3 mt-17">奥利奥</text>
             <text class="self-start font_3 text_4 mt-17">单价</text>

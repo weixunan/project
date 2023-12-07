@@ -1,9 +1,10 @@
 <navigation-bar title="出库操作"></navigation-bar>
 <view class="flex-col page">
+  <form catchsubmit="formSubmit">
   <view class="flex-col flex-1 group">
     <view class="flex-col self-stretch section_2">
       <view class="flex-row items-center group_2">
-        <text class="text_2">订单号: 12023123123</text>
+        <text class="text_2">订单号: {{ono}}</text>
         <image
           class="image_2 ml-9"
           src="../assets/copy.png"
@@ -11,54 +12,56 @@
       </view>
       <view class="flex-row items-center group_3">
         <text class="font text_3">货物编号：</text>
-        <input type="text" class="dataInput"/>
+				<input type="text" class="dataInput" name="gno" />
       </view>
       <view class="flex-row items-center group_4">
         <text class="font">货物名称：</text>
-        <input type="text" class="dataInput"/>
+				<input type="text" class="dataInput" name="gname" />
       </view>
       <view class="flex-col group_5">
         <view class="flex-row items-center input_2">
           <text class="font text_4">货物类别：</text>
-          <input type="text" class="dataInput"/>
+					<input type="text" class="dataInput" name="gtype" />
         </view>
         <view class="flex-col justify-start input_3">
           <view class="flex-row items-center group_6">
             <text class="font text_5">出货单价（元）：</text>
-            <input type="text" class="dataInput"/>
+						<input type="text" class="dataInput" name="gpriceout" />
           </view>
         </view>
         <view class="flex-row items-center input_4">
           <text class="font text_6">计量单位：</text>
-          <input type="text" class="dataInput"/>
+					<input type="text" class="dataInput" name="gunit" />
         </view>
       </view>
       <view class="flex-row items-center group_7">
         <text class="font text_7">出库数量：</text>
-        <input type="text" class="dataInput"/>
+				<input type="text" class="dataInput" name="gnum" />
       </view>
       <view class="flex-row items-center input_5">
         <text class="font text_8">客户：</text>
-        <input type="text" class="dataInput"/>
+				<input type="text" class="dataInput" name="cname" />
       </view>
       <view class="flex-row items-center group_7">
         <text class="font text_9">日期：</text>
-        <input type="text" class="dataInput"/>
+				<input type="text" class="dataInput" name="date" />
       </view>
       <view class="flex-row items-center input_5">
         <text class="font text_10">操作人：</text>
-        <input type="text" class="dataInput"/>
+				<input type="text" class="dataInput" name="eno" />
       </view>
       <view class="flex-col items-center section_4">
         <image
           class="image_3"
-          src="../assets/plus.png"
+          src="{{gpicture}}"
         />
         <text class="font text_11 mt-13">添加货物图片</text>
       </view>
     </view>
     <view class="flex-col justify-start items-center button text-wrapper mt-17">
-      <text class="font text_12">提交订单并出库</text>
+      <!--<text class="font text_12">提交订单并出库</text>-->
+      <button class="font text_12" form-type="submit">提交订单并出库</button>
     </view>
   </view>
+  </form>
 </view>

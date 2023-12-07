@@ -5,9 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    ono: 1234567,
+    ono: '',  // 订单号，会根据当前时刻自动生成
     gpicture: '../assets/plus.png',  // 图片路径
-
   },
 
   // form表单的submit事件
@@ -25,6 +24,7 @@ Page({
       data: {
         json: json,
         gpicture: this.data.gpicture,
+        ono: this.data.ono,
       },
       success: function (res) {
         // 返回的数据在res中，后端定义了1个返回给前端的变量：
@@ -54,11 +54,30 @@ Page({
     })
   },
 
+  // 该函数根据当前时刻（年月日时分秒）自动生成订单号
+  generateOno() {
+    const type = '1'; // 订单第1位是标志位，1代表入库，0代表出库
+    const now = new Date();  
+    const year = now.getFullYear();  
+    const month = String(now.getMonth() + 1).padStart(2, '0');  
+    const day = String(now.getDate()).padStart(2, '0');  
+    const hours = String(now.getHours()).padStart(2, '0');  
+    const minutes = String(now.getMinutes()).padStart(2, '0');  
+    const seconds = String(now.getSeconds()).padStart(2, '0');  
+    const dateString = `${type}${year}${month}${day}${hours}${minutes}${seconds}`;  
+    return `${dateString}`;  
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    // 页面加载时，根据日期自动生成订单号
+    var value = this.generateOno()
+    console.log("生成订单号->" + value);
+    this.setData({
+      ono: value,
+    });
   },
 
   /**
