@@ -9,14 +9,31 @@ Page({
     endDate:'2023-12-07',
     inFontColor:'#000000',
     outFontColor:'#000000',
-    chFontColor:'#000000'
+    chFontColor:'#000000',
+    mode:'all'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    //判断进来时是想要三种中的哪种记录
+    this.setData({
+      mode:options.mode
+    });
+    console.log(this.data.mode);
+    if(this.data.mode=='in')
+    {
+      this.inputRecords();
+    }
+    else if(this.data.mode=='out')
+    {
+      this.outputRecords();
+    }
+    else if(this.data.mode=='change')
+    {
+      this.changeRecords();
+    }
   },
 
   /**

@@ -64,7 +64,7 @@ Page({
 
   },
   goTo:function(e){
-    var goUrl='/pages/'+e.currentTarget.dataset.name+'/index';
+    var goUrl='/pages/'+e.currentTarget.dataset.name+'/index?mode='+e.currentTarget.dataset.mode;
     wx.navigateTo({
       url: goUrl,
     })
