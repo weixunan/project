@@ -6,13 +6,39 @@ Page({
    */
   data: {
     gno:'123',
+    originalInventoryMessages: [], // 保存原始的InventoryMessages数据
     InventoryMessages:[],
     /* currentType:'全部种类', */
     InventoryType:[],
     TextColor:[],
-    allTextColor:'#000000'
+    allTextColor:'#000000',
+    searchnum: 0,
   },
 
+  // 新增方法，根据输入的编号查询对应项
+  // 新增方法，根据输入的编号查询对应项
+  searchByGno: function (e) {
+    const input = e.detail.value; // 获取用户输入的编号
+    const inventoryMessages = this.data.originalInventoryMessages; // 使用原始数据进行过滤
+    const filteredMessages = inventoryMessages.filter(item => (
+      item.gno.startsWith(input) || item.gname.startsWith(input)
+    )); // 根据编号前缀过滤数据
+    if (input === '') {
+      this.setData({
+        InventoryMessages: this.data.originalInventoryMessages, // 如果输入为空，则显示原始数据
+      });
+    } else {
+      this.setData({
+        InventoryMessages: filteredMessages, // 更新页面数据显示过滤后的结果
+      });
+    }
+  },
+
+  setSearchNum: function(e){
+    this.setData({
+      searchnum: e.detail.value,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -117,6 +143,7 @@ Page({
         // 将获取到的预警信息更新到页面数据中
         this.setData({
           InventoryMessages: data,
+          originalInventoryMessages: data,
         });
       },
       fail: (error) => {

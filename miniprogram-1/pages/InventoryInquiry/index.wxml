@@ -5,11 +5,8 @@
     <view class="flex-row items-center section_2">
       <view class="flex-col justify-start items-end flex-1 image-wrapper">
         <view class="search-container">
-          <input type="text"/>
-          <image
-          class="image_2"
-          src="../assets/search.png"
-          />
+          <input type="text" bindinput="searchByGno" placeholder="请输入编号" /> <!-- 绑定输入事件，调用searchByGno方法 -->
+          <image class="image_2" src="../assets/search.png" />
         </view>
       </view>
       <image
