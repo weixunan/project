@@ -721,7 +721,34 @@ app.post('/personal', (req, res)=>{
   });
   connection.end();
 });
+app.get('/getRecords',(req,res)=>{
+  var connection=mysql.createConnection({
+    host:IPAddress,
+    port: 3306,	
+    user:dbUsername,
+    password:dbPassword,
+    database:dbName
+  });
+  var beginDate=req.query.vbeginDate;
+  var endDate=req.query.vendDate;
+  var currentPage=req.query.vcurrentPage;
+  console.log(beginDate);
+  console.log(endDate);
+  console.log(currentPage);
+  connection.connect();
+  connection.query("select a.*,b.gname,b.gno,b.gsnum,b.gunit from inout_info a,goods_info b where a.gno=b.gno and a.otype=? and a.date>=? and a.date<=?",[currentPage,beginDate,endDate],(error,results)=>{
+    if(error){
+      console.error('Error fetching warning messages:', error);
+      res.status(500).json({error: 'Internal Server Error'});
+    }else{
+      res.json(results);
+    }
+    connection.end();
+    //关闭连接
+    
+  })
 
+});
 
 // 监听端口，会输出监听到的信息，console.log 在这输出
 app.listen(3003,()=>{

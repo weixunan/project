@@ -95,6 +95,10 @@
   border-right: solid 1.92rpx #0000001a;
   border-top: solid 1.92rpx #0000001a;
   border-bottom: solid 1.92rpx #0000001a;
+  width: 100%;
+}
+.container{
+  width: 270px;
 }
 .group_2 {
   padding: 19.15rpx 13.37rpx 16.83rpx;

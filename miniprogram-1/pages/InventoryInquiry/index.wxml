@@ -25,7 +25,7 @@
             <text class="font" style="color: {{TextColor[tindex]}}">{{item.gtype}}</text></view>
         </view>
       </view>
-      <view>
+      <view class="container">
       <view class="flex-col flex-1 self-start section_4 ml-7" wx:for="{{InventoryMessages}}" wx:key="gno">
         <view class="flex-row items-center self-stretch group_2">
           <image
@@ -58,8 +58,8 @@
           <text class="font_3">库存量</text>
           <text class="font_3 text_6">{{item.gsnum}}（{{item.gunit}}）</text>
         </view>
-        <text class="self-start font_3 text_8">{{item.date}}</text>
-        <!-- <text class="self-start font_3 text_8">{{filter.formaTime(item.date,'YYYY-MM-DD')}}</text> -->
+        <!-- <text class="self-start font_3 text_8">{{item.date}}</text> -->
+        <text class="self-start font_3 text_8">{{filter.format(item.date,'YYYY-MM-DD')}}</text>
       </view>
     </view>
     </view>

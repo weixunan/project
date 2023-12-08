@@ -7,6 +7,7 @@ Page({
   data: {
     items: [null, null, null],
     userMessages:[],
+    showModalStatus:false,
   },
 
   /**
@@ -87,5 +88,73 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  // 触发或者关闭弹窗
+ powerDrawer:function(e){
+    var currentStatus=e.currentTarget.dataset.statu;
+    this.util(currentStatus);
+  },
+  //渲染显示弹窗
+  util: function(currentStatu){  
+    /* 动画部分 */  
+    // 第1步：创建动画实例   
+    var animation = wx.createAnimation({  
+      duration: 200,  //动画时长  
+      timingFunction: "linear", //线性  
+      delay: 0  //0则不延迟  
+    });  
+      
+    // 第2步：这个动画实例赋给当前的动画实例  
+    this.animation = animation;  
+  
+    // 第3步：执行第一组动画  
+    animation.opacity(0).rotateX(-100).step();  
+  
+    // 第4步：导出动画对象赋给数据对象储存  
+    this.setData({  
+      animationData: animation.export()  
+    })  
+      
+    // 第5步：设置定时器到指定时候后，执行第二组动画  
+    setTimeout(function () {  
+      // 执行第二组动画  
+      animation.opacity(1).rotateX(0).step();  
+      // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象  
+      this.setData({  
+        animationData: animation  
+      })  
+        
+      //关闭  
+      if (currentStatu == "close") {  
+        this.setData(  
+          {  
+            showModalStatus: false  
+          }  
+        );  
+      }  
+    }.bind(this), 200)  
+    
+    // 显示  
+    if (currentStatu == "open") {  
+      this.setData(  
+        {  
+          showModalStatus: true  
+        }  
+      );  
+    }  
+  } ,
+  //表单提交函数 在这里发送请求，提交表单的方法可以参考input
+  formSubmit(e){
+    console.log('添加用户');
+    wx.showToast({
+      title: '添加成功',
+    });
+  },
+  gotoDetail:function(e){
+    var eno=e.currentTarget.dataset.eno;
+    console.log(eno);
+    wx.navigateTo({
+      url: '../userDetails/index?eno='+eno
+    })
   }
 })

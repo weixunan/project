@@ -16,7 +16,7 @@
             src="../assets/search.png"
           /> -->
         </view>
-        <view class="flex-row items-center button section_3 ml-15">
+        <view class="flex-row items-center button section_3 ml-15" bind:tap="powerDrawer" data-statu="open">
           <image
             class="shrink-0 image_2"
             src="../assets/adduser.png"
@@ -39,7 +39,7 @@
             class="image_4"
             src="../assets/more.png"
           />
-          <view class="flex-col justify-start items-center button_3 text-wrapper">
+          <view class="flex-col justify-start items-center button_3 text-wrapper" bind:tap="gotoDetail" data-eno="{{item.eno}}">
             <text class="font_2 text_6">详情</text>
           </view>
         </view>
@@ -47,4 +47,38 @@
     </view>
     <text class="mt-20 self-center font_2 text_7">没有更多了</text>
   </view>
+</view>
+
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view> 
+<!--使用animation属性指定需要执行的动画-->  
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">  
+  
+  <!--drawer content-->  
+  <view class="drawer_title">添加用户</view>  
+  <form catchsubmit="formSubmit">
+  <view class="drawer_content">  
+    <view class="top grid">  
+      <label class="title col-0">用户名</label>  
+      <input class="input_base input_h30 col-1" name="username" ></input>  
+    </view>  
+    <view class="top grid">  
+      <label class="title col-0">密码</label>  
+      <input class="input_base input_h30 col-1" name="password" ></input>  
+    </view>  
+    <view class="top grid">  
+      <label class="title col-0">员工编号</label>  
+      <input class="input_base input_h30 col-1" name="eno" ></input>  
+    </view>  
+    <view class="top grid">  
+      <label class="title col-0">员工名字</label>  
+      <input class="input_base input_h30 col-1" name="ename" ></input>  
+    </view>  
+    <view class="top bottom grid">  
+      <label class="title col-0">权限等级</label>  
+      <input class="input_base input_h30 col-1" name="elevel"></input>  
+    </view>  
+  </view>  
+  <view class="btnview" bindtap="powerDrawer" data-statu="close"><button class="btn_ok" style="width: 100%;">取消</button></view>
+  <view class="btnview" bindtap="powerDrawer" data-statu="close"><button class="btn_ok" form-type="submit" style="width: 100%;">确定</button></view> 
+</form>
 </view>

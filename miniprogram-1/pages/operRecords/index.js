@@ -5,37 +5,51 @@ Page({
    * 页面的初始数据
    */
   data: {
-    beginDate:'2023-12-06',
+    beginDate:'2021-12-06',
     endDate:'2023-12-07',
     inFontColor:'#000000',
     outFontColor:'#000000',
     chFontColor:'#000000',
-    mode:'all'
+    Records:[],
+    currentPage:1,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    //判断进来时是想要三种中的哪种记录
-    this.setData({
-      mode:options.mode
-    });
-    console.log(this.data.mode);
-    if(this.data.mode=='in')
-    {
-      this.inputRecords();
-    }
-    else if(this.data.mode=='out')
-    {
-      this.outputRecords();
-    }
-    else if(this.data.mode=='change')
-    {
-      this.changeRecords();
-    }
+    this.getRecords();
   },
-
+  getRecords(){
+    console.log(this.data.beginDate);
+    console.log(this.data.endDate);
+    wx.request({
+      url: 'http://172.29.15.95:3003/getRecords',
+      method: 'GET',
+      data:{
+          vbeginDate:this.data.beginDate,
+          vendDate:this.data.endDate,
+          vcurrentPage:this.data.currentPage,
+      },
+      success: (res) => {
+        const { data } = res;
+        // 将获取到的预警信息更新到页面数据中
+        this.setData({
+          Records: data,
+        });
+      },
+      fail: (error) => {
+        console.error('Failed to fetch InputRecords:', error);
+        // 处理请求失败的情况，比如弹窗提示用户网络错误
+        wx.showToast({
+          title: '网络错误，请重试',
+          icon: 'none',
+          duration: 2000
+        });
+      },
+    });
+  },
+ 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -84,18 +98,22 @@ Page({
   onShareAppMessage() {
 
   },
+
+  
   //点击时间选择框的事件函数
   bindBeginDateChange:function(e){
     this.setData({
       beginDate:e.detail.value
     })
     console.log(this.data.beginDate);
+    this.getRecords();
   },
   bindEndDateChange:function(e){
     this.setData({
       endDate:e.detail.value
     })
     console.log(this.data.endDate);
+    this.getRecords();
   },
   //出库、入库、移库三个选项的事件
   inputRecords:function(e){
@@ -109,6 +127,16 @@ Page({
     this.setData({
       outFontColor:'#4095e5'
     })
+  },
+  changePage:function(e){
+    this.resetFontColors();
+    const Page=parseInt(e.currentTarget.dataset.text);
+    this.setData({
+      currentPage:Page,
+    })
+    console.log(this.data.currentPage);
+    this.getRecords();
+    
   },
   changeRecords:function(e){
     this.resetFontColors();

@@ -21,14 +21,14 @@
       />
     </view>
     <view class="flex-row self-stretch">
-      <view class="flex-col justify-start items-center text-wrapper" bindtap="inputRecords"><text class="font" style="color: {{inFontColor}}">入库记录</text></view>
-      <view class="flex-col justify-start items-center text-wrapper" bindtap="outputRecords"><text class="font" style="color: {{outFontColor}}">出库记录</text></view>
+      <view class="flex-col justify-start items-center text-wrapper" bind:tap="changePage" data-text="1"><text class="font" style="color: {{inFontColor}}">入库记录</text></view>
+      <view class="flex-col justify-start items-center text-wrapper " bind:tap="changePage"  data-text="0" ><text class="font" style="color: {{outFontColor}}">出库记录</text></view>
       <view class="flex-col justify-start items-center text-wrapper" bindtap="changeRecords"><text class="font" style="color: {{chFontColor}}">移库记录</text></view>
     </view>
     <view class="flex-row justify-evenly items-center self-stretch group_2">
-      <view class="flex-col justify-start items-start text-wrapper_2">
+      <view class="flex-col justify-start items-start text-wrapper_2" >
         <!-- <text class="font_2 text_2">开始日期：</text> -->
-        <picker mode="date" value="{{beginDate}}" start="2015-05-01" end="2025-09-01" bindchange="bindBeginDateChange">
+        <picker mode="date" value="{{beginDate}}" start="2015-05-01" end="2025-09-01" bindchange="bindBeginDateChange" >
           <view class="picker font_2 text_2">
             开始日期：{{beginDate}}
           </view>
@@ -40,36 +40,37 @@
       />
       <view class="flex-col justify-start items-start text-wrapper_2">
         <!-- <text class="font_2 text_2">结束日期：2023-11-01</text> -->
-        <picker mode="date" value="{{endDate}}" start="2015-05-01" end="2025-09-01" bindchange="bindEndDateChange">
+        <picker mode="date" value="{{endDate}}" start="2015-05-01" end="2025-09-01" bindchange="bindEndDateChange" >
           <view class="picker font_2 text_2">
             结束日期：{{endDate}}
           </view>
         </picker>
       </view>
     </view>
-    <view class="flex-col self-stretch section_3">
+    <view class="flex-col self-stretch section_3" wx:for="{{Records}}" wx:if="ono">
       <view class="flex-row justify-between items-center">
         <view class="flex-col items-start">
-          <text class="font_3 text_3">操作编号：12342131</text>
-          <text class="mt-16 font_3 text_5">货物名称：奥利奥</text>
+          <text class="font_3 text_3">操作编号：{{item.ono}}</text>
+          <text class="mt-16 font_3 text_5">货物名称：{{item.gname}}</text>
         </view>
-        <text class="text_4">500（包）</text>
+        <text class="text_4">{{item.gsnum}}（{{item.gunit}}）</text>
       </view>
       <view class="flex-row justify-between group_3">
         <view class="flex-col items-start">
-          <text class="font_3 text_6">货物编号：1423211231</text>
-          <text class="font_3 text_8 mt-13">员工编号：11001</text>
+          <text class="font_3 text_6">货物编号：{{item.gno}}</text>
+          <text class="font_3 text_8 mt-13">员工编号：{{item.eno}}</text>
         </view>
         <view class="flex-row items-center self-start group_4">
           <image
             class="shrink-0 image_5"
             src="../assets/point.png"
           />
-          <text class="font_2 text_7 ml-9">已完成</text>
+          <text class="font_2 text_7 ml-9" wx:if="{{item.ostatus==1}}">已完成</text>
+          <text class="font_2 text_7 ml-9" wx:if="{{item.ostatus==0}}">处理中</text>
         </view>
       </view>
       <view class="flex-col group_5">
-        <text class="self-start font_3 text_10">2023/11/10 18:30:02</text>
+        <text class="self-start font_3 text_10">{{item.date}}</text>
         <text class="self-end font_2 text_9">查看详情</text>
       </view>
     </view>
