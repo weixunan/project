@@ -17,14 +17,14 @@
       <text class="self-start font_2 text_3">货物</text>
       <view class="mt-24 flex-col self-stretch">
         <view class="flex-row justify-between equal-division">
-          <view class="flex-row items-center equal-division-item">
+          <view class="flex-row items-center equal-division-item_2">
             <image
               class="shrink-0 image_3"
               src="../assets/table.png"
             />
             <text class="ml-8 font_2 text_4">货库库存表</text>
           </view>
-          <view class="flex-row items-center equal-division-item">
+          <view class="flex-row items-center equal-division-item_2">
             <image
               class="shrink-0 image_3"
               src="../assets/table.png"

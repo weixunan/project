@@ -49,7 +49,7 @@
 .equal-division-item {
   padding: 42.31rpx 26.92rpx;
   border-radius: 30.77rpx;
-  background-image: url('https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=eabb9d3dd61e345f4f39f0840a495bb0.png');
+  /* background-image: url('https://ide.code.fun/api/image?token=656f1f4ffcfbac00113721b8&name=eabb9d3dd61e345f4f39f0840a495bb0.png'); */
   background-size: 100% 100%;
   background-repeat: no-repeat;
   height: 128.85rpx;
