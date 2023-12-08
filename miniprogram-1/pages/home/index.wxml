@@ -1,10 +1,14 @@
 <navigation-bar title="首页" back="{{false}}"></navigation-bar>
 <view class="flex-col page">
   <view class="flex-col flex-1 group_2">
-    <image
-      class="image_7"
-      src="../assets/home_picture.png"
-    />
+    <swiper class="banners" indicator-dots indicator-color='ivory' autoplayinterval="3000" indicator-active-color='#d43c33'>
+    <swiper-item>
+      <image src="../assets/home_picture.png"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="../assets/home_picture.png"></image>
+    </swiper-item>
+  </swiper>
     <view class="grid">
       <view class="flex-col items-center relative grid-item" bindtap="goTo" data-name="InventoryInquiry">
         <image 
@@ -76,7 +80,7 @@
       <view class="flex-col">
         <text class="self-start font_2 text_8">1</text>
         <view class="mt-8 flex-col justify-start items-center self-stretch text-wrapper">
-          <text class="font_2 text_10">1</text>
+          <text class="font_2 text_10">{{warn_num}}</text>
         </view>
       </view>
     </view>

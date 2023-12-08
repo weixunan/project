@@ -46,6 +46,7 @@
   border-right: solid 1.92rpx #0000001a;
   border-top: solid 1.92rpx #0000001a;
   border-bottom: solid 1.92rpx #0000001a;
+  width: 112px;
 }
 .text-wrapper_1 {
   padding: 37.5rpx 0 39.9rpx;

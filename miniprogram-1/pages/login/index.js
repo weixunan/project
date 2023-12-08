@@ -174,6 +174,12 @@ Page({
           })
           console.log("登录状态->" + that.data.status);
           console.log("记住密码->" + that.data.isRemember);
+          // 登录成功后，获取用户数据，更新全局变量的值
+          var app = getApp();
+          app.globalData.eno = res.data.userData[0];
+          app.globalData.ename = res.data.userData[1];
+          app.globalData.elevel = res.data.userData[2];
+          console.log("用户信息->" + app.globalData.eno + "," + app.globalData.ename + "," + app.globalData.elevel);
           // 进入tabBar页面需要用switchTab，不支持返回
           wx.switchTab({
             url: '/pages/home/index',

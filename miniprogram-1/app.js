@@ -14,6 +14,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    eno: '',  //当前登录的员工编号
+    ename: '',  //员工名字
+    elevel: '', //员工权限（1普通员工2仓库管理员3高级管理员）
   }
 })

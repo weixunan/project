@@ -3,13 +3,13 @@
     <view class="flex-row items-center">
       <view class="section_2"></view>
       <view class="flex-col items-start ml-29">
-        <text class="font text">员工A</text>
-        <text class="font_2 text_2 mt-15">员工编号：1023</text>
+        <text class="font text">{{ename}}</text>
+        <text class="font_2 text_2 mt-15">员工编号：{{eno}}</text>
       </view>
     </view>
     <view class="mt-30 flex-row justify-between group">
-      <text class="font_3">5</text>
-      <text class="font_3 text_3">0</text>
+      <text class="font_3">{{edin}}</text>
+      <text class="font_3 text_3">{{edout}}</text>
     </view>
     <view class="mt-30 flex-row justify-between group_2">
       <text class="font">今日入库</text>
@@ -66,9 +66,12 @@
         </view>
         <text class="mt-10 font_2 text_10">联系客服</text>
       </view>
-      <view class="flex-col group_6 equal-division-item_2">
+      <view class="flex-col group_6 equal-division-item_2" bind:tap="share">
         <view class="section_4">
-          <image class="icon" src="../assets/share.png" />
+            <view class="image-container">
+                <image class="icon" src="../assets/share.png" />
+                <button class="overlay-button" open-type="share"></button>
+            </view>
         </view>
         <text class="mt-10 font_2 text_11">推荐分享</text>
       </view>

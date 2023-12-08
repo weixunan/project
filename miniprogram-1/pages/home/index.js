@@ -5,14 +5,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    warn_num: 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    //const requeststr = "getWarningNumber";
+    const thisfunc = this;
+    wx.request({
+      method: 'POST',
+      url: 'http://172.29.15.95:3003/getWarningNumber',
+      header: {
+        'Content-Type': 'application/json',
+      },
+      data: {
 
+      },
+      success: function (res) {
+        console.log(res);
+        console.log(res.data.warn_nums[0].warn_nums);
+        //const result = res.body.json;
+        //console.log(result);
+        thisfunc.setData({
+          warn_num: res.data.warn_nums[0].warn_nums,
+        })
+      },
+      failed: function () {
+        console.log('failed to get warning number');
+      }
+    })
   },
 
   /**

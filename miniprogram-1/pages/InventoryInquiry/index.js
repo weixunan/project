@@ -6,13 +6,19 @@ Page({
    */
   data: {
     gno:'123',
+    InventoryMessages:[],
+    /* currentType:'全部种类', */
+    InventoryType:[],
+    TextColor:[],
+    allTextColor:'#000000'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.getInventoryMessages();
+    this.getInventoryType();
   },
 
   /**
@@ -63,12 +69,14 @@ Page({
   onShareAppMessage() {
 
   },
-  copyText:function(){
+  //复制按钮
+  copyText:function(e){
+    console.log(e.currentTarget.dataset.name);
     wx.showToast({
       title: '复制成功',
     });
     wx.setClipboardData({
-      data: this.data.gno,
+      data: e.currentTarget.dataset.name,
       success:function(res){
         wx.getClipboardData({
           success:function(res){
@@ -77,5 +85,107 @@ Page({
         })
       }
     })
-  }
+  },
+  getInventoryType(){
+    wx.request({
+      url: 'http://172.29.15.95:3003/getInventoryType',
+      method: 'GET',
+      success: (res) => {
+        const { data } = res;
+        // 将获取到的预警信息更新到页面数据中
+        this.setData({
+          InventoryType: data,
+        });
+      },
+      fail: (error) => {
+        console.error('Failed to fetch InventoryType:', error);
+        // 处理请求失败的情况，比如弹窗提示用户网络错误
+        wx.showToast({
+          title: '网络错误，请重试',
+          icon: 'none',
+          duration: 2000
+        });
+      },
+    });
+  },
+  getInventoryMessages(){
+    wx.request({
+      url: 'http://172.29.15.95:3003/getInventoryMessages',
+      method: 'GET',
+      success: (res) => {
+        const { data } = res;
+        // 将获取到的预警信息更新到页面数据中
+        this.setData({
+          InventoryMessages: data,
+        });
+      },
+      fail: (error) => {
+        console.error('Failed to fetch InventoryMessages:', error);
+        // 处理请求失败的情况，比如弹窗提示用户网络错误
+        wx.showToast({
+          title: '网络错误，请重试',
+          icon: 'none',
+          duration: 2000
+        });
+      },
+    });
+    // this.data.TextColor[0]='#4095e5'
+    var tempColor=[];
+    for(let i=0;i<this.data.InventoryType.length;i++){
+      tempColor[i]='#00000099';
+    }
+    this.setData({
+      TextColor:tempColor,
+      allTextColor:'#4095e5'
+    })
+  },
+  getInventoryMessagesByType(currentType){
+    console.log(currentType);
+    wx.request({
+      url: "http://172.29.15.95:3003/getInventoryMessagesByType?type='食品'",
+      method: 'GET',
+      data:{
+        type:currentType,
+      },
+      success: (res) => {
+        const { data } = res;
+        // 将获取到的预警信息更新到页面数据中
+        this.setData({
+          InventoryMessages: data,
+        });
+      },
+      fail: (error) => {
+        console.error('Failed to fetch InventoryMessagesByType', error);
+        // 处理请求失败的情况，比如弹窗提示用户网络错误
+        wx.showToast({
+          title: '网络错误，请重试',
+          icon: 'none',
+          duration: 2000
+        });
+      },
+    });
+  },
+  changeData:function(event){
+    const buttonText = event.currentTarget.dataset.text;
+    const index=parseInt(event.currentTarget.dataset.index);
+    var tempColor=[];
+    for(let i=0;i<this.data.InventoryType.length;i++){
+      tempColor[i]='#00000099';
+    }
+    tempColor[index]="#4095e5";
+    // this.data.TextColor[index]="#4095e5";
+    this.setData({
+      TextColor:tempColor,
+      allTextColor:'#00000099'
+    })
+    // console.log(this.data.TextColor);
+    console.log(buttonText);
+    // 修改 currentType 中的值
+    /* this.setData({
+      currentType: buttonText,
+    });
+    console.log(currentType); */
+    this.getInventoryMessagesByType(buttonText);
+  },
+
 })

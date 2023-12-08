@@ -35,6 +35,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
   
 });*/
 
+
 // 处理登录请求，验证数据库中是否有该用户
 app.post('/login', (req, res)=>{
   // 解析请求体中的用户名和密码，req是前端传来的数据，res是后端返回的数据
@@ -57,10 +58,13 @@ app.post('/login', (req, res)=>{
     //connection.end();
     // 要将输出对象转换为字符串表示
     console.log("results->"+JSON.stringify(results));
+    // 要返回给前端的用户信息
+    const userData = [results[0]['eno'], results[0]['ename'], results[0]['elevel']];
+    console.log("userData->" + userData);
     if (results.length > 0) {
       // 用户存在，返回成功响应
       //console.log(results);
-      return res.json({success: true, status: 1});
+      return res.json({success: true, status: 1, userData: userData});
     } else {
       // 用户不存在
       console.log("error->用户不存在");
@@ -70,6 +74,8 @@ app.post('/login', (req, res)=>{
   connection.end();
 
 });
+
+
 
 
 
@@ -175,8 +181,8 @@ app.post('/input', (req, res)=>{
 
     // 【子模块2 begin】与出入库订单表inout_info的交互
     // 将入库订单的信息insert到数据库的订单表inout_info中
-    var insertQuery2 = 'insert into inout_info (ono, gno, gnum, sname, date, eno, gpicture) values (?, ?, ?, ?, ?, ?, ?)';  
-    var insertValues2 = [ono, json['gno'], json['gnum'], json['sname'], json['date'], json['eno'], gpicture];  
+    var insertQuery2 = 'insert into inout_info (otype, ono, gno, gnum, sname, date, eno, gpicture) values (?, ?, ?, ?, ?, ?, ?, ?)';  
+    var insertValues2 = [1, ono, json['gno'], json['gnum'], json['sname'], json['date'], json['eno'], gpicture];  
     console.log("insertValues2->" + insertValues2);
     connection.query(insertQuery2, insertValues2, (error, results) =>{ 
       console.log("insertResults2->" + JSON.stringify(results));
@@ -313,8 +319,8 @@ app.post('/output', (req, res)=>{
           console.log("success->已更新goods_info");
           // 【子模块2 begin】与出入库订单表inout_info的交互
           // 将出库订单的信息insert到数据库的订单表inout_info中
-          var insertQuery2 = 'insert into inout_info (ono, gno, gnum, cname, date, eno, gpicture) values (?, ?, ?, ?, ?, ?, ?)';  
-          var insertValues2 = [ono, json['gno'], json['gnum'], json['cname'], json['date'], json['eno'], gpicture];  
+          var insertQuery2 = 'insert into inout_info (otype, ono, gno, gnum, cname, date, eno, gpicture) values (?, ?, ?, ?, ?, ?, ?, ?)';  
+          var insertValues2 = [0, ono, json['gno'], json['gnum'], json['cname'], json['date'], json['eno'], gpicture];  
           console.log("insertValues2->" + insertValues2);
           connection.query(insertQuery2, insertValues2, (error, results) =>{ 
             console.log("insertResults2->" + JSON.stringify(results));
@@ -550,6 +556,31 @@ app.get('/getWarningMessages',(req,res)=>{
   })
   connection.end();
 });
+//首页获取预警个数
+app.post('/getWarningNumber', (req,res)=>{
+  var connection=mysql.createConnection({
+    host:IPAddress,
+    port: 3306,	
+    user:dbUsername,
+    password:dbPassword,
+    database:dbName
+  });
+  connection.connect();
+  sql = "select count(wstatus) as warn_nums from warn_info where wstatus = 0";
+  connection.query(sql, (error, results)=>{
+    if(!error){
+      return res.json({
+        warn_nums: results,
+        success: true,
+      })
+    }
+    else {
+      return res.json({
+        success: false,
+      })
+    }
+  })
+});
 
 //员工管理页面:获取员工信息
 app.get('/getUserMessages',(req,res)=>{
@@ -572,6 +603,126 @@ app.get('/getUserMessages',(req,res)=>{
   connection.end();
   //关闭连接
 });
+
+//货物查询
+app.get('/getInventoryMessages',(req,res)=>{
+  var connection=mysql.createConnection({
+    host:IPAddress,
+    port: 3306,	
+    user:dbUsername,
+    password:dbPassword,
+    database:dbName
+  });
+  connection.connect();
+  connection.query('select * from goods_info',(error,results)=>{
+    if(error){
+      console.error('Error fetching warning messages:', error);
+      res.status(500).json({error: 'Internal Server Error'});
+    }else{
+      res.json(results);
+    }
+    connection.end();
+    //关闭连接
+    
+  })
+
+});
+//在库存查询页面中获得所有种类的货物
+app.get('/getInventoryType',(req,res)=>{
+  var connection=mysql.createConnection({
+    host:IPAddress,
+    port: 3306,	
+    user:dbUsername,
+    password:dbPassword,
+    database:dbName
+  });
+  connection.connect();
+  connection.query('select Distinct gtype from goods_info',(error,results)=>{
+    if(error){
+      console.error('Error fetching warning messages:', error);
+      res.status(500).json({error: 'Internal Server Error'});
+    }else{
+      res.json(results);
+    }
+    connection.end();
+    //关闭连接
+    
+  })
+
+});
+
+app.get('/getInventoryMessagesByType',(req,res)=>{
+  var connection=mysql.createConnection({
+    host:IPAddress,
+    port: 3306,	
+    user:dbUsername,
+    password:dbPassword,
+    database:dbName
+  });
+  var type=req.query.type;
+  console.log("Count type:?",type);
+  connection.connect();
+  connection.query("select * from goods_info where gtype=?",[type],(error,results)=>{
+    if(error){
+      console.error('Error fetching warning messages:', error);
+      res.status(500).json({error: 'Internal Server Error'});
+    }else{
+      res.json(results);
+    }
+    connection.end();
+    //关闭连接
+    
+  })
+
+});
+
+// 获取编号为eno的员工今日操作出入库的货物数量
+// 前端req传来两个数据：1.员工编号eno  2.标志码（1请求得到入库数量0请求得到出库数量）
+// 后端res返回两个数据：1。操作成功与否success  2.出库或入库的数量edin
+app.post('/personal', (req, res)=>{
+  // 解析请求体中的员工编号eno
+  console.log("eno->"+req.body.eno);
+  var eno = req.body.eno;
+  var otype = req.body.otype;
+  // 连接数据库
+  var connection=mysql.createConnection({
+    host:IPAddress,
+    port: 3306,	
+    user:dbUsername,
+    password:dbPassword,
+    database:dbName
+  });
+  connection.connect();
+  // 获取今天日期YYYY-MM-DD
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const formattedDate = `${year}-${month}-${day}`;
+  console.log("today->" + formattedDate);
+  // 在数据库inout_info表中根据日期和员工编号，找到相关订单，累加出入库数量
+  var selectQuery = 'select sum(gnum) as edin from inout_info where date = ? and eno = ? and otype = ?';
+  var selectValues = [formattedDate, eno, otype];
+  connection.query(selectQuery, selectValues, (error, results) =>{ 
+    //connection.end();
+    // 要将输出对象转换为字符串表示
+    console.log("results->"+JSON.stringify(results));
+    // 要返回给前端的用户信息
+    const edin = results[0]['edin'];
+    console.log("edin->" + edin);
+    if (results.length > 0) {
+      // 返回成功响应
+      return res.json({success: true, edin: edin});
+    } else {
+      // 失败
+      console.log("error->/personal查找失败");
+      return res.json({success: false});
+    }
+  });
+  connection.end();
+});
+
+
 // 监听端口，会输出监听到的信息，console.log 在这输出
 app.listen(3003,()=>{
   console.log('server running at http://'+IPAddress+':3003')

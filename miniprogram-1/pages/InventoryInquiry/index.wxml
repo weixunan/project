@@ -1,3 +1,4 @@
+<wxs module="filter" src="/utils/filter.wxs"></wxs>
 <navigation-bar title="库存查询"></navigation-bar>
 <view class="flex-col page">
   <view class="flex-col flex-1 group">
@@ -10,10 +11,6 @@
           src="../assets/search.png"
           />
         </view>
-        <!-- <image
-          class="image_2"
-          src="../assets/search.png"
-        /> -->
       </view>
       <image
         class="shrink-0 image_3 ml-17"
@@ -22,17 +19,18 @@
     </view>
     <view class="flex-row">
       <view class="flex-col shrink-0 section_3">
-        <view class="flex-col justify-start items-center text-wrapper_1"><text class="font">全部种类</text></view>
-        <view class="flex-col">
-          <view class="flex-col justify-start items-center text-wrapper"><text class="font">饼干</text></view>
-          <view class="flex-col justify-start items-center text-wrapper_3"><text class="font text_7">饮料</text></view>
+        <view class="flex-col justify-start items-center text-wrapper_1" bind:tap="getInventoryMessages"><text class="font" style="color: {{allTextColor}}">全部种类</text></view>
+        <view class="flex-col" wx:for="{{InventoryType}}" wx:key="gtype" wx:for-index="tindex">
+          <view class="flex-col justify-start items-center text-wrapper"  bind:tap="changeData" data-text="{{item.gtype}}" data-index="{{tindex}}">
+            <text class="font" style="color: {{TextColor[tindex]}}">{{item.gtype}}</text></view>
         </view>
       </view>
-      <view class="flex-col flex-1 self-start section_4 ml-7">
+      <view>
+      <view class="flex-col flex-1 self-start section_4 ml-7" wx:for="{{InventoryMessages}}" wx:key="gno">
         <view class="flex-row items-center self-stretch group_2">
           <image
             class="shrink-0 image_5"
-            src="../assets/nopicture.png"
+            src="{{item.gpicture}}"
           />
           <view class="flex-col flex-1 group_4">
             <view class="flex-row items-center self-stretch">
@@ -40,10 +38,11 @@
                 class="shrink-0 image_6"
                 src="../assets/copy.png"
                 bindtap="copyText"
+                data-name="{{item.gno}}"
               />
-              <text class="ml-12 font_2 text_2">{{gno}}</text>
+              <text class="ml-12 font_2 text_2">{{item.gno}}</text>
             </view>
-            <text class="self-start font_3 text_3 mt-17">奥利奥</text>
+            <text class="self-start font_3 text_3 mt-17">{{item.gname}}</text>
             <text class="self-start font_3 text_4 mt-17">单价</text>
           </view>
           <view class="flex-col items-center shrink-0 group_3">
@@ -51,16 +50,18 @@
               class="image_4"
               src="../assets/more.png"
             />
-            <text class="font_2 text_5 mt-47">¥ 8</text>
+            <text class="font_2 text_5 mt-47">￥ {{item.gpriceout}}</text>
           </view>
         </view>
         <view class="self-end section_5"></view>
         <view class="flex-row justify-between self-stretch group_5">
           <text class="font_3">库存量</text>
-          <text class="font_3 text_6">1000（包）</text>
+          <text class="font_3 text_6">{{item.gsnum}}（{{item.gunit}}）</text>
         </view>
-        <text class="self-start font_3 text_8">2023/12/3 18:19</text>
+        <text class="self-start font_3 text_8">{{item.date}}</text>
+        <!-- <text class="self-start font_3 text_8">{{filter.formaTime(item.date,'YYYY-MM-DD')}}</text> -->
       </view>
+    </view>
     </view>
   </view>
 </view>
