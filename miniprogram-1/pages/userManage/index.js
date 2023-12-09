@@ -14,14 +14,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-      this.getUserMessages();
+    this.getUserMessages();
   },
   getUserMessages() {
     // 假设有一个获取商品预警信息的后台接口，返回一个包含预警信息的数据
     // 你需要根据你的实际情况调用后台接口
     // 这里用一个假数据代替
     wx.request({
-      url: 'http://172.29.15.95:3003/getUserMessages',
+      url: 'http://192.168.137.211:3003/getUserMessages',
       method: 'GET',
       success: (res) => {
         const { data } = res;
@@ -52,7 +52,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    
   },
 
   /**
@@ -146,10 +146,47 @@ Page({
   //表单提交函数 在这里发送请求，提交表单的方法可以参考input
   formSubmit(e){
     console.log('添加用户');
-    wx.showToast({
-      title: '添加成功',
-    });
+    const that = this;
+    const json = e.detail.value;
+    console.log("添加用户submit的JSON对象字符串->" + JSON.stringify(json));
+    wx.request({
+      method: 'POST',
+      // 调试的时候改为自己的ip
+      url: 'http://192.168.137.211:3003/addUser',
+      header: {
+        'Content-Type': 'application/json',
+      },
+      data: {
+        json: json,
+      },
+      success: function (res) {
+        console.log("success->" + res.data.success); 
+        if (res.data.success) {            
+          console.log("添加成功");
+          // 刷新页面
+          that.getUserMessages();
+          wx.showToast({
+            title: '添加成功',
+            icon: 'success'
+          });
+        } else {
+          // 入库失败
+          wx.showToast({
+            title: '添加失败',
+            icon: 'error'
+          });
+        }
+      },
+      // fail: 向后端服务器请求失败，注意是请求失败，不代表数据有误
+      fail: function() {
+        wx.showToast({
+          title: '请求失败',
+          icon: 'none'
+        });
+      }
+    })
   },
+
   gotoDetail:function(e){
     var eno=e.currentTarget.dataset.eno;
     console.log(eno);

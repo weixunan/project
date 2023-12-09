@@ -147,8 +147,10 @@
   border-radius: 42.31rpx;
 }
 .image_3 {
-  width: 98.08rpx;
-  height: 96.15rpx;
+  /*width: 98.08rpx;
+  height: 96.15rpx;*/
+  width: 150rpx;
+  height: 150rpx;
 }
 .text_11 {
   color: #7e7e7e;

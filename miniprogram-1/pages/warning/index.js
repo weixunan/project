@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    warningMessages: [], // 存放预警消息
+    warningMessagesLess: [], // 存放库存过少的预警消息
+    warningMessagesMore: [], // 存放库存过多的预警消息
   },
 
   /**
@@ -18,14 +19,48 @@ Page({
     // 假设有一个获取商品预警信息的后台接口，返回一个包含预警信息的数据
     // 你需要根据你的实际情况调用后台接口
     // 这里用一个假数据代替
+    // 库存过少
     wx.request({
-      url: 'http://172.29.15.95:3003/getWarningMessages',
-      method: 'GET',
+      url: 'http://192.168.137.211:3003/getWarningMessages',
+      method: 'POST',
+      data:{
+        request: "less",
+      },
+      header: {
+        'Content-Type': 'application/json',
+      },
       success: (res) => {
         const { data } = res;
         // 将获取到的预警信息更新到页面数据中
         this.setData({
-          warningMessages: data,
+          warningMessagesLess: data,
+        });
+      },
+      fail: (error) => {
+        console.error('Failed to fetch warning messages1:', error);
+        // 处理请求失败的情况，比如弹窗提示用户网络错误
+        wx.showToast({
+          title: '网络错误，请重试',
+          icon: 'none',
+          duration: 2000
+        });
+      },
+    });
+     // 库存过多
+     wx.request({
+      url: 'http://192.168.137.211:3003/getWarningMessages',
+      method: 'POST',
+      data:{
+        request: "more",
+      },
+      header: {
+        'Content-Type': 'application/json',
+      },
+      success: (res) => {
+        const { data } = res;
+        // 将获取到的预警信息更新到页面数据中
+        this.setData({
+          warningMessagesMore: data,
         });
       },
       fail: (error) => {

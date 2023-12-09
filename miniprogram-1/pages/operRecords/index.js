@@ -24,7 +24,7 @@ Page({
     console.log(this.data.beginDate);
     console.log(this.data.endDate);
     wx.request({
-      url: 'http://172.29.15.95:3003/getRecords',
+      url: 'http://192.168.137.211:3003/getRecords',
       method: 'GET',
       data:{
           vbeginDate:this.data.beginDate,

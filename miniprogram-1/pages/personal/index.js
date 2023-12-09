@@ -41,7 +41,7 @@ Page({
     wx.request({
       method: 'POST',
       // 调试的时候改为自己的ip
-      url: 'http://172.29.15.95:3003/personal',
+      url: 'http://192.168.137.211:3003/personal',
       header: {
         'Content-Type': 'application/json',
       },
@@ -76,7 +76,7 @@ Page({
     wx.request({
       method: 'POST',
       // 调试的时候改为自己的ip
-      url: 'http://172.29.15.95:3003/personal',
+      url: 'http://192.168.137.211:3003/personal',
       header: {
         'Content-Type': 'application/json',
       },

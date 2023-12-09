@@ -9,6 +9,37 @@ Page({
     gpicture: '../assets/plus.png',  // 图片路径
   },
 
+  // 添加图片的按钮事件
+  addImage: function() {
+    const that = this;
+    wx.chooseMedia({
+      count: 1,
+      mediaType: ['image'],
+      sourceType: ['album', 'camera'],
+      success: function(res) {
+        // 返回本地文件路径列表  
+        var imagePath = res.tempFiles[0].tempFilePath;  
+        that.uploadImage(imagePath); // 上传图片  
+      }
+    })
+  },
+  // 上传图片
+  uploadImage: function(path) {
+    const that = this;
+    console.log("图片path->" + path);
+    that.setData({
+      gpicture: path,
+    })
+    /*wx.uploadFile({
+      filePath: 'path',
+      // 文件对应的 key
+      name: 'file',
+      // 后端接受图片文件上传的接口地址，改为自己的IP地址
+      url: 'http://192.168.137.211:3003/uploadImage',  
+    })*/
+  },
+
+
   // form表单的submit事件
   formSubmit(e) {
     const json = e.detail.value;
@@ -17,7 +48,7 @@ Page({
     wx.request({
       method: 'POST',
       // 调试的时候改为自己的ip
-      url: 'http://172.29.15.95:3003/input',
+      url: 'http://192.168.137.211:3003/input',
       header: {
         'Content-Type': 'application/json',
       },

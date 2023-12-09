@@ -21,6 +21,7 @@
           src="../assets/sort.png"
         />
       </view>
+      <!--
       <view class="flex-col section_3 mt-9" wx:for="{{warningMessages}}" wx:key="wno">
         <view class="flex-row justify-between items-center self-stretch group_2">
           <text class="font text_2">{{item.msg}}</text>
@@ -39,7 +40,49 @@
         </view>
         <text class="self-start font_3 text_6 mt-21">当前库存：{{item.curnum}}</text>
         <text class="self-start font_2 text_7 mt-21">2023/11/11 23:00</text>
+      </view>-->
+      <!--库存过少-->
+      <view class="flex-col section_3 mt-9" wx:for="{{warningMessagesLess}}" wx:key="gno">
+        <view class="flex-row justify-between items-center self-stretch group_2">
+          <text class="font text_2">库存过少</text>
+          <text class="font_2 text_3">id: {{item.gno}}</text>
+        </view>
+        <text class="self-start font_3 text_4 mt-21">货物名称：{{item.gname}}</text>
+        <view class="flex-row justify-between items-end self-stretch group_3 mt-21">
+          <view class="flex-col items-start group_4">
+            <text class="font_3 text_5">货物编号：{{item.gno}}</text>
+            <text class="font_3 mt-21">最小库存：{{item.minnum}}</text>
+          </view>
+          <image
+            class="image_4"
+            src="../assets/warning.png"
+          />
+        </view>
+        <text class="self-start font_3 text_6 mt-21">当前库存：{{item.gsnum}}</text>
+        <text class="self-start font_2 text_7 mt-21">2023/11/11 23:00</text>
       </view>
+
+      <!--库存过多-->
+      <view class="flex-col section_3 mt-9" wx:for="{{warningMessagesMore}}" wx:key="gno">
+        <view class="flex-row justify-between items-center self-stretch group_2">
+          <text class="font text_2">库存过多</text>
+          <text class="font_2 text_3">id: {{item.gno}}</text>
+        </view>
+        <text class="self-start font_3 text_4 mt-21">货物名称：{{item.gname}}</text>
+        <view class="flex-row justify-between items-end self-stretch group_3 mt-21">
+          <view class="flex-col items-start group_4">
+            <text class="font_3 text_5">货物编号：{{item.gno}}</text>
+            <text class="font_3 mt-21">最大库存：{{item.maxnum}}</text>
+          </view>
+          <image
+            class="image_4"
+            src="../assets/warning.png"
+          />
+        </view>
+        <text class="self-start font_3 text_6 mt-21">当前库存：{{item.gsnum}}</text>
+        <text class="self-start font_2 text_7 mt-21">2023/11/11 23:00</text>
+      </view>
+
     </view>
     <text class="mt-20 self-center font_2 text_8">没有更多了</text>
   </view>

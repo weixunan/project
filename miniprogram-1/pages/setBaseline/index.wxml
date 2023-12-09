@@ -23,7 +23,7 @@
     <view class="flex-row section_3 mt-13" wx:for="{{InventoryMessages}}" wx:key="gno">
       <image
         class="shrink-0 self-center image_4"
-        src="../assets/nopicture.png"
+        src="{{item.gpicture}}"
       />
       <view class="flex-col flex-1 self-start group_2">
         <view class="flex-row items-center">
@@ -39,9 +39,39 @@
           <text class="ml-30 font text_6">{{item.gsnum}}（{{item.gunit}}）</text>
         </view>
       </view>
-      <view class="flex-col justify-start shrink-0 self-center text-wrapper">
+      <view class="flex-col justify-start shrink-0 self-center text-wrapper" bind:tap="powerDrawer" data-statu="open">
         <text class="font text_4">设置基准</text>
       </view>
     </view>
   </view>
+</view>
+
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view> 
+<!--使用animation属性指定需要执行的动画-->  
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">  
+  
+  <!--drawer content-->  
+  <view class="drawer_title">设置基准</view>  
+  <form catchsubmit="formSubmit">
+  <view class="drawer_content">  
+    <view class="top grid">  
+      <label class="title col-0">货物编号</label>  
+      <input class="input_base input_h30 col-1" name="gno" ></input>  
+    </view>  
+    <view class="top grid">  
+      <label class="title col-0">最大数量</label>  
+      <input class="input_base input_h30 col-1" name="maxnum" ></input>  
+    </view>  
+    <view class="top grid">  
+      <label class="title col-0">最小数量</label>  
+      <input class="input_base input_h30 col-1" name="minnum" ></input>  
+    </view>  
+    <view class="top grid">  
+      <label class="title col-0">推荐数量</label>  
+      <input class="input_base input_h30 col-1" name="recnum" ></input>  
+    </view>  
+  </view>  
+  <view class="btnview" bindtap="powerDrawer" data-statu="close"><button class="btn_ok" style="width: 100%;">取消</button></view>
+  <view class="btnview" bindtap="powerDrawer" data-statu="close"><button class="btn_ok" form-type="submit" style="width: 100%;">确定</button></view> 
+</form>
 </view>

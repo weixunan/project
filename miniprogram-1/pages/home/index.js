@@ -12,11 +12,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.getWarningNum();
+  },
+  
+  // 获取库存预警数量
+  getWarningNum() {
     //const requeststr = "getWarningNumber";
     const thisfunc = this;
     wx.request({
       method: 'POST',
-      url: 'http://172.29.15.95:3003/getWarningNumber',
+      url: 'http://192.168.137.211:3003/getWarningNumber',
       header: {
         'Content-Type': 'application/json',
       },
@@ -25,7 +30,7 @@ Page({
       },
       success: function (res) {
         console.log(res);
-        console.log(res.data.warn_nums[0].warn_nums);
+        // console.log(res.data.warn_nums[0].warn_nums);
         //const result = res.body.json;
         //console.log(result);
         thisfunc.setData({

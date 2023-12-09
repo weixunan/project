@@ -60,11 +60,9 @@
 				<input type="text" class="dataInput" name="eno" />
       </view>
       <view class="flex-col items-center section_4">
-        <image
-          class="image_3"
-          src="{{gpicture}}"
-        />
-        <text class="font text_11 mt-13">添加货物图片</text>
+        <image class="image_3" src="{{gpicture}}"/>
+        <!--<text class="font text_11 mt-13">添加货物图片</text>-->
+        <button class="font text_11 mt-13" bindtap="addImage">添加图片</button>
       </view>
     </view>
     <view class="flex-col justify-start items-center button text-wrapper mt-17">
