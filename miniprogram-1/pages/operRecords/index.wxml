@@ -21,8 +21,8 @@
       />
     </view>
     <view class="flex-row self-stretch">
-      <view class="flex-col justify-start items-center text-wrapper" bind:tap="changePage" data-text="1"><text class="font" style="color: {{inFontColor}}">入库记录</text></view>
-      <view class="flex-col justify-start items-center text-wrapper " bind:tap="changePage"  data-text="0" ><text class="font" style="color: {{outFontColor}}">出库记录</text></view>
+      <view class="flex-col justify-start items-center text-wrapper" bind:tap="changePage" data-text="1"><text class="font" style="color: {{inFontColor}}" bind:tap="inputRecords">入库记录</text></view>
+      <view class="flex-col justify-start items-center text-wrapper " bind:tap="changePage"  data-text="0" ><text class="font" style="color: {{outFontColor}}" bind:tap="outputRecords">出库记录</text></view>
       <view class="flex-col justify-start items-center text-wrapper" bindtap="changeRecords"><text class="font" style="color: {{chFontColor}}">移库记录</text></view>
     </view>
     <view class="flex-row justify-evenly items-center self-stretch group_2">
@@ -47,7 +47,7 @@
         </picker>
       </view>
     </view>
-    <view class="flex-col self-stretch section_3" wx:for="{{Records}}" wx:if="ono">
+    <view class="flex-col self-stretch section_3" wx:for="{{Records}}" wx:if="ono" wx:key="1">
       <view class="flex-row justify-between items-center">
         <view class="flex-col items-start">
           <text class="font_3 text_3">操作编号：{{item.ono}}</text>

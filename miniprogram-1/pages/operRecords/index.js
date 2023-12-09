@@ -24,7 +24,7 @@ Page({
     console.log(this.data.beginDate);
     console.log(this.data.endDate);
     wx.request({
-      url: 'http://192.168.137.211:3003/getRecords',
+      url: 'http://172.29.15.95:3003/getRecords',
       method: 'GET',
       data:{
           vbeginDate:this.data.beginDate,
@@ -117,19 +117,21 @@ Page({
   },
   //出库、入库、移库三个选项的事件
   inputRecords:function(e){
+    console.log("change color");
     this.resetFontColors();
     this.setData({
       inFontColor:'#4095e5'
     });
   },
   outputRecords:function(e){
+    console.log("change color");
     this.resetFontColors();
     this.setData({
       outFontColor:'#4095e5'
     })
   },
   changePage:function(e){
-    this.resetFontColors();
+    // this.resetFontColors();
     const Page=parseInt(e.currentTarget.dataset.text);
     this.setData({
       currentPage:Page,
