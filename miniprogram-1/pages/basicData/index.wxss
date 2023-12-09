@@ -179,3 +179,7 @@
 .text_19 {
   margin-right: 23.08rpx;
 }
+.picker{
+  width: 90px;
+  text-align: center;
+}
