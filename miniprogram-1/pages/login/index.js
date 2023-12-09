@@ -148,7 +148,7 @@ Page({
       // 调试时可在自己电脑的server文件夹启动nodejs本地服务器，将请求发到自己电脑的IP地址，可在本地的终端查看console.log的输出信息，便于调试
       // 例如，我的电脑IP地址是172.26.95.40，server文件夹配置了nodejs本地服务器，运行了node server.js后，就可以将请求发到172.26.95.40:3003/login
       // /login是我们在后端自定义的接口/login，类似的在后端还可以自定义其他接口，如/search等
-      url: 'http://192.168.137.211:3003/login',
+      url: 'http://172.29.15.95:3003/login',
       // POST请求需要header，GET请求则可有可无
       header: {
         'Content-Type': 'application/json',

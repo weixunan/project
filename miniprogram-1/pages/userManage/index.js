@@ -21,7 +21,7 @@ Page({
     // 你需要根据你的实际情况调用后台接口
     // 这里用一个假数据代替
     wx.request({
-      url: 'http://192.168.137.211:3003/getUserMessages',
+      url: 'http://172.29.15.95:3003/getUserMessages',
       method: 'GET',
       success: (res) => {
         const { data } = res;
@@ -152,7 +152,7 @@ Page({
     wx.request({
       method: 'POST',
       // 调试的时候改为自己的ip
-      url: 'http://192.168.137.211:3003/addUser',
+      url: 'http://172.29.15.95:3003/addUser',
       header: {
         'Content-Type': 'application/json',
       },

@@ -5,7 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    eno:''
+    ename: '',
+    sex: '男',
+    eno: '',
+    elevel: '',
+    password: '',
+    status: '',
+    create_date: '',
   },
 
   /**
@@ -13,9 +19,62 @@ Page({
    */
   onLoad(options) {
     this.setData({
-      eno:options.eno
+      eno: options.eno
     });
-    console.log(this.data.eno);
+    //console.log(this.data.eno);
+    const thisfun = this;
+    wx.request({
+      method: 'POST',
+      url: 'http://172.29.15.95:3003/getUserDetails',
+      header: {
+        'Content-Type': 'application/json',
+      },
+      data: {
+        eno: thisfun.data.eno,
+      },
+      success: function (res) {
+        console.log(res);
+
+        var str_elevel = '';
+        var elevel = res.data.user_detailInfo[0]['elevel'];
+        switch (elevel) {
+          case 1:
+            str_elevel = '普通员工';
+            break;
+          case 2:
+            str_elevel = '普通管理员';
+            break;
+          case 3:
+            str_elevel = '高级管理员';
+            break;
+        }
+
+        var str_status = '';
+        var status = res.data.user_detailInfo[0]['status'];
+        switch (status) {
+          case 0:
+            str_status = '正常';
+            break;
+          default:
+            str_status = '异常';
+            break;
+        }
+
+        var originalDate = new Date(res.data.user_detailInfo[0]['create_date']);
+        var formattedDate = originalDate.toISOString().replace(/T/, ' ').replace(/\..+/, '');
+
+        thisfun.setData({
+          ename: res.data.user_detailInfo[0].ename,
+          elevel: str_elevel,
+          password: res.data.user_detailInfo[0].password,
+          status: str_status,
+          create_date: formattedDate,
+        })
+      },
+      fail: function () {
+        console.log("failed");
+      }
+    })
   },
 
   /**

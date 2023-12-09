@@ -39,7 +39,7 @@
           <text class="ml-30 font text_6">{{item.gsnum}}（{{item.gunit}}）</text>
         </view>
       </view>
-      <view class="flex-col justify-start shrink-0 self-center text-wrapper" bind:tap="powerDrawer" data-statu="open">
+      <view class="flex-col justify-start shrink-0 self-center text-wrapper" bind:tap="powerDrawer" data-statu="open" data-gno="{{item.gno}}">
         <text class="font text_4">设置基准</text>
       </view>
     </view>
@@ -56,7 +56,7 @@
   <view class="drawer_content">  
     <view class="top grid">  
       <label class="title col-0">货物编号</label>  
-      <input class="input_base input_h30 col-1" name="gno" ></input>  
+      <input class="input_base input_h30 col-1" name="gno" value="{{curGno}}"></input>  
     </view>  
     <view class="top grid">  
       <label class="title col-0">最大数量</label>  

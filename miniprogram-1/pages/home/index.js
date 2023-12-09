@@ -21,7 +21,7 @@ Page({
     const thisfunc = this;
     wx.request({
       method: 'POST',
-      url: 'http://192.168.137.211:3003/getWarningNumber',
+      url: 'http://172.29.15.95:3003/getWarningNumber',
       header: {
         'Content-Type': 'application/json',
       },

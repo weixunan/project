@@ -25,7 +25,7 @@ Page({
     const thispage = this;
     wx.request({
       method: 'POST',
-      url: 'http://192.168.137.211:3003/basicData',
+      url: 'http://172.29.15.95:3003/basicData',
       data:{
         request: "getBasicMessageByTime",
         beginDate: thispage.data.beginDate,
@@ -55,7 +55,7 @@ Page({
       //使用POST方法发送请求给server.js
       method: 'POST',
       // 调试的时候改为自己的ip
-      url: 'http://192.168.137.211:3003/basicData',
+      url: 'http://172.29.15.95:3003/basicData',
       //此处暂时还不需要传输数据给server.js
       data: {
         request: "getBasicMessage",
@@ -142,7 +142,7 @@ Page({
     const thispage = this;
     wx.request({
       method: 'POST',
-      url: 'http://192.168.137.211:3003/basicData',
+      url: 'http://172.29.15.95:3003/basicData',
       data:{
         request: "getBasicMessageByTime",
         beginDate: thispage.data.beginDate,
@@ -177,7 +177,7 @@ Page({
     const thispage = this;
     wx.request({
       method: 'POST',
-      url: 'http://192.168.137.211:3003/basicData',
+      url: 'http://172.29.15.95:3003/basicData',
       data:{
         request: "getBasicMessageByTime",
         beginDate: thispage.data.beginDate,

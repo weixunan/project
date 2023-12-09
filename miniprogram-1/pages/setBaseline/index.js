@@ -7,6 +7,7 @@ Page({
   data: {
       InventoryMessages:[],
       showModalStatus:false,
+      curGno:''
   },
 
   // 增加返回上一页面的回调函数，返回home页面时能更新加载预警信息数量
@@ -23,7 +24,7 @@ Page({
     wx.request({
       method: 'POST',
       // 调试的时候改为自己的ip
-      url: 'http://192.168.137.211:3003/setBaseline',
+      url: 'http://172.29.15.95:3003/setBaseline',
       header: {
         'Content-Type': 'application/json',
       },
@@ -65,7 +66,7 @@ Page({
   },
   getInventoryMessages(){
     wx.request({
-      url: 'http://192.168.137.211:3003/getInventoryMessages',
+      url: 'http://172.29.15.95:3003/getInventoryMessages',
       method: 'GET',
       success: (res) => {
         const { data } = res;
@@ -88,6 +89,10 @@ Page({
 
   // 触发或者关闭弹窗
   powerDrawer:function(e){
+    var gno=e.currentTarget.dataset.gno;
+    this.setData({
+      curGno:gno,
+    })
     var currentStatus=e.currentTarget.dataset.statu;
     this.util(currentStatus);
   },

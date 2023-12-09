@@ -888,7 +888,34 @@ app.post('/setBaseline', (req, res)=>{
     }
   });
 });
+//获取用户详情
+app.post('/getUserDetails', (req, res) => {
+  var connection = mysql.createConnection({
+    host: IPAddress,
+    port: 3306,
+    user: dbUsername,
+    password: dbPassword,
+    database: dbName
+  });
+  connection.connect();
 
+  eno = req.body.eno;
+  sql = "select * from user_info where eno = ?";
+  connection.query(sql, eno, (error, results) => {
+    if (!error) {
+      console.log("success->成功获取");
+      return res.json({
+        success: true,
+        user_detailInfo: results,
+      });
+    } else {
+      console.log("error->获取失败" + error);
+      return res.json({
+        success: false,
+      });
+    }
+  })
+})
 
 
 // 监听端口，会输出监听到的信息，console.log 在这输出
