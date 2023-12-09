@@ -9,7 +9,7 @@
             src="../assets/search.png"
           /> -->
           <view class="search-container">
-          <input type="text"/>
+          <input type="text" bindinput="getFilteredWarningMessages" placeholder="请输入货物名称或货物编号"/>
           <image
           class="image_2"
           src="../assets/search.png"

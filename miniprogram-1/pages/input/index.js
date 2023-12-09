@@ -48,7 +48,7 @@ Page({
     wx.request({
       method: 'POST',
       // 调试的时候改为自己的ip
-      url: 'http://192.168.137.211:3003/input',
+      url: 'http://172.29.15.187:3003/input',
       header: {
         'Content-Type': 'application/json',
       },
@@ -158,5 +158,21 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+  },
+  copyText:function(e){
+    console.log(e.currentTarget.dataset.name);
+    wx.showToast({
+      title: '复制成功',
+    });
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.name,
+      success:function(res){
+        wx.getClipboardData({
+          success:function(res){
+            console.log(res.data);
+          }
+        })
+      }
+    })
+  },
 })

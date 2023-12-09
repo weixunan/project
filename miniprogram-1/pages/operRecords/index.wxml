@@ -1,10 +1,11 @@
+<wxs module="filter" src="/utils/filter.wxs"></wxs>
 <navigation-bar title="操作记录"></navigation-bar>
 <view class="flex-col page">
   <view class="flex-col flex-1 group">
     <view class="flex-row items-center self-stretch section_2">
       <view class="flex-col justify-start items-end flex-1 image-wrapper">
         <view class="search-container">
-          <input type="text"/>
+          <input type="text" bindinput="getRecordsByNumOrName" placeholder="请输入操作编号"/>
           <image
           class="image_2"
           src="../assets/search.png"
@@ -70,7 +71,7 @@
         </view>
       </view>
       <view class="flex-col group_5">
-        <text class="self-start font_3 text_10">{{item.date}}</text>
+        <text class="self-start font_3 text_10">{{filter.format(item.date,'YY-MM-DD')}}</text>
         <text class="self-end font_2 text_9">查看详情</text>
       </view>
     </view>

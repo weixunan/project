@@ -11,6 +11,7 @@ Page({
     outFontColor:'#000000',
     chFontColor:'#000000',
     Records:[],
+    originalRecords:[],
     currentPage:1,
   },
 
@@ -18,13 +19,41 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.inputRecords();
+    if(options.mode==='in')
+    {
+      this.inputRecords();
+    }
+    else if(options.mode==='out')
+    {
+      this.outputRecords();
+      this.setData({
+        currentPage:0
+      })
+    }
     this.getRecords();
+  },
+  getRecordsByNumOrName: function(e){
+    const input = e.detail.value; // 获取用户输入的编号
+    const records = this.data.originalRecords; // 使用原始数据进行过滤
+    const filteredRecords = records.filter(item => (
+      item.ono.startsWith(input)
+    )); // 根据编号前缀过滤数据
+    if (input === '') {
+      this.setData({
+        Records: this.data.originalRecords, // 如果输入为空，则显示原始数据
+      });
+    } else {
+      this.setData({
+        Records: filteredRecords, // 更新页面数据显示过滤后的结果
+      });
+    }
   },
   getRecords(){
     console.log(this.data.beginDate);
     console.log(this.data.endDate);
     wx.request({
-      url: 'http://172.29.15.95:3003/getRecords',
+      url: 'http://172.29.15.187:3003/getRecords',
       method: 'GET',
       data:{
           vbeginDate:this.data.beginDate,
@@ -36,6 +65,7 @@ Page({
         // 将获取到的预警信息更新到页面数据中
         this.setData({
           Records: data,
+          originalRecords: data,
         });
       },
       fail: (error) => {
@@ -133,6 +163,7 @@ Page({
   changePage:function(e){
     // this.resetFontColors();
     const Page=parseInt(e.currentTarget.dataset.text);
+    // console.log(Page);
     this.setData({
       currentPage:Page,
     })

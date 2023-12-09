@@ -6,7 +6,9 @@ Page({
    */
   data: {
     warningMessagesLess: [], // 存放库存过少的预警消息
+    origin_warningMessagesLess: [],
     warningMessagesMore: [], // 存放库存过多的预警消息
+    origin_warningMessagesMore: [],
   },
 
   /**
@@ -15,13 +17,41 @@ Page({
   onLoad(options) {
     this.getWarningMessages();
   },
+
+  getFilteredWarningMessages: function(e){
+    const input = e.detail.value; // 获取用户输入的编号
+
+    const less = this.data.origin_warningMessagesLess; // 使用原始数据进行过滤
+    const more = this.data.origin_warningMessagesMore; // 使用原始数据进行过滤
+    
+
+    const filteredLess = less.filter(item => (
+      item.gno.startsWith(input) || item.gname.startsWith(input)
+    )); // 根据编号前缀过滤数据
+    const filteredMore = more.filter(item => (
+      item.gno.startsWith(input) || item.gname.startsWith(input)
+    )); // 根据编号前缀过滤数据
+
+    if (input === '') {
+      this.setData({
+        warningMessagesLess: this.data.origin_warningMessagesLess, // 如果输入为空，则显示原始数据
+        warningMessagesMore: this.data.origin_warningMessagesMore,
+      });
+    } else {
+      this.setData({
+        warningMessagesLess: filteredLess, // 更新页面数据显示过滤后的结果
+        warningMessagesMore: filteredMore,
+      });
+    }
+  },
+  
   getWarningMessages() {
     // 假设有一个获取商品预警信息的后台接口，返回一个包含预警信息的数据
     // 你需要根据你的实际情况调用后台接口
     // 这里用一个假数据代替
     // 库存过少
     wx.request({
-      url: 'http://192.168.137.211:3003/getWarningMessages',
+      url: 'http://172.29.15.187:3003/getWarningMessages',
       method: 'POST',
       data:{
         request: "less",
@@ -34,6 +64,7 @@ Page({
         // 将获取到的预警信息更新到页面数据中
         this.setData({
           warningMessagesLess: data,
+          origin_warningMessagesLess: data,
         });
       },
       fail: (error) => {
@@ -48,7 +79,7 @@ Page({
     });
      // 库存过多
      wx.request({
-      url: 'http://192.168.137.211:3003/getWarningMessages',
+      url: 'http://172.29.15.187:3003/getWarningMessages',
       method: 'POST',
       data:{
         request: "more",
@@ -61,6 +92,7 @@ Page({
         // 将获取到的预警信息更新到页面数据中
         this.setData({
           warningMessagesMore: data,
+          origin_warningMessagesMore: data,
         });
       },
       fail: (error) => {

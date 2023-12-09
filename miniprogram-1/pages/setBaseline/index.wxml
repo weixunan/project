@@ -4,7 +4,7 @@
     <view class="flex-row items-center section_2">
       <view class="flex-col justify-start items-end flex-1 image-wrapper">
         <view class="search-container">
-          <input type="text"/>
+          <input type="text" bindinput="searchByGnoOrGname" placeholder="请输入编号或货物名称"/>
           <image
           class="image_2"
           src="../assets/search.png"
@@ -31,6 +31,8 @@
           <image
             class="ml-10 image_5"
             src="../assets/copy.png"
+            bind:tap="copyText"
+            data-name="{{item.gno}}"
           />
           <text class="ml-10 text_3">{{item.gno}}</text>
         </view>

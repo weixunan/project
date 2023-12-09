@@ -41,7 +41,7 @@ Page({
     wx.request({
       method: 'POST',
       // 调试的时候改为自己的ip
-      url: 'http://192.168.137.211:3003/personal',
+      url: 'http://172.29.15.187:3003/personal',
       header: {
         'Content-Type': 'application/json',
       },
@@ -76,7 +76,7 @@ Page({
     wx.request({
       method: 'POST',
       // 调试的时候改为自己的ip
-      url: 'http://192.168.137.211:3003/personal',
+      url: 'http://172.29.15.187:3003/personal',
       header: {
         'Content-Type': 'application/json',
       },
@@ -152,6 +152,19 @@ Page({
       }
     }
   },
+    // 点击按钮显示弹窗
+  showQRCode() {
+    this.setData({
+      showModal: true,
+    });
+  },
+  
+  // 点击关闭按钮隐藏弹窗
+  hideQRCode() {
+    this.setData({
+      showModal: false,
+    });
+  },  
   goTo:function(e){
     var goUrl='/pages/'+e.currentTarget.dataset.name+'/index?mode='+e.currentTarget.dataset.mode;
     wx.navigateTo({

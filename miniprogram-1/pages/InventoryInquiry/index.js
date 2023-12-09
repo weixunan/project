@@ -114,7 +114,7 @@ Page({
   },
   getInventoryType(){
     wx.request({
-      url: 'http://172.29.15.95:3003/getInventoryType',
+      url: 'http://172.29.15.187:3003/getInventoryType',
       method: 'GET',
       success: (res) => {
         const { data } = res;
@@ -136,7 +136,7 @@ Page({
   },
   getInventoryMessages(){
     wx.request({
-      url: 'http://172.29.15.95:3003/getInventoryMessages',
+      url: 'http://172.29.15.187:3003/getInventoryMessages',
       method: 'GET',
       success: (res) => {
         const { data } = res;
@@ -169,7 +169,7 @@ Page({
   getInventoryMessagesByType(currentType){
     console.log(currentType);
     wx.request({
-      url: "http://172.29.15.95:3003/getInventoryMessagesByType?type='食品'",
+      url: "http://172.29.15.187:3003/getInventoryMessagesByType?type='食品'",
       method: 'GET',
       data:{
         type:currentType,

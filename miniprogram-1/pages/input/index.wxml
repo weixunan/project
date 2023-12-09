@@ -7,7 +7,9 @@
         <text class="text_2">订单号: {{ono}}</text>
         <image
           class="image_2 ml-9"
+          bind:tap="copyText"
           src="../assets/copy.png"
+          data-name="{{ono}}"
         />
       </view>
       <view class="flex-row items-center group_3">
@@ -62,7 +64,7 @@
       <view class="flex-col items-center section_4" bindtap="addImage">
         <image class="image_3" src="{{gpicture}}"/>
         <!--<text class="font text_11 mt-13">添加货物图片</text>-->
-        <button class="font text_11 mt-13" >添加货物图片</button>
+        <button class="font text_11 mt-13">添加货物图片</button>
       </view>
     </view>
     <view class="flex-col justify-start items-center button text-wrapper mt-17">

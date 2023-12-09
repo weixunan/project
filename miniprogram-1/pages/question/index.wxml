@@ -1,0 +1,5 @@
+<navigation-bar title="常见问题" ></navigation-bar>
+<view wx:for="{{data}}" wx:key="id">
+  <view class="question" data-id="{{item.id}}" bind:tap="toggleAnswer">{{item.question}}</view>
+  <view class="answer" wx:if="{{item.showAnswer}}">{{item.answer}}</view>
+</view>

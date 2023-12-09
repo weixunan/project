@@ -6,6 +6,7 @@ Page({
    */
   data: {
       InventoryMessages:[],
+      originalInventoryMessages: [],
       showModalStatus:false,
       curGno:''
   },
@@ -14,7 +15,38 @@ Page({
   /*wx.navigateBack({
 
   }),*/
-
+  searchByGnoOrGname: function(e) {
+    const input = e.detail.value; // 获取用户输入的编号
+    const inventoryMessages = this.data.originalInventoryMessages; // 使用原始数据进行过滤
+    const filteredMessages = inventoryMessages.filter(item => (
+      item.gno.startsWith(input) || item.gname.startsWith(input)
+    )); // 根据编号前缀过滤数据
+    if (input === '') {
+      this.setData({
+        InventoryMessages: this.data.originalInventoryMessages, // 如果输入为空，则显示原始数据
+      });
+    } else {
+      this.setData({
+        InventoryMessages: filteredMessages, // 更新页面数据显示过滤后的结果
+      });
+    }
+  },
+  copyText:function(e){
+    console.log(e.currentTarget.dataset.name);
+    wx.showToast({
+      title: '复制成功',
+    });
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.name,
+      success:function(res){
+        wx.getClipboardData({
+          success:function(res){
+            console.log(res.data);
+          }
+        })
+      }
+    })
+  },
   //表单提交函数 在这里发送请求，设置货物的基准信息
   formSubmit(e){
     console.log('设置基准信息');
@@ -24,7 +56,7 @@ Page({
     wx.request({
       method: 'POST',
       // 调试的时候改为自己的ip
-      url: 'http://172.29.15.95:3003/setBaseline',
+      url: 'http://172.29.15.187:3003/setBaseline',
       header: {
         'Content-Type': 'application/json',
       },
@@ -66,13 +98,14 @@ Page({
   },
   getInventoryMessages(){
     wx.request({
-      url: 'http://172.29.15.95:3003/getInventoryMessages',
+      url: 'http://172.29.15.187:3003/getInventoryMessages',
       method: 'GET',
       success: (res) => {
         const { data } = res;
         // 将获取到的预警信息更新到页面数据中
         this.setData({
           InventoryMessages: data,
+          originalInventoryMessages: data,
         });
       },
       fail: (error) => {

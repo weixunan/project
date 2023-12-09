@@ -14,7 +14,9 @@
     "pages/userDetails/index",
     "pages/warning/index",
     "pages/report/index",
-    "pages/setBaseline/index"
+    "pages/setBaseline/index",
+    "pages/about/index",
+    "pages/question/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

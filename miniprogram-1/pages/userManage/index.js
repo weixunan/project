@@ -8,6 +8,7 @@ Page({
     items: [null, null, null],
     userMessages:[],
     showModalStatus:false,
+    originalUserMessages:[],
   },
 
   /**
@@ -16,18 +17,35 @@ Page({
   onLoad(options) {
     this.getUserMessages();
   },
+  getUsersByNumOrName: function(e) {
+    const input = e.detail.value; // 获取用户输入的编号
+    const userMessages = this.data.originalUserMessages; // 使用原始数据进行过滤
+    const filteredUserMessages = userMessages.filter(item => (
+      item.eno.startsWith(input) || item.ename.startsWith(input)
+    )); // 根据编号前缀过滤数据
+    if (input === '') {
+      this.setData({
+        userMessages: this.data.originalUserMessages, // 如果输入为空，则显示原始数据
+      });
+    } else {
+      this.setData({
+        userMessages: filteredUserMessages, // 更新页面数据显示过滤后的结果
+      });
+    }
+  },
   getUserMessages() {
     // 假设有一个获取商品预警信息的后台接口，返回一个包含预警信息的数据
     // 你需要根据你的实际情况调用后台接口
     // 这里用一个假数据代替
     wx.request({
-      url: 'http://172.29.15.95:3003/getUserMessages',
+      url: 'http://172.29.15.187:3003/getUserMessages',
       method: 'GET',
       success: (res) => {
         const { data } = res;
         // 将获取到的预警信息更新到页面数据中
         this.setData({
           userMessages: data,
+          originalUserMessages: data,
         });
       },
       fail: (error) => {
@@ -152,7 +170,7 @@ Page({
     wx.request({
       method: 'POST',
       // 调试的时候改为自己的ip
-      url: 'http://172.29.15.95:3003/addUser',
+      url: 'http://172.29.15.187:3003/addUser',
       header: {
         'Content-Type': 'application/json',
       },

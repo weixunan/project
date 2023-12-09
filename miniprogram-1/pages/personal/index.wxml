@@ -49,23 +49,29 @@
     <text class="self-start font_2 text_4 text_7">其他</text>
     <view class="flex-row equal-division group_5 mt-9">
       <view class="flex-col group_6 equal-division-item_2">
-        <view class="self-center section_8">
+        <view class="self-center section_8"  bindtap ="goTo" data-name="question">
           <image class="icon" src="../assets/question.png" />
         </view>
         <text class="mt-10 self-center font_2 text_8">常见问题</text>
       </view>
       <view class="flex-col group_6 equal-division-item_2" >
-        <view class="section_9">
+        <view class="section_9"  bindtap="goTo" data-name="about">
           <image class="icon" src="../assets/info.png" />
         </view>
         <text class="mt-10 font_2 text_9">关于我们</text>
       </view>
       <view class="flex-col group_6 equal-division-item_2">
-        <view class="section_10" >
-          <image class="icon" src="../assets/service.png" />
+        <view class="section_10" bind:tap="showQRCode">
+          <!-- <view class="image-container"> -->
+                <image class="icon" src="../assets/service.png" />  
+            <!-- </view> -->
         </view>
         <text class="mt-10 font_2 text_10">联系客服</text>
       </view>
+      <cover-view class="modal" wx:if="{{showModal}}">
+            <cover-image class="modal-bg" src="../assets/QRCode.jpg"></cover-image>
+      <button class="close-button" bindtap="hideQRCode">关闭</button>
+    </cover-view>
       <view class="flex-col group_6 equal-division-item_2" bind:tap="share">
         <view class="section_4">
             <view class="image-container">

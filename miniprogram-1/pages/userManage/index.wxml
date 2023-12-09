@@ -5,7 +5,7 @@
       <view class="flex-row section_2">
         <view class="flex-col justify-start items-start flex-1 image-wrapper">
           <view class="search-container">
-          <input type="text"/>
+          <input type="text" bindinput="getUsersByNumOrName" placeholder="请输入姓名或员工编号"/>
           <image
           class="image_3"
           src="../assets/search.png"

@@ -916,7 +916,33 @@ app.post('/getUserDetails', (req, res) => {
     }
   })
 })
-
+// 修改用户信息，根据提交的修改字段和新值，update数据表user_info
+app.post('/updateUserInfo', (req, res)=>{
+  const request = req.body.request;
+  const newValue = req.body.newValue;
+  const eno = req.body.eno;
+  // 连接数据库
+  var connection=mysql.createConnection({
+    host:IPAddress,
+    port: 3306,	
+    user:dbUsername,
+    password:dbPassword,
+    database:dbName
+  });
+  connection.connect();
+  // 更新user_info表中的信息
+  var sql = 'update user_info set ' + request + ' = ? where eno = ?';
+  var values = [newValue, eno];
+  connection.query(sql, values, (error, results) =>{
+    if (error) {
+      console.log("error->更新用户信息时出错");
+      return res.json({success: false,});
+    } else {
+      console.log("error->更新用户信息成功");
+      return res.json({success: true,});
+    }
+  });
+});
 
 // 监听端口，会输出监听到的信息，console.log 在这输出
 app.listen(3003,()=>{
