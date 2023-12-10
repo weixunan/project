@@ -5,30 +5,39 @@ Page({
    * 页面的初始数据
    */
   data: {
-    gno:'123',
+    gno: '123',
     originalInventoryMessages: [], // 保存原始的InventoryMessages数据
-    InventoryMessages:[],
+    InventoryMessages: [],
     /* currentType:'全部种类', */
-    InventoryType:[],
-    TextColor:[],
-    allTextColor:'#000000',
+    InventoryType: [],
+    TextColor: [],
+    allTextColor: '#000000',
     searchnum: 0,
     sorted: [],
     buffer: [],
-    sorticon:true,
+    sorticon: true,
   },
 
-  sortByNum: function(e){
-    this.setData({
-      buffer: this.data.InventoryMessages,
-      sorticon:!this.data.sorticon
-    })
-    this.setData({
-      InventoryMessages: this.data.sorted
-    })
-    this.setData({
-      sorted: this.data.buffer
-    })
+  sortByNum: function (e) {
+    const thisfun = this;
+    var sorted = Array.from(thisfun.data.InventoryMessages);
+    sorted.sort((a, b) => a.gno - b.gno); // 根据gno从大到小排序
+    //console.log(this.data.Records);
+    //console.log(sorted_records);
+    thisfun.setData({
+      sorted: sorted, // 将排序后的结果更新到页面数据中
+      sorticon: !this.data.sorticon
+    });
+    // this.setData({
+    //   buffer: this.data.InventoryMessages,
+    //   sorticon: !this.data.sorticon
+    // })
+    // this.setData({
+    //   InventoryMessages: this.data.sorted
+    // })
+    // this.setData({
+    //   sorted: this.data.buffer
+    // })
   },
 
   // 新增方法，根据输入的编号查询对应项
@@ -50,7 +59,7 @@ Page({
     }
   },
 
-  setSearchNum: function(e){
+  setSearchNum: function (e) {
     this.setData({
       searchnum: e.detail.value,
     })
@@ -112,28 +121,30 @@ Page({
 
   },
   //复制按钮
-  copyText:function(e){
+  copyText: function (e) {
     console.log(e.currentTarget.dataset.name);
     wx.showToast({
       title: '复制成功',
     });
     wx.setClipboardData({
       data: e.currentTarget.dataset.name,
-      success:function(res){
+      success: function (res) {
         wx.getClipboardData({
-          success:function(res){
+          success: function (res) {
             console.log(res.data);
           }
         })
       }
     })
   },
-  getInventoryType(){
+  getInventoryType() {
     wx.request({
       url: 'http://172.29.15.95:3003/getInventoryType',
       method: 'GET',
       success: (res) => {
-        const { data } = res;
+        const {
+          data
+        } = res;
         // 将获取到的预警信息更新到页面数据中
         this.setData({
           InventoryType: data,
@@ -150,20 +161,22 @@ Page({
       },
     });
   },
-  getInventoryMessages(){
+  getInventoryMessages() {
     var thisfun = this;
     wx.request({
       url: 'http://172.29.15.95:3003/getInventoryMessages',
       method: 'GET',
       success: (res) => {
-        const { data } = res;
+        const {
+          data
+        } = res;
         // 将获取到的预警信息更新到页面数据中
         this.setData({
           InventoryMessages: data,
           originalInventoryMessages: data,
           sorted: data,
         });
-        var sorted = Array.from(thisfun.data.sorted); 
+        var sorted = Array.from(thisfun.data.sorted);
         sorted.sort((a, b) => a.gno - b.gno); // 根据gno从大到小排序
         //console.log(this.data.Records);
         //console.log(sorted_records);
@@ -182,29 +195,31 @@ Page({
       },
     });
     // this.data.TextColor[0]='#4095e5'
-    var tempColor=[];
-    for(let i=0;i<this.data.InventoryType.length;i++){
-      tempColor[i]='#00000099';
+    var tempColor = [];
+    for (let i = 0; i < this.data.InventoryType.length; i++) {
+      tempColor[i] = '#00000099';
     }
     this.setData({
-      TextColor:tempColor,
-      allTextColor:'#4095e5'
+      TextColor: tempColor,
+      allTextColor: '#4095e5'
     })
   },
-  getInventoryMessagesByType(currentType){
+  getInventoryMessagesByType(currentType) {
     console.log(currentType);
     wx.request({
       url: "http://172.29.15.95:3003/getInventoryMessagesByType?type='食品'",
       method: 'GET',
-      data:{
-        type:currentType,
+      data: {
+        type: currentType,
       },
       success: (res) => {
-        const { data } = res;
+        const {
+          data
+        } = res;
         // 将获取到的预警信息更新到页面数据中
         this.setData({
           InventoryMessages: data,
-          
+
         });
       },
       fail: (error) => {
@@ -218,18 +233,18 @@ Page({
       },
     });
   },
-  changeData:function(event){
+  changeData: function (event) {
     const buttonText = event.currentTarget.dataset.text;
-    const index=parseInt(event.currentTarget.dataset.index);
-    var tempColor=[];
-    for(let i=0;i<this.data.InventoryType.length;i++){
-      tempColor[i]='#00000099';
+    const index = parseInt(event.currentTarget.dataset.index);
+    var tempColor = [];
+    for (let i = 0; i < this.data.InventoryType.length; i++) {
+      tempColor[i] = '#00000099';
     }
-    tempColor[index]="#4095e5";
+    tempColor[index] = "#4095e5";
     // this.data.TextColor[index]="#4095e5";
     this.setData({
-      TextColor:tempColor,
-      allTextColor:'#00000099'
+      TextColor: tempColor,
+      allTextColor: '#00000099'
     })
     // console.log(this.data.TextColor);
     console.log(buttonText);

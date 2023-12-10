@@ -57,7 +57,7 @@
         </picker>
       </view>
     </view>
-    <view class="flex-col self-stretch section_3" wx:for="{{Records}}" wx:if="ono" wx:key="1">
+    <view class="flex-col self-stretch section_3" wx:for="{{sorticon ? Records : sortedRecords}}" wx:if="ono" wx:key="1">
       <view class="flex-row justify-between items-center">
         <view class="flex-col items-start">
           <text class="font_3 text_3">操作编号：{{item.ono}}</text>

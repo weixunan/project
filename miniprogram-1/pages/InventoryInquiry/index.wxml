@@ -29,7 +29,7 @@
         </view>
       </view>
       <view class="container">
-      <view class="flex-col flex-1 self-start section_4 ml-7" wx:for="{{InventoryMessages}}" wx:key="gno">
+      <view class="flex-col flex-1 self-start section_4 ml-7" wx:for="{{sorticon ? InventoryMessages : sorted}}" wx:key="gno">
         <view class="flex-row items-center self-stretch group_2">
           <image
             class="shrink-0 image_5"
