@@ -40,14 +40,14 @@
               <text class="ml-12 font_2 text_2">{{item.gno}}</text>
             </view>
             <text class="self-start font_3 text_3 mt-17">{{item.gname}}</text>
-            <text class="self-start font_3 text_4 mt-17">单价</text>
+            <text class="self-start font_3 text_4 mt-17">进货单价</text>
           </view>
           <view class="flex-col items-center shrink-0 group_3">
             <image
               class="image_4"
               src="../assets/more.png"
             />
-            <text class="font_2 text_5 mt-47">￥ {{item.gpriceout}}</text>
+            <text class="font_2 text_5 mt-47">￥ {{item.gpricein}}</text>
           </view>
         </view>
         <view class="self-end section_5"></view>

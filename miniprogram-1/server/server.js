@@ -11,8 +11,320 @@ app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 //这上面一段固定的
+// excel表格相关库
+const fs = require('fs');  
+const path = require('path');  
+const XLSX = require('xlsx'); // 引入xlsx库  
 
+// 从day_info中获得仓库每日数据汇总表，发送excel文件给前端下载
+app.get('/downloadExcel/dayInfo', (req, res) => {
+  // 连接数据库
+  var connection=mysql.createConnection({
+    host:IPAddress,
+    port: 3306,	
+    user:dbUsername,
+    password:dbPassword,
+    database:dbName
+  });
+  connection.connect();
 
+  var sql = 'select date, dout, din, warn_num, income, cost from day_info';
+  connection.query(sql, (error, results) =>{ 
+    console.log(results);
+    var data = results;
+    if (error) {
+      console.log("获取数据表失败");
+    } else {
+      // 将数据转换为工作簿对象workbook和工作表对象worksheet
+      const workbook = XLSX.utils.book_new();  
+      const worksheet = XLSX.utils.json_to_sheet(data);  
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1'); 
+      // 将工作薄对象写入文件（这个路径请改为自己电脑的路径）
+      const filePath = path.join('C:\\Users\\86178\\Desktop\\reportTest', 'excel', 'dayinfo.xlsx');
+      // XLSX.writeFile(workbook, filePath);
+      // 设置文件下载的响应头和内容类型  
+      res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');  
+      res.setHeader('Content-Disposition', 'attachment; filename=dayinfo.xlsx');  
+      res.setHeader('Content-Length', fs.statSync(filePath).size); 
+      // 修改表头
+      const headerRow = 1; //表头所在的行号
+      const newHeader = ['日期', '出库数量', '入库数量', '预警数量', '出库金额', '入库金额'];
+      for (var i = 0; i < newHeader.length; i++) {
+        const cellAddress = XLSX.utils.encode_cell({ r: headerRow - 1, c: i });  
+        worksheet[cellAddress].v = newHeader[i];  
+      }
+      // 自适应列宽
+      const range = XLSX.utils.decode_range(worksheet['!ref']);  
+      for (let col = range.s.c; col <= range.e.c; col++) {  
+        let maxCellLength = 0;  
+        for (let row = range.s.r + 1; row <= range.e.r; row++) {  
+          const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });  
+          const cell = worksheet[cellAddress];  
+          if (cell) {  
+            maxCellLength = Math.max(maxCellLength, cell.w ? cell.w.length : 10);  
+          }  
+        }  
+        // 限制最大列宽为512个字符，可根据需要调整  
+        const width = Math.min(512, maxCellLength + 2); 
+        worksheet['!cols'] = worksheet['!cols'] || [];  
+        worksheet['!cols'][col] = { width };  
+      }  
+      // 保存文件
+      XLSX.writeFile(workbook, filePath);
+      // 发送文件给前端下载  
+      res.sendFile(filePath); 
+    }
+  });
+});
+
+// 从goods_info中获得货物库存表，发送excel文件给前端下载
+app.get('/downloadExcel/goodsInfo', (req, res) => {
+  // 连接数据库
+  var connection=mysql.createConnection({
+    host:IPAddress,
+    port: 3306,	
+    user:dbUsername,
+    password:dbPassword,
+    database:dbName
+  });
+  connection.connect();
+
+  var sql = 'select gno, gname, gtype, gsnum, gunit, sname, gpricein from goods_info';
+  connection.query(sql, (error, results) =>{ 
+    console.log(results);
+    var data = results;
+    if (error) {
+      console.log("获取数据表失败");
+    } else {
+      // 将数据转换为工作簿对象workbook和工作表对象worksheet
+      const workbook = XLSX.utils.book_new();  
+      const worksheet = XLSX.utils.json_to_sheet(data);  
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1'); 
+      // 将工作薄对象写入文件（这个路径请改为自己电脑的文件保存路径）
+      const filePath = path.join('C:\\Users\\86178\\Desktop\\reportTest', 'excel', 'goodsinfo.xlsx');
+      // XLSX.writeFile(workbook, filePath);
+      // 设置文件下载的响应头和内容类型  
+      res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');  
+      res.setHeader('Content-Disposition', 'attachment; filename=dayinfo.xlsx');  
+      res.setHeader('Content-Length', fs.statSync(filePath).size); 
+      // 修改表头
+      const headerRow = 1; //表头所在的行号
+      const newHeader = ['货物编号', '货物名称', '货物类型', '总库存数', '单位', '供应商', '进货价'];
+      for (var i = 0; i < newHeader.length; i++) {
+        const cellAddress = XLSX.utils.encode_cell({ r: headerRow - 1, c: i });  
+        worksheet[cellAddress].v = newHeader[i];  
+      }
+      // 自适应列宽
+      const range = XLSX.utils.decode_range(worksheet['!ref']);  
+      for (let col = range.s.c; col <= range.e.c; col++) {  
+        let maxCellLength = 0;  
+        for (let row = range.s.r + 1; row <= range.e.r; row++) {  
+          const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });  
+          const cell = worksheet[cellAddress];  
+          if (cell) {  
+            maxCellLength = Math.max(maxCellLength, cell.w ? cell.w.length : 10);  
+          }  
+        }  
+        // 限制最大列宽为512个字符，可根据需要调整  
+        const width = Math.min(512, maxCellLength + 2); 
+        worksheet['!cols'] = worksheet['!cols'] || [];  
+        worksheet['!cols'][col] = { width };  
+      }  
+      // 保存文件
+      XLSX.writeFile(workbook, filePath);
+      // 发送文件给前端下载  
+      res.sendFile(filePath); 
+    }
+  });
+});
+// 从inout_info中获得入库订单汇总，发送excel文件给前端下载
+app.get('/downloadExcel/inputInfo', (req, res) => {
+  // 连接数据库
+  var connection=mysql.createConnection({
+    host:IPAddress,
+    port: 3306,	
+    user:dbUsername,
+    password:dbPassword,
+    database:dbName
+  });
+  connection.connect();
+
+  var sql = 'select ono, gno, gnum, sname, date, eno from inout_info where otype = 1';
+  connection.query(sql, (error, results) =>{ 
+    console.log(results);
+    var data = results;
+    if (error) {
+      console.log("获取数据表失败");
+    } else {
+      // 将数据转换为工作簿对象workbook和工作表对象worksheet
+      const workbook = XLSX.utils.book_new();  
+      const worksheet = XLSX.utils.json_to_sheet(data);  
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1'); 
+      // 将工作薄对象写入文件（这个路径请改为自己电脑的文件保存路径）
+      const filePath = path.join('C:\\Users\\86178\\Desktop\\reportTest', 'excel', '入库订单表.xlsx');
+      // XLSX.writeFile(workbook, filePath);
+      // 设置文件下载的响应头和内容类型  
+      res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');  
+      res.setHeader('Content-Disposition', 'attachment; filename=dayinfo.xlsx');  
+      res.setHeader('Content-Length', fs.statSync(filePath).size); 
+      // 修改表头
+      const headerRow = 1; //表头所在的行号
+      const newHeader = ['订单号', '货物编号', '入库数量', '供应商', '日期', '操作员工'];
+      for (var i = 0; i < newHeader.length; i++) {
+        const cellAddress = XLSX.utils.encode_cell({ r: headerRow - 1, c: i });  
+        worksheet[cellAddress].v = newHeader[i];  
+      }
+      // 自适应列宽
+      const range = XLSX.utils.decode_range(worksheet['!ref']);  
+      for (let col = range.s.c; col <= range.e.c; col++) {  
+        let maxCellLength = 0;  
+        for (let row = range.s.r + 1; row <= range.e.r; row++) {  
+          const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });  
+          const cell = worksheet[cellAddress];  
+          if (cell) {  
+            maxCellLength = Math.max(maxCellLength, cell.w ? cell.w.length : 10);  
+          }  
+        }  
+        // 限制最大列宽为512个字符，可根据需要调整  
+        const width = Math.min(512, maxCellLength + 2); 
+        worksheet['!cols'] = worksheet['!cols'] || [];  
+        worksheet['!cols'][col] = { width };  
+      }  
+      const colWidth = 20; // 设置第一列宽度为20个字符  
+      worksheet['!cols'] = [{ width: colWidth }, ...worksheet['!cols'] || []]; 
+      // 保存文件
+      XLSX.writeFile(workbook, filePath);
+      // 发送文件给前端下载  
+      res.sendFile(filePath); 
+    }
+  });
+});
+
+// 从inout_info中获得出库订单汇总，发送excel文件给前端下载
+app.get('/downloadExcel/outputInfo', (req, res) => {
+  // 连接数据库
+  var connection=mysql.createConnection({
+    host:IPAddress,
+    port: 3306,	
+    user:dbUsername,
+    password:dbPassword,
+    database:dbName
+  });
+  connection.connect();
+
+  var sql = 'select ono, gno, gnum, cname, date, eno from inout_info where otype = 0';
+  connection.query(sql, (error, results) =>{ 
+    console.log(results);
+    var data = results;
+    if (error) {
+      console.log("获取数据表失败");
+    } else {
+      // 将数据转换为工作簿对象workbook和工作表对象worksheet
+      const workbook = XLSX.utils.book_new();  
+      const worksheet = XLSX.utils.json_to_sheet(data);  
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1'); 
+      // 将工作薄对象写入文件（这个路径请改为自己电脑的文件保存路径）
+      const filePath = path.join('C:\\Users\\86178\\Desktop\\reportTest', 'excel', '出库订单表.xlsx');
+      // XLSX.writeFile(workbook, filePath);
+      // 设置文件下载的响应头和内容类型  
+      res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');  
+      res.setHeader('Content-Disposition', 'attachment; filename=dayinfo.xlsx');  
+      res.setHeader('Content-Length', fs.statSync(filePath).size); 
+      // 修改表头
+      const headerRow = 1; //表头所在的行号
+      const newHeader = ['订单号', '货物编号', '出库数量', '客户', '日期', '操作员工'];
+      for (var i = 0; i < newHeader.length; i++) {
+        const cellAddress = XLSX.utils.encode_cell({ r: headerRow - 1, c: i });  
+        worksheet[cellAddress].v = newHeader[i];  
+      }
+      // 自适应列宽
+      const range = XLSX.utils.decode_range(worksheet['!ref']);  
+      for (let col = range.s.c; col <= range.e.c; col++) {  
+        let maxCellLength = 0;  
+        for (let row = range.s.r + 1; row <= range.e.r; row++) {  
+          const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });  
+          const cell = worksheet[cellAddress];  
+          if (cell) {  
+            maxCellLength = Math.max(maxCellLength, cell.w ? cell.w.length : 10);  
+          }  
+        }  
+        // 限制最大列宽为512个字符，可根据需要调整  
+        const width = Math.min(512, maxCellLength + 2); 
+        worksheet['!cols'] = worksheet['!cols'] || [];  
+        worksheet['!cols'][col] = { width };  
+      }  
+      const colWidth = 20; // 设置第一列宽度为20个字符  
+      worksheet['!cols'] = [{ width: colWidth }, ...worksheet['!cols'] || []]; 
+      // 保存文件
+      XLSX.writeFile(workbook, filePath);
+      // 发送文件给前端下载  
+      res.sendFile(filePath); 
+    }
+  });
+});
+
+// 从day_info中计算获得利润表，发送excel文件给前端下载
+app.get('/downloadExcel/profitInfo', (req, res) => {
+  // 连接数据库
+  var connection=mysql.createConnection({
+    host:IPAddress,
+    port: 3306,	
+    user:dbUsername,
+    password:dbPassword,
+    database:dbName
+  });
+  connection.connect();
+
+  var sql = 'select date, income, cost, (cast(income as decimal) - cast(cost as decimal)) as profit from day_info';
+  connection.query(sql, (error, results) =>{ 
+    console.log(results);
+    var data = results;
+    if (error) {
+      console.log("获取数据表失败");
+    } else {
+      // 将数据转换为工作簿对象workbook和工作表对象worksheet
+      const workbook = XLSX.utils.book_new();  
+      const worksheet = XLSX.utils.json_to_sheet(data);  
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1'); 
+      // 将工作薄对象写入文件（这个路径请改为自己电脑的文件保存路径）
+      const filePath = path.join('C:\\Users\\86178\\Desktop\\reportTest', 'excel', '利润表.xlsx');
+      // XLSX.writeFile(workbook, filePath);
+      // 设置文件下载的响应头和内容类型  
+      res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');  
+      res.setHeader('Content-Disposition', 'attachment; filename=dayinfo.xlsx');  
+      res.setHeader('Content-Length', fs.statSync(filePath).size); 
+      // 修改表头
+      const headerRow = 1; //表头所在的行号
+      const newHeader = ['日期', '收入', '支出', '利润'];
+      for (var i = 0; i < newHeader.length; i++) {
+        const cellAddress = XLSX.utils.encode_cell({ r: headerRow - 1, c: i });  
+        worksheet[cellAddress].v = newHeader[i];  
+      }
+      // 自适应列宽
+      const range = XLSX.utils.decode_range(worksheet['!ref']);  
+      for (let col = range.s.c; col <= range.e.c; col++) {  
+        let maxCellLength = 0;  
+        for (let row = range.s.r + 1; row <= range.e.r; row++) {  
+          const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });  
+          const cell = worksheet[cellAddress];  
+          if (cell) {  
+            maxCellLength = Math.max(maxCellLength, cell.w ? cell.w.length : 10);  
+          }  
+        }  
+        // 限制最大列宽为512个字符，可根据需要调整  
+        const width = Math.min(512, maxCellLength + 2); 
+        worksheet['!cols'] = worksheet['!cols'] || [];  
+        worksheet['!cols'][col] = { width };  
+      }  
+      const colWidth = 15; // 设置第一列宽度为15个字符  
+      worksheet['!cols'] = [{ width: colWidth }, ...worksheet['!cols'] || []];  
+      // 保存文件
+      XLSX.writeFile(workbook, filePath);
+      // 发送文件给前端下载  
+      res.sendFile(filePath); 
+    }
+  });
+});
 
 //处理get请求。这里是一个 get 请求的方法演示，作用是查询 user_info 表中的所有数据并返回。
 /*app.get('/getUser',(req,res)=>{ //这里的是 get 方法 getUser，对应了刚才的页面发来的请求。就会执行这个方法。

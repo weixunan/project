@@ -22,14 +22,14 @@
               class="shrink-0 image_3"
               src="../assets/table.png"
             />
-            <text class="ml-8 font_2 text_4">货库库存表</text>
+            <text class="ml-8 font_2 text_4" bindtap="downloadExcel_goodsInfo">货库库存表</text>
           </view>
           <view class="flex-row items-center equal-division-item_2">
             <image
               class="shrink-0 image_3"
               src="../assets/table.png"
             />
-            <text class="font_2 text_4 ml-9">出入库统计</text>
+            <text class="font_2 text_4 ml-9" bindtap="downloadExcel_dayInfo">出入库统计</text>
           </view>
         </view>
         <text class="mt-18 self-start font_2">入库</text>
@@ -41,7 +41,7 @@
               class="shrink-0 image_3"
               src="../assets/table.png"
             />
-            <text class="ml-8 font_2 text_5">入库明细表</text>
+            <text class="ml-8 font_2 text_5" bindtap="downloadExcel_inputInfo">入库订单表</text>
           </view>
           <view class="flex-row items-center equal-division-item_2">
             <image
@@ -60,7 +60,7 @@
               class="shrink-0 image_3"
               src="../assets/table.png"
             />
-            <text class="font_2 text_7 ml-9">出库明细表</text>
+            <text class="font_2 text_7 ml-9" bindtap="downloadExcel_outputInfo">出库订单表</text>
           </view>
           <view class="flex-row items-center equal-division-item_2">
             <image
@@ -91,12 +91,12 @@
         </view>
         <text class="mt-18 self-start font_2 text_11">财务</text>
       </view>
-      <view class="mt-24 flex-row justify-center items-center self-start relative section_2">
+      <view class="mt-24 flex-row justify-center items-center self-start relative section_2 equal-division-item_2">
         <image
           class="image_3 pos_2"
           src="../assets/table.png"
         />
-        <text class="font_2 text_12">利润表</text>
+        <text class="font_2 text_12" bindtap="downloadExcel_profitInfo">利润表</text>
       </view>
     </view>
   </view>

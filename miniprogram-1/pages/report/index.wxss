@@ -82,6 +82,7 @@
   border-right: solid 1.92rpx #0000001a;
   border-top: solid 1.92rpx #0000001a;
   border-bottom: solid 1.92rpx #0000001a;
+  width: 120px;
 }
 .text_5 {
   line-height: 25.06rpx;
@@ -109,7 +110,7 @@
   padding: 50rpx 23.08rpx;
   background-color: #ffffff;
   border-radius: 30.77rpx;
-  width: 257.69rpx;
+  /* width: 257.69rpx; */
   border-left: solid 1.92rpx #0000001a;
   border-right: solid 1.92rpx #0000001a;
   border-top: solid 1.92rpx #0000001a;
