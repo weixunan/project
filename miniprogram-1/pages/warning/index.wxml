@@ -16,10 +16,19 @@
           />
         </view>
         </view>
-        <image
+        <view class="sort-container" catchtap="sortByNum">
+          <image
           class="shrink-0 image_3 ml-17"
           src="../assets/sort.png"
+          wx:if="{{sorticon}}"
         />
+        <image
+          class="shrink-0 image_3 ml-17"
+          src="../assets/sort_blue.png"
+          wx:if="{{!sorticon}}"
+        />
+        </view>
+        
       </view>
       <!--
       <view class="flex-col section_3 mt-9" wx:for="{{warningMessages}}" wx:key="wno">

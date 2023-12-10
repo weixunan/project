@@ -3,45 +3,55 @@
   <view class="flex-col flex-1 group">
     <view class="flex-row justify-evenly items-center">
       <view class="flex-col justify-start items-start text-wrapper">
-        <text class="font text_2">开始日期：2023-11-01</text>
+        <!-- <text class="font text_2">开始日期：2023-11-01</text> -->
+        <picker mode="date" value="{{endDate}}" start="2015-05-01" end="2025-09-01" bindchange="bindEndDateChange" >
+          <view class="picker font text_2">
+            结束日期：{{endDate}}
+          </view>
+        </picker>
       </view>
       <image
         class="image_2"
         src="../assets/jiantou.png"
       />
       <view class="flex-col justify-start items-start text-wrapper">
-        <text class="font text_2">结束日期：2023-11-01</text>
+        <!-- <text class="font text_2">结束日期：2023-11-01</text> -->
+        <picker mode="date" value="{{endDate}}" start="2015-05-01" end="2025-09-01" bindchange="bindEndDateChange" >
+          <view class="picker font text_2">
+            结束日期：{{endDate}}
+          </view>
+        </picker>
       </view>
     </view>
     <view class="flex-col group_2 mt-31">
       <text class="self-start font_2 text_3">货物</text>
       <view class="mt-24 flex-col self-stretch">
         <view class="flex-row justify-between equal-division">
-          <view class="flex-row items-center equal-division-item_2">
+          <view class="flex-row items-center equal-division-item_2" bindtap="downloadExcel_goodsInfo">
             <image
               class="shrink-0 image_3"
               src="../assets/table.png"
             />
-            <text class="ml-8 font_2 text_4" bindtap="downloadExcel_goodsInfo">货库库存表</text>
+            <text class="ml-8 font_2 text_4">货库库存表</text>
           </view>
-          <view class="flex-row items-center equal-division-item_2">
+          <view class="flex-row items-center equal-division-item_2" bindtap="downloadExcel_dayInfo">
             <image
               class="shrink-0 image_3"
               src="../assets/table.png"
             />
-            <text class="font_2 text_4 ml-9" bindtap="downloadExcel_dayInfo">出入库统计</text>
+            <text class="font_2 text_4 ml-9" >出入库统计</text>
           </view>
         </view>
         <text class="mt-18 self-start font_2">入库</text>
       </view>
       <view class="mt-24 flex-col self-stretch group_3">
         <view class="flex-row justify-between equal-division">
-          <view class="flex-row items-center equal-division-item_2">
+          <view class="flex-row items-center equal-division-item_2" bindtap="downloadExcel_inputInfo">
             <image
               class="shrink-0 image_3"
               src="../assets/table.png"
             />
-            <text class="ml-8 font_2 text_5" bindtap="downloadExcel_inputInfo">入库订单表</text>
+            <text class="ml-8 font_2 text_5">入库订单表</text>
           </view>
           <view class="flex-row items-center equal-division-item_2">
             <image
@@ -55,12 +65,12 @@
       </view>
       <view class="mt-24 flex-col self-stretch">
         <view class="flex-row justify-between equal-division">
-          <view class="flex-row items-center equal-division-item_2">
+          <view class="flex-row items-center equal-division-item_2" bindtap="downloadExcel_outputInfo">
             <image
               class="shrink-0 image_3"
               src="../assets/table.png"
             />
-            <text class="font_2 text_7 ml-9" bindtap="downloadExcel_outputInfo">出库订单表</text>
+            <text class="font_2 text_7 ml-9" >出库订单表</text>
           </view>
           <view class="flex-row items-center equal-division-item_2">
             <image
@@ -91,12 +101,12 @@
         </view>
         <text class="mt-18 self-start font_2 text_11">财务</text>
       </view>
-      <view class="mt-24 flex-row justify-center items-center self-start relative section_2 equal-division-item_2">
+      <view class="mt-24 flex-row justify-center items-center self-start relative section_2 equal-division-item_2" bindtap="downloadExcel_profitInfo">
         <image
           class="image_3 pos_2"
           src="../assets/table.png"
         />
-        <text class="font_2 text_12" bindtap="downloadExcel_profitInfo">利润表</text>
+        <text class="font_2 text_12" >利润表</text>
       </view>
     </view>
   </view>

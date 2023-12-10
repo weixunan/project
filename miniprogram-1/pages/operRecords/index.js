@@ -12,27 +12,54 @@ Page({
     chFontColor:'#000000',
     Records:[],
     originalRecords:[],
+    sortedRecords: [],
+    buffer: [],
     currentPage:1,
+    sorticon:true,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.inputRecords();
-    if(options.mode==='in')
+    if(options.mode=="in")
     {
       this.inputRecords();
+      this.setData({
+        currentPage:1,
+      })
     }
-    else if(options.mode==='out')
+    else if(options.mode=="out")
     {
       this.outputRecords();
       this.setData({
-        currentPage:0
+        currentPage:0,
       })
+    }
+    else
+    {
+      this.inputRecords();
     }
     this.getRecords();
   },
+
+  sortByNum: function(e){
+    // console.log( this.data.Records)
+    // console.log(this.data.sortedRecords)
+    // console.log(this.data.buffer)
+
+    this.setData({
+      buffer: this.data.Records,
+      sorticon:!this.data.sorticon
+    })
+    this.setData({
+      Records: this.data.sortedRecords
+    })
+    this.setData({
+      sortedRecords: this.data.buffer
+    })
+  },
+
   getRecordsByNumOrName: function(e){
     const input = e.detail.value; // 获取用户输入的编号
     const records = this.data.originalRecords; // 使用原始数据进行过滤
@@ -52,8 +79,9 @@ Page({
   getRecords(){
     console.log(this.data.beginDate);
     console.log(this.data.endDate);
+    const thisfun = this;
     wx.request({
-      url: 'http://172.29.15.187:3003/getRecords',
+      url: 'http://172.29.15.95:3003/getRecords',
       method: 'GET',
       data:{
           vbeginDate:this.data.beginDate,
@@ -66,7 +94,19 @@ Page({
         this.setData({
           Records: data,
           originalRecords: data,
+          sortedRecords: data,
         });
+        console.log(this.data.Records);
+        var sorted_records = Array.from(thisfun.data.sortedRecords); 
+        sorted_records.sort((a, b) => new Date(b.date) - new Date(a.date)); // 根据时间从大到小排序
+        console.log(this.data.Records);
+        //console.log(sorted_records);
+        thisfun.setData({
+          sortedRecords: sorted_records, // 将排序后的结果更新到页面数据中
+        });
+        //console.log(this.data.sortedRecords);
+        //console.log(this.data.Records);
+        //console.log(this.data.sortedRecords);
       },
       fail: (error) => {
         console.error('Failed to fetch InputRecords:', error);
@@ -163,7 +203,6 @@ Page({
   changePage:function(e){
     // this.resetFontColors();
     const Page=parseInt(e.currentTarget.dataset.text);
-    // console.log(Page);
     this.setData({
       currentPage:Page,
     })

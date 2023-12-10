@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    beginDate:'2021-12-06',
+    endDate:'2023-12-07',
   },
 
   // 下载仓库每日数据汇总Excel表
@@ -173,5 +174,18 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+  },
+   //点击时间选择框的事件函数
+   bindBeginDateChange:function(e){
+    this.setData({
+      beginDate:e.detail.value
+    })
+    console.log(this.data.beginDate);
+  },
+  bindEndDateChange:function(e){
+    this.setData({
+      endDate:e.detail.value
+    })
+    console.log(this.data.endDate);
+  },
 })

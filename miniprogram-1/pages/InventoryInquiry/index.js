@@ -13,6 +13,22 @@ Page({
     TextColor:[],
     allTextColor:'#000000',
     searchnum: 0,
+    sorted: [],
+    buffer: [],
+    sorticon:true,
+  },
+
+  sortByNum: function(e){
+    this.setData({
+      buffer: this.data.InventoryMessages,
+      sorticon:!this.data.sorticon
+    })
+    this.setData({
+      InventoryMessages: this.data.sorted
+    })
+    this.setData({
+      sorted: this.data.buffer
+    })
   },
 
   // 新增方法，根据输入的编号查询对应项
@@ -135,6 +151,7 @@ Page({
     });
   },
   getInventoryMessages(){
+    var thisfun = this;
     wx.request({
       url: 'http://172.29.15.95:3003/getInventoryMessages',
       method: 'GET',
@@ -144,6 +161,14 @@ Page({
         this.setData({
           InventoryMessages: data,
           originalInventoryMessages: data,
+          sorted: data,
+        });
+        var sorted = Array.from(thisfun.data.sorted); 
+        sorted.sort((a, b) => a.gno - b.gno); // 根据gno从大到小排序
+        //console.log(this.data.Records);
+        //console.log(sorted_records);
+        thisfun.setData({
+          sorted: sorted, // 将排序后的结果更新到页面数据中
         });
       },
       fail: (error) => {
@@ -179,6 +204,7 @@ Page({
         // 将获取到的预警信息更新到页面数据中
         this.setData({
           InventoryMessages: data,
+          
         });
       },
       fail: (error) => {

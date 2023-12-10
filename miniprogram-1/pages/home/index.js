@@ -21,7 +21,7 @@ Page({
     const thisfunc = this;
     wx.request({
       method: 'POST',
-      url: 'http://172.29.15.187:3003/getWarningNumber',
+      url: 'http://172.29.15.95:3003/getWarningNumber',
       header: {
         'Content-Type': 'application/json',
       },
@@ -93,9 +93,47 @@ Page({
   },
   //主页的跳转函数，用于跳转到不同的页面
   goTo:function(e){
-    var goUrl='/pages/'+e.currentTarget.dataset.name+'/index';
-    wx.navigateTo({
-      url: goUrl,
-    })
+    var app = getApp();
+    if(e.currentTarget.dataset.name=="basicData"||e.currentTarget.dataset.name=="report")
+    {
+      if(app.globalData.elevel>=2)
+      {
+        var goUrl='/pages/'+e.currentTarget.dataset.name+'/index';
+        wx.navigateTo({
+        url: goUrl,
+        })
+      }
+      else
+      {
+        wx.showToast({
+          title: '权限不足',
+          icon:'error'
+        })
+      }
+    }
+    else if (e.currentTarget.dataset.name=="userManage"||e.currentTarget.dataset.name=="setBaseline")
+    {
+      if(app.globalData.elevel>=3)
+      {
+        var goUrl='/pages/'+e.currentTarget.dataset.name+'/index';
+        wx.navigateTo({
+        url: goUrl,
+        })
+      }
+      else
+      {
+        wx.showToast({
+          title: '权限不足',
+          icon:'error'
+        })
+      }
+    }
+    else
+    {
+      var goUrl='/pages/'+e.currentTarget.dataset.name+'/index';
+        wx.navigateTo({
+        url: goUrl,
+        })
+    }
   }
 })

@@ -8,10 +8,16 @@
           <input type="text" bindinput="searchByGno" placeholder="请输入编号或货物名称" /> <!-- 绑定输入事件，调用searchByGno方法 -->
           <image class="image_2" src="../assets/search.png" />
         </view>
-      </view>
-      <image
+      </view >
+      <image catchtap="sortByNum"
         class="shrink-0 image_3 ml-17"
         src="../assets/sort.png"
+        wx:if="{{sorticon}}"
+      />
+      <image catchtap="sortByNum"
+        class="shrink-0 image_3 ml-17"
+        src="../assets/sort_blue.png"
+        wx:if="{{!sorticon}}"
       />
     </view>
     <view class="flex-row">

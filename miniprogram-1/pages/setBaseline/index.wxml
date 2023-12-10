@@ -15,10 +15,10 @@
           src="../assets/search.png"
         /> -->
       </view>
-      <image
-        class="shrink-0 image_3 ml-17"
-        src="../assets/sort.png"
-      />
+      <view class="sort-container" catchtap="sortByNum">
+        <image class="shrink-0 image_3 ml-17" src="../assets/sort.png" wx:if="{{sorticon}}" />
+        <image class="shrink-0 image_3 ml-17" src="../assets/sort_blue.png" wx:if="{{!sorticon}}" />
+      </view>
     </view>
     <view class="flex-row section_3 mt-13" wx:for="{{InventoryMessages}}" wx:key="gno">
       <image
@@ -31,8 +31,6 @@
           <image
             class="ml-10 image_5"
             src="../assets/copy.png"
-            bind:tap="copyText"
-            data-name="{{item.gno}}"
           />
           <text class="ml-10 text_3">{{item.gno}}</text>
         </view>

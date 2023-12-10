@@ -9,6 +9,11 @@ Page({
     origin_warningMessagesLess: [],
     warningMessagesMore: [], // 存放库存过多的预警消息
     origin_warningMessagesMore: [],
+    buffer_less: [],
+    buffer_more: [],
+    sorted_less: [],
+    sorted_more: [],
+    sorticon:true,
   },
 
   /**
@@ -16,6 +21,31 @@ Page({
    */
   onLoad(options) {
     this.getWarningMessages();
+  },
+
+  sortByNum: function(e){
+    console.log(1);
+    this.setData({
+      buffer_less: this.data.warningMessagesLess,
+      sorticon:!this.data.sorticon
+    })
+    this.setData({
+      warningMessagesLess: this.data.sorted_less
+    })
+    this.setData({
+      sorted_less: this.data.buffer_less
+    });
+    
+
+    this.setData({
+      buffer_more: this.data.warningMessagesMore
+    })
+    this.setData({
+      warningMessagesMore: this.data.sorted_more
+    })
+    this.setData({
+      sorted_more: this.data.buffer_more
+    });
   },
 
   getFilteredWarningMessages: function(e){
@@ -44,14 +74,15 @@ Page({
       });
     }
   },
-  
+
   getWarningMessages() {
+    var thisfun = this;
     // 假设有一个获取商品预警信息的后台接口，返回一个包含预警信息的数据
     // 你需要根据你的实际情况调用后台接口
     // 这里用一个假数据代替
     // 库存过少
     wx.request({
-      url: 'http://172.29.15.187:3003/getWarningMessages',
+      url: 'http://172.29.15.95:3003/getWarningMessages',
       method: 'POST',
       data:{
         request: "less",
@@ -65,6 +96,13 @@ Page({
         this.setData({
           warningMessagesLess: data,
           origin_warningMessagesLess: data,
+          sorted_less: data,
+        });
+        var sorted = Array.from(thisfun.data.sorted_less); 
+        console.log(sorted);
+        sorted.sort((a, b) => new Date(b.date) - new Date(a.date)); // 根据gno从大到小排序
+        thisfun.setData({
+          sorted_less: sorted, // 将排序后的结果更新到页面数据中
         });
       },
       fail: (error) => {
@@ -79,7 +117,7 @@ Page({
     });
      // 库存过多
      wx.request({
-      url: 'http://172.29.15.187:3003/getWarningMessages',
+      url: 'http://172.29.15.95:3003/getWarningMessages',
       method: 'POST',
       data:{
         request: "more",
@@ -93,6 +131,12 @@ Page({
         this.setData({
           warningMessagesMore: data,
           origin_warningMessagesMore: data,
+          sorted_more: data,
+        });
+        var sorted = Array.from(thisfun.data.sorted_more); 
+        sorted.sort((a, b) => b.gno - a.gno); // 根据gno从大到小排序
+        thisfun.setData({
+          sorted_more: sorted, // 将排序后的结果更新到页面数据中
         });
       },
       fail: (error) => {

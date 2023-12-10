@@ -16,10 +16,19 @@
           src="../assets/search.png"
         /> -->
       </view>
-      <image
+      <view class="sort-container" catchtap="sortByNum">
+        <image
         class="shrink-0 image_3 ml-17"
         src="../assets/sort.png"
+        wx:if="{{sorticon}}"
       />
+      <image
+        class="shrink-0 image_3 ml-17"
+        src="../assets/sort_blue.png"
+        wx:if="{{!sorticon}}"
+      />
+      </view>
+      
     </view>
     <view class="flex-row self-stretch">
       <view class="flex-col justify-start items-center text-wrapper" bind:tap="changePage" data-text="1"><text class="font" style="color: {{inFontColor}}" bind:tap="inputRecords">入库记录</text></view>
@@ -72,6 +81,7 @@
       </view>
       <view class="flex-col group_5">
         <text class="self-start font_3 text_10">{{filter.format(item.date,'YY-MM-DD')}}</text>
+
         <text class="self-end font_2 text_9">查看详情</text>
       </view>
     </view>

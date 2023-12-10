@@ -8,9 +8,25 @@ Page({
       InventoryMessages:[],
       originalInventoryMessages: [],
       showModalStatus:false,
-      curGno:''
+      curGno:'',
+      buffer: [],
+      sorted: [],
+      sorticon:true,
   },
 
+  sortByNum: function(e){
+
+    this.setData({
+      buffer: this.data.InventoryMessages,
+      sorticon:!this.data.sorticon
+    })
+    this.setData({
+      InventoryMessages: this.data.sorted
+    })
+    this.setData({
+      sorted: this.data.buffer
+    })
+  },
   // 增加返回上一页面的回调函数，返回home页面时能更新加载预警信息数量
   /*wx.navigateBack({
 
@@ -31,22 +47,7 @@ Page({
       });
     }
   },
-  copyText:function(e){
-    console.log(e.currentTarget.dataset.name);
-    wx.showToast({
-      title: '复制成功',
-    });
-    wx.setClipboardData({
-      data: e.currentTarget.dataset.name,
-      success:function(res){
-        wx.getClipboardData({
-          success:function(res){
-            console.log(res.data);
-          }
-        })
-      }
-    })
-  },
+
   //表单提交函数 在这里发送请求，设置货物的基准信息
   formSubmit(e){
     console.log('设置基准信息');
@@ -56,7 +57,7 @@ Page({
     wx.request({
       method: 'POST',
       // 调试的时候改为自己的ip
-      url: 'http://172.29.15.187:3003/setBaseline',
+      url: 'http://172.29.15.95:3003/setBaseline',
       header: {
         'Content-Type': 'application/json',
       },
@@ -97,8 +98,9 @@ Page({
     this.getInventoryMessages();
   },
   getInventoryMessages(){
+    var thisfun = this;
     wx.request({
-      url: 'http://172.29.15.187:3003/getInventoryMessages',
+      url: 'http://172.29.15.95:3003/getInventoryMessages',
       method: 'GET',
       success: (res) => {
         const { data } = res;
@@ -106,6 +108,14 @@ Page({
         this.setData({
           InventoryMessages: data,
           originalInventoryMessages: data,
+          sorted: data,
+        });
+        var sorted = Array.from(thisfun.data.sorted); 
+        sorted.sort((a, b) => a.gno - b.gno); // 根据gno从大到小排序
+        //console.log(this.data.Records);
+        //console.log(sorted_records);
+        thisfun.setData({
+          sorted: sorted, // 将排序后的结果更新到页面数据中
         });
       },
       fail: (error) => {
